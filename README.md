@@ -22,7 +22,7 @@ $ neofetch
     /'\_   _/`\         Repos:   4 public
     \___)=(___/         Stars:   9 total
                         Lang:    Python, Rust, Lua
-                        Uptime:  since mass adoption of mass confusion
+                        Uptime:  296 days
 ```
 
 ---
@@ -65,12 +65,9 @@ $ cat ~/community.txt
 ```
    ┌─────────────────────────────────────────────────────┐
    │                                                     │
-   │   Want access to the private tools + the community  │
-   │   building them?                                    │
-   │                                                     │
    │   >> AI Marketing Hub Pro                           │
    │                                                     │
    └─────────────────────────────────────────────────────┘
 ```
 
-**[Join AI Marketing Hub Pro](https://www.skool.com/ai-marketing-hub-pro/about?ref=59f96e9d9f2b4047b53627692d8c8f0c)** - Exclusive projects, early access, and the people behind this work.
+Join [AI Marketing Hub Pro](https://www.skool.com/ai-marketing-hub-pro/about?ref=59f96e9d9f2b4047b53627692d8c8f0c) for access to exclusive projects and the community behind these tools (referral link).
