@@ -16,7 +16,7 @@
 
 Modular AI agent skills, deterministic tool runtimes, and local intelligence systems.
 
-Instead of monolithic frameworks or brittle MCP middleware, the Legends ecosystem provides independent, single-purpose software tools. Each module features a deterministic CLI, dedicated runtime isolation, and portable skill definitions built for **Claude Code, Codex, Gemini CLI, Grok, and Cursor**.
+Instead of monolithic frameworks or brittle MCP middleware, the Legends ecosystem provides independent, single-purpose software tools. Each module features a deterministic CLI, dedicated runtime isolation, and portable skill definitions built for **Claude, Codex, Gemini, Grok, Cursor, and Muse**.
 
 ---
 
@@ -30,7 +30,7 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 
 - **Autonomous Routing:** Tell your agent what you want to achieve. `cto-legends` routes the task to the exact verified module.
 - **Isolated Environments:** Every Python and Node module runs in its own isolated environment. Zero dependency conflicts.
-- **Portable Agent Skills:** Injects uniform skill definitions directly into Claude Code, Codex, Gemini, Grok, and Cursor.
+- **Portable Agent Skills:** Injects uniform skill definitions directly into Claude, Codex, Gemini, Grok, Cursor, and Muse.
 - **Runtime Verification:** Built-in `cto-legends doctor` audits local hardware, system libraries, and CLI readiness before execution.
 
 ---
@@ -42,7 +42,7 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 | **[cto-legends](https://github.com/avalonreset/cto-legends)** | Master Coordinator | Autonomous module discovery, isolated environment management, verified release downloads, and universal agent skill routing. |
 | **[legends-geogrid](https://github.com/avalonreset/legends-geogrid)** | Local Maps SEO | Open-source Google Maps rank checker: geographic search grids, local visibility matrices, street maps, and actionable client reports at raw DataForSEO cost. |
 | **[legends-dataforseo-kit](https://github.com/avalonreset/legends-dataforseo-kit)** | Search Data Engine | High-throughput Python client and CLI for DataForSEO: SERP queues, keyword research, official API discovery, and reusable evidence export. No MCP server required. |
-| **[legends-github](https://github.com/avalonreset/legends-github)** | Repo Optimization | Repository optimization suite for Claude Code, Codex, and Gemini CLI. Audits repos, improves README copy, tunes metadata, manages releases, and ensures community health. |
+| **[legends-github](https://github.com/avalonreset/legends-github)** | Repo Optimization | Repository optimization suite for Claude, Codex, and Gemini. Audits repos, improves README copy, tunes metadata, manages releases, and ensures community health. |
 | **[legends-stable-audio-3](https://github.com/avalonreset/legends-stable-audio-3)** | Audio Production | Agent-operated Stable Audio 3: hardware-aware batch planning, continuous audio mixes, custom adapters, and sound effect generation. |
 | **[legends-obs-kit](https://github.com/avalonreset/legends-obs-kit)** | Video Recording | Agent-operated OBS Studio controller on Windows: hardware inspection, scene and encoder planning, rollback snapshots, and verified recording pipelines. |
 | **[legends-obsidian](https://github.com/avalonreset/legends-obsidian)** | Knowledge Memory | Source-cited Obsidian vault memory: transactional note updates, research evidence graphs, and persistent recall for autonomous agent workflows. |
@@ -64,14 +64,14 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 
 ### Agent Compatibility
 
-All Legends modules are built agent-first with native CLI interfaces and standardized skill packages. They are battle-tested across:
-
-- **Claude Code** (Anthropic)
-- **Codex CLI / Desktop** (OpenAI)
-- **Gemini CLI** (Google DeepMind)
-- **Grok** (xAI)
-- **Cursor**
-- **MetaMuse**
+<p>
+  <img src="https://img.shields.io/badge/Claude-ff0000?style=flat-square" alt="Claude" />
+  <img src="https://img.shields.io/badge/Codex-ff0000?style=flat-square" alt="Codex" />
+  <img src="https://img.shields.io/badge/Gemini-ff0000?style=flat-square" alt="Gemini" />
+  <img src="https://img.shields.io/badge/Grok-ff0000?style=flat-square" alt="Grok" />
+  <img src="https://img.shields.io/badge/Cursor-ff0000?style=flat-square" alt="Cursor" />
+  <img src="https://img.shields.io/badge/Muse-ff0000?style=flat-square" alt="Muse" />
+</p>
 
 ---
 
