@@ -4,11 +4,11 @@
   </a>
 </div>
 
-<p align="center">
-  <a href="https://github.com/avalonreset/cto-legends"><img src="https://img.shields.io/badge/coordinator-cto--legends-ff0000.svg?style=flat-square" alt="cto-legends coordinator" /></a>
-  <a href="https://www.skool.com/ai-marketing-hub-pro"><img src="https://img.shields.io/badge/community-AI%20Marketing%20Hub%20Pro-black.svg?style=flat-square" alt="AI Marketing Hub Pro" /></a>
-  <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License MIT" /></a>
+<p>
+  <a href="https://www.skool.com/ai-marketing-hub-pro"><img align="left" src="https://img.shields.io/badge/community-AI%20Marketing%20Hub%20Pro-ff0000?style=flat-square&labelColor=000000" alt="AI Marketing Hub Pro" /></a>
+  <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img align="right" src="https://img.shields.io/badge/license-MIT-ff0000?style=flat-square&labelColor=000000" alt="License MIT" /></a>
 </p>
+<br clear="both" />
 
 ---
 
