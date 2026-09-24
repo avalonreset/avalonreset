@@ -10,10 +10,6 @@
 </p>
 <br clear="both" />
 
----
-
-### The Legends Open-Source Ecosystem
-
 Modular AI agent skills, deterministic tool runtimes, and local intelligence systems.
 
 Instead of monolithic frameworks or brittle MCP middleware, the Legends ecosystem provides independent, single-purpose software tools. Each module features a deterministic CLI, dedicated runtime isolation, and portable skill definitions built for **Claude, Codex, Gemini, Grok, Cursor, and Muse**.
