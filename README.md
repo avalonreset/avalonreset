@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://cto-legends.com">
-    <img src="assets/banner.webp" alt="avalonreset: the legends open-source ecosystem" width="100%" />
+    <img src="assets/banner.svg" alt="avalonreset: the legends open-source ecosystem" width="100%" />
   </a>
 </div>
 
@@ -33,6 +33,23 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 - **Isolated Environments:** Every Python and Node module runs in its own isolated environment. Zero dependency conflicts.
 - **Portable Agent Skills:** Injects uniform skill definitions directly into Claude Code, Codex, Gemini, Grok, and Cursor.
 - **Runtime Verification:** Built-in `cto-legends doctor` audits local hardware, system libraries, and CLI readiness before execution.
+
+---
+
+### Live Capability Router
+
+Test-drive `cto-legends` autonomous task routing directly from your browser. Click any prompt below to dispatch an automated routing query:
+
+| Capability Domain | Voice / Task Prompt | Dispatch to Router |
+|---|---|---|
+| **Local Search SEO** | *"Track local Google Maps ranking grids and SEO visibility"* | [▶ Dispatch Route](https://github.com/avalonreset/avalonreset/issues/new?title=route%3A+Track+local+Google+Maps+ranking+grids+and+SEO+visibility&body=Push+%22Submit+new+issue%22+to+trigger+the+automated+cto-legends+router.) |
+| **SERP Intelligence** | *"Query search engine result pages and extract keyword evidence"* | [▶ Dispatch Route](https://github.com/avalonreset/avalonreset/issues/new?title=route%3A+Query+search+engine+result+pages+and+extract+keyword+evidence&body=Push+%22Submit+new+issue%22+to+trigger+the+automated+cto-legends+router.) |
+| **Repo Optimization** | *"Audit my GitHub repository README, SEO, and release packaging"* | [▶ Dispatch Route](https://github.com/avalonreset/avalonreset/issues/new?title=route%3A+Audit+my+GitHub+repository+README%2C+SEO%2C+and+release+packaging&body=Push+%22Submit+new+issue%22+to+trigger+the+automated+cto-legends+router.) |
+| **Audio Mixes** | *"Generate continuous instrumental background mixes"* | [▶ Dispatch Route](https://github.com/avalonreset/avalonreset/issues/new?title=route%3A+Generate+continuous+instrumental+background+mixes&body=Push+%22Submit+new+issue%22+to+trigger+the+automated+cto-legends+router.) |
+| **Studio Video** | *"Inspect hardware encoder and verify studio recording settings"* | [▶ Dispatch Route](https://github.com/avalonreset/avalonreset/issues/new?title=route%3A+Inspect+hardware+encoder+and+verify+studio+recording+settings&body=Push+%22Submit+new+issue%22+to+trigger+the+automated+cto-legends+router.) |
+| **Custom Goal** | *Type any goal or tool requirement...* | [▶ Custom Route](https://github.com/avalonreset/avalonreset/issues/new?title=route%3A+%3Ctype+your+goal+here%3E&body=Replace+the+title+with+your+task+and+push+%22Submit+new+issue%22.) |
+
+*Submitting triggers a GitHub Action running `cto-legends route`. It matches your intent, generates the architecture receipt, and replies automatically.*
 
 ---
 
