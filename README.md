@@ -5,7 +5,7 @@
 </div>
 
 <p>
-  <a href="https://www.skool.com/ai-marketing-hub-pro"><img align="left" src="https://img.shields.io/badge/community-AI%20Marketing%20Hub%20Pro-ff0000?style=flat-square&labelColor=000000" alt="AI Marketing Hub Pro" /></a>
+  <a href="https://www.skool.com/ai-marketing-hub-pro"><img align="left" src="https://img.shields.io/badge/community-ai--marketing--hub--pro-ff0000?style=flat-square&labelColor=000000" alt="community: ai-marketing-hub-pro" /></a>
   <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img align="right" src="https://img.shields.io/badge/license-MIT-ff0000?style=flat-square&labelColor=000000" alt="License MIT" /></a>
 </p>
 <br clear="both" />
