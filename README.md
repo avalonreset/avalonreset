@@ -53,6 +53,15 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 
 ---
 
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=1StVdAvxehs">
+    <img src="assets/greatest-marketer.jpg" alt="the worlds greatest marketer makes a sales presentation" width="640" />
+  </a>
+  <p><a href="https://www.youtube.com/watch?v=1StVdAvxehs"><strong>the worlds greatest marketer makes a sales presentation</strong></a></p>
+</div>
+
+---
+
 ### Agent Compatibility
 
 All Legends modules are built agent-first with native CLI interfaces and standardized skill packages. They are battle-tested across:
