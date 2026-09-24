@@ -54,24 +54,12 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=1StVdAvxehs"><img src="assets/greatest-marketer.webp" alt="the worlds greatest marketer makes a sales presentation" width="49.5%" /></a>
-  <a href="https://cto-legends.com/"><img src="assets/bizintel.webp" alt="the allegory of business intelligence" width="49.5%" /></a>
-</p>
-<p align="left">
-  <a href="https://www.youtube.com/watch?v=1StVdAvxehs"><strong>the worlds greatest marketer makes a sales presentation</strong></a>
+  <a href="assets/bizintel.webp"><img src="assets/bizintel.webp" alt="business intelligence: always has been" width="49.5%" /></a>
 </p>
 
 ---
 
-### Agent Compatibility
-
-<p>
-  <img src="https://img.shields.io/badge/Claude-ff0000?style=flat-square" alt="Claude" />
-  <img src="https://img.shields.io/badge/Codex-ff0000?style=flat-square" alt="Codex" />
-  <img src="https://img.shields.io/badge/Gemini-ff0000?style=flat-square" alt="Gemini" />
-  <img src="https://img.shields.io/badge/Grok-ff0000?style=flat-square" alt="Grok" />
-  <img src="https://img.shields.io/badge/Cursor-ff0000?style=flat-square" alt="Cursor" />
-  <img src="https://img.shields.io/badge/Muse-ff0000?style=flat-square" alt="Muse" />
-</p>
+### agent compatibility <img src="assets/badges/claude.svg" alt="Claude" height="20" align="center" /> <img src="assets/badges/codex.svg" alt="Codex" height="20" align="center" /> <img src="assets/badges/gemini.svg" alt="Gemini" height="20" align="center" /> <img src="assets/badges/grok.svg" alt="Grok" height="20" align="center" /> <img src="assets/badges/cursor.svg" alt="Cursor" height="20" align="center" /> <img src="assets/badges/muse.svg" alt="Muse" height="20" align="center" />
 
 ---
 
