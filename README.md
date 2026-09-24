@@ -41,7 +41,7 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 | Module | Focus | What you can do |
 |---|---|---|
 | **[cto-legends](https://github.com/avalonreset/cto-legends)** | Master Coordinator | Capability discovery, reviewed module installation, isolated executable environments, and Markdown workflow handoffs. |
-| **[legends-empire](https://github.com/avalonreset/legends-obsidian)** | Business & Research Memory | Preserve source-cited research and update vault notes through recoverable transactions. Unified Empire workspace onboarding is in development; the current release is available at the legacy repository. |
+| **[legends-empire](https://github.com/avalonreset/legends-empire)** | Business & Research Memory | Preserve source-cited research and update vault notes through recoverable transactions. Unified Empire workspace onboarding is in development. |
 | **[legends-grant](https://github.com/avalonreset/legends-grant)** | Grant Research | Business grant discovery, eligibility research, matching, and application support. |
 | **[legends-geogrid](https://github.com/avalonreset/legends-geogrid)** | Local Maps SEO | Open-source Google Maps rank checker: geographic search grids, local visibility matrices, street maps, and actionable client reports at raw DataForSEO cost. |
 | **[legends-dataforseo](https://github.com/avalonreset/legends-dataforseo-kit)** | Search Data Engine | High-throughput Python client and CLI for DataForSEO: SERP queues, keyword research, official API discovery, and reusable evidence export. No MCP server required. |
