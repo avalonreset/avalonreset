@@ -52,26 +52,13 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 
 ---
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a href="https://www.youtube.com/watch?v=1StVdAvxehs">
-        <img src="assets/greatest-marketer.webp" alt="the worlds greatest marketer makes a sales presentation" width="100%" />
-      </a>
-      <p align="left">
-        <a href="https://www.youtube.com/watch?v=1StVdAvxehs"><strong>the worlds greatest marketer makes a sales presentation</strong></a>
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <a href="https://cto-legends.com/">
-        <img src="assets/bizintel.webp" alt="wait, it was business intelligence this whole time? always has been" width="100%" />
-      </a>
-      <p align="right">
-        <a href="https://cto-legends.com/"><strong>business intelligence: always has been</strong></a>
-      </p>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=1StVdAvxehs"><img src="assets/greatest-marketer.webp" alt="the worlds greatest marketer makes a sales presentation" width="49.5%" /></a>
+  <a href="https://cto-legends.com/"><img src="assets/bizintel.webp" alt="the allegory of business intelligence" width="49.5%" /></a>
+</p>
+<p align="left">
+  <a href="https://www.youtube.com/watch?v=1StVdAvxehs"><strong>the worlds greatest marketer makes a sales presentation</strong></a>
+</p>
 
 ---
 
