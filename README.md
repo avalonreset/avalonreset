@@ -63,7 +63,6 @@ Release dates and complete histories live on each project's Releases page. Modul
 | **[legends-obsidian](https://github.com/avalonreset/legends-obsidian)** | Knowledge Memory | Source-cited Obsidian vault memory: transactional note updates, research evidence graphs, and persistent recall for autonomous agent workflows. |
 | **[hyperyap](https://github.com/avalonreset/hyperyap)** | Local Voice Typing | Native desktop dictation powered by NVIDIA Parakeet: app-focused paste, custom vocabulary, configurable shortcuts, with local transcription. |
 | **[legends-obs-cursor](https://github.com/cto-legends/legends-obs-cursor)** | Stream Visualizer | Momentum-aware animated cursor overlays, click halos, and visual effects for OBS Studio screencasts and presentations. |
-| **[legends-seo-dungeon](https://github.com/avalonreset/legends-seo-dungeon)** | Gamified SEO Audit | Interactive terminal SEO audit where website technical defects, schema errors, and performance gaps are turned into 16-bit dungeon battles for agents. |
 
 ### In development
 
