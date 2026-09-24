@@ -1,14 +1,13 @@
 <div align="center">
   <a href="https://cto-legends.com">
-    <img src="assets/banner.svg" alt="avalonreset: the legends open-source ecosystem" width="100%" />
+    <img src="assets/banner.svg" alt="cto-legends: agent skills and tool management for the open-source legends ecosystem" width="100%" />
   </a>
 </div>
 
 <p align="center">
   <a href="https://github.com/avalonreset/cto-legends"><img src="https://img.shields.io/badge/coordinator-cto--legends-ff0000.svg?style=flat-square" alt="cto-legends coordinator" /></a>
-  <a href="https://cto-legends.com"><img src="https://img.shields.io/badge/architecture-modular--agent--first-000000.svg?style=flat-square" alt="Modular Agent Architecture" /></a>
-  <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License MIT" /></a>
   <a href="https://www.skool.com/ai-marketing-hub-pro"><img src="https://img.shields.io/badge/community-AI%20Marketing%20Hub%20Pro-black.svg?style=flat-square" alt="AI Marketing Hub Pro" /></a>
+  <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License MIT" /></a>
 </p>
 
 ---
