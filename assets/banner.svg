@@ -44,9 +44,9 @@
 
   <!-- Live Status Badge (Top Right) -->
   <g id="status-pill">
-    <rect x="1020" y="40" width="140" height="28" rx="14" fill="#0a0a0a" stroke="#222222" stroke-width="1" />
-    <circle cx="1045" cy="54" r="4.5" fill="#00ff66" class="beacon" />
-    <text x="1060" y="59" fill="#888888" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11" font-weight="600" letter-spacing="0.5">ROUTER LIVE</text>
+    <rect x="1010" y="40" width="150" height="28" rx="14" fill="#0a0a0a" stroke="#222222" stroke-width="1" />
+    <circle cx="1035" cy="54" r="4.5" fill="#00ff66" class="beacon" />
+    <text x="1050" y="59" fill="#888888" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11" font-weight="600" letter-spacing="0.5">SYSTEM ONLINE</text>
   </g>
 
   <!-- Title: avalonreset -->
