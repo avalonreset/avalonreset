@@ -12,7 +12,18 @@
 
 Modular AI agent skills, deterministic tool runtimes, and local intelligence systems.
 
-Instead of monolithic frameworks or brittle MCP middleware, the Legends ecosystem provides independent, single-purpose software tools. Each module features a deterministic CLI, dedicated runtime isolation, and portable skill definitions built for **Claude, Codex, Gemini, Grok, Cursor, and Muse**.
+Instead of monolithic frameworks or brittle MCP middleware, the Legends ecosystem provides independent, single-purpose software tools. Each module features a deterministic CLI, dedicated runtime isolation, and portable skill definitions built for:
+
+<p>
+  <img src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
+  <img src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
+  <img src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
+  <img src="https://img.shields.io/badge/grok-000000?style=flat-square" alt="grok" />
+  <img src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
+  <img src="https://img.shields.io/badge/windsurf-000000?style=flat-square" alt="windsurf" />
+  <img src="https://img.shields.io/badge/aider-000000?style=flat-square" alt="aider" />
+  <img src="https://img.shields.io/badge/muse-000000?style=flat-square" alt="muse" />
+</p>
 
 ---
 
@@ -26,7 +37,7 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 
 - **Autonomous Routing:** Tell your agent what you want to achieve. `cto-legends` routes the task to the exact verified module.
 - **Isolated Environments:** Every Python and Node module runs in its own isolated environment. Zero dependency conflicts.
-- **Portable Agent Skills:** Injects uniform skill definitions directly into Claude, Codex, Gemini, Grok, Cursor, and Muse.
+- **Portable Agent Skills:** Injects uniform skill definitions directly into Claude, Codex, Gemini, Grok, Cursor, Windsurf, Aider, and Muse.
 - **Runtime Verification:** Built-in `cto-legends doctor` audits local hardware, system libraries, and CLI readiness before execution.
 
 ---
@@ -51,19 +62,6 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 <p align="center">
   <a href="https://www.youtube.com/watch?v=1StVdAvxehs"><img src="assets/greatest-marketer.webp" alt="the worlds greatest marketer makes a sales presentation" width="49.5%" /></a>
   <a href="assets/bizintel.webp"><img src="assets/bizintel.webp" alt="business intelligence: always has been" width="49.5%" /></a>
-</p>
-
----
-
-### agent compatibility
-
-<p>
-  <img src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
-  <img src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
-  <img src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
-  <img src="https://img.shields.io/badge/grok-000000?style=flat-square" alt="grok" />
-  <img src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
-  <img src="https://img.shields.io/badge/muse-000000?style=flat-square" alt="muse" />
 </p>
 
 ---
