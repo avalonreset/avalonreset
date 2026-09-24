@@ -36,39 +36,21 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 - **Check readiness:** installation, credentials, browser support, and task inputs are distinct checks.
 - **Keep modules independent:** each product retains its own release and scope. Agent discovery and execution still depend on the host setup.
 
-### Release checkpoints
+### The ecosystem
 
-*Last reconciled: September 24, 2026. Released means a public release exists; it does not certify every agent or operating system.*
-
-| Product | Public checkpoint | What it adds |
-|---|---|---|
-| [cto-legends](https://github.com/avalonreset/cto-legends/releases/tag/v0.5.2) | `v0.5.2` | Central discovery and module management, including the docs-only installation path used by `legends-grant`. |
-| [legends-grant](https://github.com/avalonreset/legends-grant/releases/tag/v0.1.0) | `v0.1.0` | Markdown-led business grant research, matching, and application workflows. |
-
-Release dates and complete histories live on each project's Releases page. Module releases and coordinator catalog updates are separate checkpoints.
-
----
-
-### Released Public Modules
-
-| Module | Focus | Capabilities |
+| Module | Focus | What you can do |
 |---|---|---|
 | **[cto-legends](https://github.com/avalonreset/cto-legends)** | Master Coordinator | Capability discovery, reviewed module installation, isolated executable environments, and Markdown workflow handoffs. |
+| **[legends-empire](https://github.com/avalonreset/legends-obsidian)** | Business & Research Memory | Preserve source-cited research and update vault notes through recoverable transactions. Unified Empire workspace onboarding is in development; the current release is available at the legacy repository. |
 | **[legends-grant](https://github.com/avalonreset/legends-grant)** | Grant Research | Business grant discovery, eligibility research, matching, and application support. |
 | **[legends-geogrid](https://github.com/avalonreset/legends-geogrid)** | Local Maps SEO | Open-source Google Maps rank checker: geographic search grids, local visibility matrices, street maps, and actionable client reports at raw DataForSEO cost. |
 | **[legends-dataforseo](https://github.com/avalonreset/legends-dataforseo-kit)** | Search Data Engine | High-throughput Python client and CLI for DataForSEO: SERP queues, keyword research, official API discovery, and reusable evidence export. No MCP server required. |
 | **[legends-github](https://github.com/avalonreset/legends-github)** | Repo Optimization | Repository optimization suite for Claude, Codex, and Gemini. Audits repos, improves README copy, tunes metadata, manages releases, and ensures community health. |
 | **[legends-stable-audio-3](https://github.com/avalonreset/legends-stable-audio-3)** | Audio Production | Agent-operated Stable Audio 3: hardware-aware batch planning, continuous audio mixes, custom adapters, and sound effect generation. |
 | **[legends-obs](https://github.com/avalonreset/legends-obs-kit)** | Video Recording | Agent-operated OBS Studio controller on Windows: hardware inspection, scene and encoder planning, rollback snapshots, and verified recording pipelines. |
-| **[legends-obsidian](https://github.com/avalonreset/legends-obsidian)** | Knowledge Memory | Source-cited Obsidian vault memory: transactional note updates, research evidence graphs, and persistent recall for autonomous agent workflows. |
-| **[hyperyap](https://github.com/avalonreset/hyperyap)** | Local Voice Typing | Native desktop dictation powered by NVIDIA Parakeet: app-focused paste, custom vocabulary, configurable shortcuts, with local transcription. |
+| **[hyperyap](https://github.com/avalonreset/hyperyap)** | Local Voice Typing | Native desktop dictation powered by NVIDIA Parakeet: app-focused paste, custom vocabulary, configurable shortcuts, and local transcription. |
 | **[legends-obs-cursor](https://github.com/cto-legends/legends-obs-cursor)** | Stream Visualizer | Momentum-aware animated cursor overlays, click halos, and visual effects for OBS Studio screencasts and presentations. |
-
-### In development
-
-- **`legends-empire`:** the planned unified foundation for business, client, project, and research knowledge. It brings the Empire workspace approach and `legends-obsidian` operations together. The merged product is not publicly released yet; [legends-obsidian](https://github.com/avalonreset/legends-obsidian) remains the released memory engine during the transition.
-- **`legends-firecrawl`:** one integration for Firecrawl and Alexandria capabilities. Consolidation and release verification are in progress; no public release is listed yet.
-- **Shorter module names:** product branding is dropping the `-kit` suffix. Some repository and package names still retain it for compatibility. Links above point to the current repositories.
+| **`legends-firecrawl`** | Web Research | Firecrawl and Alexandria in one module for finding and collecting web evidence. Early release in preparation. |
 
 
 ---
