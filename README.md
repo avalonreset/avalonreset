@@ -55,7 +55,16 @@ We talk to our agents with our voice. Grab the GitHub link, hand it to your agen
 
 ---
 
-### agent compatibility <img src="assets/badges/claude.svg" alt="Claude" height="20" align="center" /> <img src="assets/badges/codex.svg" alt="Codex" height="20" align="center" /> <img src="assets/badges/gemini.svg" alt="Gemini" height="20" align="center" /> <img src="assets/badges/grok.svg" alt="Grok" height="20" align="center" /> <img src="assets/badges/cursor.svg" alt="Cursor" height="20" align="center" /> <img src="assets/badges/muse.svg" alt="Muse" height="20" align="center" />
+### agent compatibility
+
+<p>
+  <img src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
+  <img src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
+  <img src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
+  <img src="https://img.shields.io/badge/grok-000000?style=flat-square" alt="grok" />
+  <img src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
+  <img src="https://img.shields.io/badge/muse-000000?style=flat-square" alt="muse" />
+</p>
 
 ---
 
