@@ -48,7 +48,8 @@
 <tr><td valign="top"><a href="https://github.com/avalonreset/hyperyap"><strong>hyperyap</strong></a></td><td valign="top">local voice typing</td><td valign="top">native desktop dictation powered by NVIDIA parakeet: app-focused paste, custom vocabulary, configurable shortcuts, and local transcription.</td></tr>
 <tr><td valign="top"><a href="https://github.com/avalonreset/legends-firecrawl"><strong>legends-firecrawl</strong></a></td><td valign="top">web research</td><td valign="top">unified firecrawl web operations and alexandria data intelligence with credit efficiency and automated IP safety routing.</td></tr>
 <tr><td valign="top"><a href="https://github.com/avalonreset/legends-yt-dlp"><strong>legends-yt-dlp</strong></a></td><td valign="top">video capture</td><td valign="top">repeatable yt-dlp source pulls, verification, transcripts, search, and clip-building with pacing, bulk guardrails, and optional mullvad VPN.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-ambient-intelligence"><strong>legends-ambient-intelligence</strong></a></td><td valign="top">Ambient Audio</td><td valign="top">Passive audio capture, deduplicated archiving, offline transcription, and vault distillation for voice memos and recorder ingest.</td></tr>
+<tr><td valign="top"><a href="https://github.com/avalonreset/legends-ambient-intelligence"><strong>legends-ambient-intelligence</strong></a></td><td valign="top">ambient audio</td><td valign="top">passive audio capture, deduplicated archiving, offline transcription, and vault distillation for voice memos and recorder ingest.</td></tr>
+<tr><td valign="top"><a href="https://github.com/avalonreset/legends-ultimate-captions"><strong>legends-ultimate-captions</strong></a></td><td valign="top">video captions</td><td valign="top">agentic caption QA and rendering: contextual ASR correction, forced-alignment timing, active-word captions, proof frames, and revision memory.</td></tr>
 </table>
 
 
