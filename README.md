@@ -39,9 +39,9 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 ### The ecosystem
 
 <table width="100%"><tr>
-<td width="20%" valign="top"><img align="left" src="assets/column-width-240.svg" width="240" height="1" alt="" /><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td>
-<td width="20%" valign="top"><img align="left" src="assets/column-width-240.svg" width="240" height="1" alt="" /><strong>single-skill-router</strong></td>
-<td width="60%" valign="top"><img align="left" src="assets/column-width-720.svg" width="720" height="1" alt="" />central capability index, module manager, and execution router for legends.</td>
+<td width="20%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a><br/><img src="assets/column-width-240.svg" width="240" height="1" alt="" /></td>
+<td width="20%" valign="top"><strong>single-skill-router</strong><br/><img src="assets/column-width-240.svg" width="240" height="1" alt="" /></td>
+<td width="60%" valign="top">central capability index, module manager, and execution router for legends.<br/><img src="assets/column-width-720.svg" width="720" height="1" alt="" /></td>
 </tr></table>
 
 <div><img src="assets/ecosystem-separator.svg" width="100%" height="40" alt="" /></div>
