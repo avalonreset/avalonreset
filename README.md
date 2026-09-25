@@ -28,7 +28,7 @@ the modules stand on their own. `cto-legends` connects them through one capabili
 ### the ecosystem
 
 <table width="100%"><tr>
-<td width="277" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a> &nbsp;&lt;---</td>
+<td width="277" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a> &nbsp;&lt;--- install</td>
 <td width="220" valign="top"><strong>single-skill-router</strong></td>
 <td width="703" valign="top">central capability index, module manager, and execution router.</td>
 </tr></table>
