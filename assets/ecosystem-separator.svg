@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="32" viewBox="0 0 1200 32" role="img" aria-label="Animated red and white ecosystem separator">
+<defs>
+<linearGradient id="rail"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".5" stop-color="#ff0000" stop-opacity=".65"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
+<linearGradient id="shine"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".35" stop-color="#ff0000" stop-opacity=".65"/><stop offset=".5" stop-color="#ffffff"/><stop offset=".65" stop-color="#ff0000" stop-opacity=".65"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
+<clipPath id="clip"><rect y="10" width="1200" height="12"/></clipPath>
+</defs>
+<style>
+@keyframes glide{from{transform:translateX(-360px)}to{transform:translateX(1200px)}}
+.sweep{animation:glide 5s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.sweep{animation:none;transform:translateX(420px)}}
+</style>
+<path d="M0 16H1200" stroke="url(#rail)" stroke-width="1"/>
+<g clip-path="url(#clip)"><g class="sweep"><rect y="12" width="360" height="8" rx="4" fill="url(#shine)" opacity=".12"/><rect y="15" width="360" height="2" rx="1" fill="url(#shine)"/></g></g>
+</svg>
