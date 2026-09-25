@@ -10,9 +10,7 @@
 </p>
 <br clear="both" />
 
-modular AI agent skills, deterministic tool runtimes, and local intelligence systems.
-
-the ecosystem combines independent modules with one central entry point, `cto-legends`. this is the single-skill router: install one skill; every module loads on demand. agents load the relevant markdown instructions on demand and use executable tools where needed. setup and execution support depend on the module and agent application:
+the modules stand on their own. `cto-legends` connects them through one capability index, loading the instructions for the job at hand. use what you need; keep your tools, research, and working knowledge connected.
 
 <p>
   <img src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
@@ -26,15 +24,6 @@ the ecosystem combines independent modules with one central entry point, `cto-le
 </p>
 
 ---
-
-### start with `cto-legends`
-
-give your agent the [cto-legends repository](https://github.com/avalonreset/cto-legends) and describe what you want to do. the central skill helps discover modules, load their instructions, and check their prerequisites.
-
-- **one entry point:** the single-skill router; a capability index points to independent markdown workflows.
-- **install what you need:** executable modules use their documented runtimes; some workflows need only instructions and available tools.
-- **check readiness:** installation, credentials, browser support, and task inputs are distinct checks.
-- **keep modules independent:** each product retains its own release and scope. agent discovery and execution still depend on the host setup.
 
 ### the ecosystem
 
@@ -71,7 +60,7 @@ give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 ---
 
 - **website:** [cto-legends.com](https://cto-legends.com/)
-- **pro community:** [AI-marketing-hub-pro](https://www.skool.com/ai-marketing-hub-pro)
-- **free community:** [AI-marketing-hub](https://www.skool.com/ai-marketing-hub)
+- **pro community:** [ai-marketing-hub-pro](https://www.skool.com/ai-marketing-hub-pro)
+- **free community:** [ai-marketing-hub](https://www.skool.com/ai-marketing-hub)
 - **youtube:** [@avalonreset](https://www.youtube.com/@avalonreset)
 - **linkedin:** [Benjamin Samar](https://www.linkedin.com/in/benjaminsamar/)
