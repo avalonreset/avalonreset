@@ -13,7 +13,7 @@
 [cto-legends](https://github.com/avalonreset/cto-legends) coordinates an expanding ecosystem of open-source tools through a single agent skill. a capability index resolves tasks to specialized markdown instructions; versioned installations, isolated runtimes, and readiness checks support execution through command-line tools and service APIs. [legends-empire](https://github.com/avalonreset/legends-empire) provides the knowledge layer: a navigable ontology of your infrastructure, projects, evidence, and decisions. the objective is cumulative capability: agents that can operate your tools, retrieve prior knowledge, and continue building without reconstructing your world every session.
 
 <p>
-  multi service provider agnostic compatibility:
+  agent agnostic:
   <img align="top" src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
   <img align="top" src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
   <img align="top" src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
