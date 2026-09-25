@@ -14,14 +14,14 @@
 
 <p>
   service provider agnostic compatibility:
-  <img align="middle" src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
-  <img align="middle" src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
-  <img align="middle" src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
-  <img align="middle" src="https://img.shields.io/badge/grok-000000?style=flat-square" alt="grok" />
-  <img align="middle" src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
-  <img align="middle" src="https://img.shields.io/badge/windsurf-000000?style=flat-square" alt="windsurf" />
-  <img align="middle" src="https://img.shields.io/badge/aider-000000?style=flat-square" alt="aider" />
-  <img align="middle" src="https://img.shields.io/badge/muse-000000?style=flat-square" alt="muse" />
+  <img align="top" src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
+  <img align="top" src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
+  <img align="top" src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
+  <img align="top" src="https://img.shields.io/badge/grok-000000?style=flat-square" alt="grok" />
+  <img align="top" src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
+  <img align="top" src="https://img.shields.io/badge/windsurf-000000?style=flat-square" alt="windsurf" />
+  <img align="top" src="https://img.shields.io/badge/aider-000000?style=flat-square" alt="aider" />
+  <img align="top" src="https://img.shields.io/badge/muse-000000?style=flat-square" alt="muse" />
 </p>
 
 ---
