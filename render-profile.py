@@ -34,7 +34,7 @@ def panel(name,width,height,lines,red=False):
     content+='</svg>'
     (assets/name).write_text(content,encoding='utf-8')
 
-for file,width,label in [('module',276,'Module'),('focus',204,'Focus'),('capabilities',720,'What you can do')]:
+for file,width,label in [('module',276,'module'),('focus',204,'focus'),('capabilities',720,'capability streamline')]:
     panel(f'heading-{file}.svg',width,48,[label])
 
 p=root/'README.md'
@@ -48,7 +48,7 @@ s=s[:start]+'''<table width="100%"><tr>
 </tr></table>'''+s[end:]
 s=s.replace('height="56" alt=""','height="90" alt=""')
 old='<tr><th width="20%" align="left">Module</th><th width="20%" align="left">Focus</th><th width="60%" align="left">What you can do</th></tr>'
-new='<tr>'+''.join(f'<th width="{w}" align="left"><img src="assets/heading-{n}.svg" width="100%" alt="{label}" /></th>' for w,n,label in [(276,'module','Module'),(204,'focus','Focus'),(720,'capabilities','What you can do')])+'</tr>'
+new='<tr>'+''.join(f'<th width="{w}" align="left"><img src="assets/heading-{n}.svg" width="100%" alt="{label}" /></th>' for w,n,label in [(276,'module','module'),(204,'focus','focus'),(720,'capabilities','capability streamline')])+'</tr>'
 assert old in s or new in s
 p.write_text(s.replace(old,new),encoding='utf-8')
 for path in assets.glob('*.svg'):
