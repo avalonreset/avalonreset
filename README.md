@@ -13,15 +13,15 @@
 [cto-legends](https://github.com/avalonreset/cto-legends) coordinates an expanding ecosystem of open-source tools through a single agent skill. a capability index resolves tasks to specialized markdown instructions; versioned installations, isolated runtimes, and readiness checks support execution through command-line tools and service APIs. [legends-empire](https://github.com/avalonreset/legends-empire) provides the knowledge layer: a navigable ontology of your infrastructure, projects, evidence, and decisions. the objective is cumulative capability: agents that can operate your tools, retrieve prior knowledge, and continue building without reconstructing your world every session.
 
 <p>
-  provider agnostic compatibility:
-  <img src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
-  <img src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
-  <img src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
-  <img src="https://img.shields.io/badge/grok-000000?style=flat-square" alt="grok" />
-  <img src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
-  <img src="https://img.shields.io/badge/windsurf-000000?style=flat-square" alt="windsurf" />
-  <img src="https://img.shields.io/badge/aider-000000?style=flat-square" alt="aider" />
-  <img src="https://img.shields.io/badge/muse-000000?style=flat-square" alt="muse" />
+  service provider agnostic compatibility:
+  <img align="middle" src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
+  <img align="middle" src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
+  <img align="middle" src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
+  <img align="middle" src="https://img.shields.io/badge/grok-000000?style=flat-square" alt="grok" />
+  <img align="middle" src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
+  <img align="middle" src="https://img.shields.io/badge/windsurf-000000?style=flat-square" alt="windsurf" />
+  <img align="middle" src="https://img.shields.io/badge/aider-000000?style=flat-square" alt="aider" />
+  <img align="middle" src="https://img.shields.io/badge/muse-000000?style=flat-square" alt="muse" />
 </p>
 
 ---
