@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://cto-legends.com">
-    <img src="assets/banner.svg" alt="cto-legends: agent skills and tool management for the open-source legends ecosystem" width="100%" />
+    <img src="assets/banner.svg" alt="cto-legends: capability discovery and execution routing for the open-source legends ecosystem" width="100%" />
   </a>
 </div>
 
