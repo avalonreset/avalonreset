@@ -38,18 +38,15 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 
 ### The ecosystem
 
-<table>
+<table width="100%">
 <tr>
-<td width="230" valign="top">
-<a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a><br>
-<strong>the single-skill router</strong>
-</td>
-<td valign="top">
-<strong>One entry point for the Legends ecosystem.</strong><br>
-Find the right module, load its Markdown instructions, and check what it needs to run. Install modules as needed; keep their individual workflows and releases.
-</td>
+<td width="17%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td>
+<td width="20%" valign="top"><strong>Single-skill router</strong></td>
+<td valign="top">One entry point for the Legends ecosystem. Discover modules, load their Markdown instructions, and check what they need to run.</td>
 </tr>
 </table>
+
+<p><img src="assets/ecosystem-separator.svg" width="100%" height="32" alt="" /></p>
 
 | Module | Focus | What you can do |
 |---|---|---|
