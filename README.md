@@ -70,10 +70,10 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 
 ---
 
-### Community & Resources
+### community & resources
 
-- **Website:** [cto-legends.com](https://cto-legends.com/)
-- **Pro Community:** [AI Marketing Hub Pro](https://www.skool.com/ai-marketing-hub-pro)
-- **Free Community:** [AI Marketing Hub](https://www.skool.com/ai-marketing-hub)
-- **YouTube:** [@avalonreset](https://www.youtube.com/@avalonreset)
-- **LinkedIn:** [Benjamin Samar](https://www.linkedin.com/in/benjaminsamar/)
+- **website:** [cto-legends.com](https://cto-legends.com/)
+- **pro community:** [ai-marketing-hub-pro](https://www.skool.com/ai-marketing-hub-pro)
+- **free community:** [ai-marketing-hub](https://www.skool.com/ai-marketing-hub)
+- **youtube:** [@avalonreset](https://www.youtube.com/@avalonreset)
+- **linkedin:** [Benjamin Samar](https://www.linkedin.com/in/benjaminsamar/)
