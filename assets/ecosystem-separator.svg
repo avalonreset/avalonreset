@@ -1,20 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="56" viewBox="0 0 1200 56">
-<defs>
-<linearGradient id="rail"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".5" stop-color="#ff0000" stop-opacity=".65"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
-<linearGradient id="pulse"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".4" stop-color="#ff0000"/><stop offset=".5" stop-color="#ffffff"/><stop offset=".6" stop-color="#ff0000"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
-<clipPath id="left"><path d="M0 25H566V31H0Z"/></clipPath>
-<clipPath id="right"><path d="M634 25H1200V31H634Z"/></clipPath>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="90" viewBox="0 0 1200 90">
+<defs><linearGradient id="pulse"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".3" stop-color="#a80000"/><stop offset=".46" stop-color="#ff0000"/><stop offset=".5" stop-color="#fff"/><stop offset=".54" stop-color="#ff0000"/><stop offset=".7" stop-color="#a80000"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient><clipPath id="crop"><rect width="1200" height="90"/></clipPath></defs>
 <style>
-@keyframes converge{from{transform:translateX(-180px)}to{transform:translateX(590px)}}
-@keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
-.signal{animation:converge 4.8s ease-in-out infinite}
-.core{animation:breathe 4.8s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.signal{animation:none;transform:translateX(320px)}.core{animation:none}}
-</style>
-<path d="M0 28H566M634 28H1200" stroke="url(#rail)"/>
-<path d="M574 28L588 14H612L626 28L612 42H588Z" fill="#ff0000" fill-opacity=".06" stroke="#ff0000" stroke-opacity=".45"/>
-<path d="M594 28L600 22L606 28L600 34Z" fill="#ffffff" class="core"/>
-<g clip-path="url(#left)"><rect class="signal" y="27" width="180" height="2" fill="url(#pulse)"/></g>
-<g transform="translate(1200 0) scale(-1 1)"><g clip-path="url(#left)"><rect class="signal" y="27" width="180" height="2" fill="url(#pulse)"/></g></g>
-</svg>
+@keyframes sweep0{0%,100%{transform:translateX(-40px)}28%{transform:translateX(612px)}57%{transform:translateX(260px)}79%{transform:translateX(1003px)}} .s0{animation:sweep0 6.700s cubic-bezier(.45,0,.55,1) 0.000s infinite;}
+@keyframes sweep1{0%,100%{transform:translateX(12px)}28%{transform:translateX(872px)}57%{transform:translateX(237px)}79%{transform:translateX(851px)}} .s1{animation:sweep1 7.313s cubic-bezier(.45,0,.55,1) -1.731s infinite;}
+@keyframes sweep2{0%,100%{transform:translateX(42px)}28%{transform:translateX(777px)}57%{transform:translateX(250px)}79%{transform:translateX(1035px)}} .s2{animation:sweep2 7.926s cubic-bezier(.45,0,.55,1) -3.462s infinite;}
+@keyframes sweep3{0%,100%{transform:translateX(-200px)}28%{transform:translateX(987px)}57%{transform:translateX(257px)}79%{transform:translateX(1057px)}} .s3{animation:sweep3 8.539s cubic-bezier(.45,0,.55,1) -5.193s infinite;}
+@keyframes sweep4{0%,100%{transform:translateX(-208px)}28%{transform:translateX(632px)}57%{transform:translateX(150px)}79%{transform:translateX(855px)}} .s4{animation:sweep4 9.152s cubic-bezier(.45,0,.55,1) -6.924s infinite;}
+@keyframes sweep5{0%,100%{transform:translateX(26px)}28%{transform:translateX(950px)}57%{transform:translateX(289px)}79%{transform:translateX(724px)}} .s5{animation:sweep5 9.765s cubic-bezier(.45,0,.55,1) -8.655s infinite;}
+@keyframes sweep6{0%,100%{transform:translateX(-59px)}28%{transform:translateX(870px)}57%{transform:translateX(259px)}79%{transform:translateX(837px)}} .s6{animation:sweep6 10.378s cubic-bezier(.45,0,.55,1) -10.386s infinite;}
+@keyframes sweep7{0%,100%{transform:translateX(-99px)}28%{transform:translateX(847px)}57%{transform:translateX(281px)}79%{transform:translateX(903px)}} .s7{animation:sweep7 10.991s cubic-bezier(.45,0,.55,1) -12.117s infinite;}
+@media(prefers-reduced-motion:reduce){.scanner{animation:none!important;transform:translateX(440px)}} </style><g clip-path="url(#crop)">
+<path d="M0 24H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s0" y="23" width="333" height="2" fill="url(#pulse)"/>
+<path d="M0 30H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s1" y="29" width="281" height="2" fill="url(#pulse)"/>
+<path d="M0 36H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s2" y="35" width="228" height="2" fill="url(#pulse)"/>
+<path d="M0 42H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s3" y="41" width="363" height="2" fill="url(#pulse)"/>
+<path d="M0 48H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s4" y="47" width="315" height="2" fill="url(#pulse)"/>
+<path d="M0 54H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s5" y="53" width="310" height="2" fill="url(#pulse)"/>
+<path d="M0 60H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s6" y="59" width="373" height="2" fill="url(#pulse)"/>
+<path d="M0 66H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s7" y="65" width="307" height="2" fill="url(#pulse)"/>
+</g></svg>

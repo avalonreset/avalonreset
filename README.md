@@ -38,13 +38,16 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 
 ### The ecosystem
 
-<table width="100%"><tr><td width="20%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td><td width="20%" valign="top"><strong>Single-skill router</strong></td><td width="60%" valign="top">One entry point for the Legends ecosystem. Discover modules, load their instructions, and check readiness.</td></tr>
-</table>
+<table width="100%"><tr>
+<td width="20%"><a href="https://github.com/avalonreset/cto-legends"><img src="assets/router-name.svg" width="100%" alt="cto-legends" /></a></td>
+<td width="20%"><img src="assets/router-role.svg" width="100%" alt="single-skill router" /></td>
+<td width="60%"><img src="assets/router-purpose.svg" width="100%" alt="One entry point for the Legends ecosystem. Discover modules, load instructions, and check readiness." /></td>
+</tr></table>
 
-<p><img src="assets/ecosystem-separator.svg" width="100%" height="56" alt="" /></p>
+<p><img src="assets/ecosystem-separator.svg" width="100%" height="90" alt="" /></p>
 
 <table width="100%">
-<tr><th width="20%" align="left">Module</th><th width="20%" align="left">Focus</th><th width="60%" align="left">What you can do</th></tr>
+<tr><th width="20%" align="left"><img src="assets/heading-module.svg" width="100%" alt="Module" /></th><th width="20%" align="left"><img src="assets/heading-focus.svg" width="100%" alt="Focus" /></th><th width="60%" align="left"><img src="assets/heading-capabilities.svg" width="100%" alt="What you can do" /></th></tr>
 <tr><td valign="top"><a href="https://github.com/avalonreset/legends-empire"><strong>legends-empire</strong></a></td><td valign="top">Business &amp; Research Memory</td><td valign="top">Preserve source-cited research and update vault notes through recoverable transactions. Unified Empire workspace onboarding is in development.</td></tr>
 <tr><td valign="top"><a href="https://github.com/avalonreset/legends-grant"><strong>legends-grant</strong></a></td><td valign="top">Grant Research</td><td valign="top">Business grant discovery, eligibility research, matching, and application support.</td></tr>
 <tr><td valign="top"><a href="https://github.com/avalonreset/legends-geogrid"><strong>legends-geogrid</strong></a></td><td valign="top">Local Maps SEO</td><td valign="top">Open-source Google Maps rank checker: geographic search grids, local visibility matrices, street maps, and actionable client reports at raw DataForSEO cost.</td></tr>
