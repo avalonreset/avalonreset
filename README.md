@@ -37,7 +37,7 @@
 <div><img src="assets/ecosystem-separator.svg" width="100%" height="40" alt="" /></div>
 
 <table width="100%">
-<tr><th width="276" align="left"><img src="assets/heading-module.svg" width="100%" alt="module" /></th><th width="204" align="left"><img src="assets/heading-focus.svg" width="100%" alt="focus" /></th><th width="720" align="left"><img src="assets/heading-capabilities.svg" width="100%" alt="capability streamline" /></th></tr>
+<tr><th width="276" align="left"><img src="assets/heading-module.svg" width="100%" alt="module" /></th><th width="204" align="left"><img src="assets/heading-focus.svg" width="100%" alt="focus" /></th><th width="720" align="left"><img src="assets/heading-capabilities.svg" width="100%" alt="capability streamlined" /></th></tr>
 <tr><td valign="top"><a href="https://github.com/avalonreset/legends-empire"><strong>legends-empire</strong></a></td><td valign="top">digital ontology</td><td valign="top">preserve source-cited research and update vault notes through recoverable transactions. unified empire workspace onboarding is in development.</td></tr>
 <tr><td valign="top"><a href="https://github.com/avalonreset/legends-grant"><strong>legends-grant</strong></a></td><td valign="top">grant research</td><td valign="top">business grant discovery, eligibility research, matching, and application support.</td></tr>
 <tr><td valign="top"><a href="https://github.com/avalonreset/legends-geogrid"><strong>legends-geogrid</strong></a></td><td valign="top">local maps SEO</td><td valign="top">open-source google maps rank checker: geographic search grids, local visibility matrices, street maps, and actionable client reports at raw dataforseo cost.</td></tr>
