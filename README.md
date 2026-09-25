@@ -44,7 +44,7 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 <td width="60%" valign="top">One entry point for the Legends ecosystem. Discover modules, load instructions, and check readiness.</td>
 </tr></table>
 
-<div><img src="assets/ecosystem-separator.svg" width="100%" height="44" alt="" /></div>
+<div><img src="assets/ecosystem-separator.svg" width="100%" height="40" alt="" /></div>
 
 <table width="100%">
 <tr><th width="20%" align="left"><img src="assets/heading-module.svg" width="100%" alt="Module" /></th><th width="20%" align="left"><img src="assets/heading-focus.svg" width="100%" alt="Focus" /></th><th width="60%" align="left"><img src="assets/heading-capabilities.svg" width="100%" alt="What you can do" /></th></tr>
