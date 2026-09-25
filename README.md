@@ -59,7 +59,7 @@
 
 ---
 
-- **website:** [cto-legends.com](https://cto-legends.com/)
+- **website:** [cto-legends.com](https://cto-legends.com/) &lt;--- leave a voice message
 - **pro community:** [ai-marketing-hub-pro](https://www.skool.com/ai-marketing-hub-pro)
 - **free community:** [ai-marketing-hub](https://www.skool.com/ai-marketing-hub)
 - **youtube:** [@avalonreset](https://www.youtube.com/@avalonreset)
