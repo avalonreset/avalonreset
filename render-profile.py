@@ -7,15 +7,20 @@ root = Path(__file__).parent
 assets = root / 'assets'
 rng = random.Random(47)
 parts = ['''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="90" viewBox="0 0 1200 90">
-<defs><linearGradient id="pulse"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".3" stop-color="#a80000"/><stop offset=".46" stop-color="#ff0000"/><stop offset=".5" stop-color="#fff"/><stop offset=".54" stop-color="#ff0000"/><stop offset=".7" stop-color="#a80000"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient><clipPath id="crop"><rect width="1200" height="90"/></clipPath></defs>
-<style>''']
+<defs>
+<linearGradient id="pulse"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".28" stop-color="#ad1723" stop-opacity=".15"/><stop offset=".55" stop-color="#e53340" stop-opacity=".55"/><stop offset=".72" stop-color="#fff" stop-opacity=".8"/><stop offset=".8" stop-color="#ff4955" stop-opacity=".55"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
+<linearGradient id="fade"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".12" stop-color="#fff"/><stop offset=".88" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="edges"><rect width="1200" height="90" fill="url(#fade)"/></mask>
+<clipPath id="crop"><rect width="1200" height="90"/></clipPath></defs>
+<style>@keyframes flow{from{transform:translateX(-680px)}to{transform:translateX(1280px)}}''']
 for i in range(8):
-    xs = [rng.randint(-220,80),rng.randint(580,990),rng.randint(150,390),rng.randint(720,1100)]
-    parts.append(f'@keyframes sweep{i}{{0%,100%{{transform:translateX({xs[0]}px)}}28%{{transform:translateX({xs[1]}px)}}57%{{transform:translateX({xs[2]}px)}}79%{{transform:translateX({xs[3]}px)}}}} .s{i}{{animation:sweep{i} {6.7+i*.613:.3f}s cubic-bezier(.45,0,.55,1) {-i*1.731:.3f}s infinite;}}')
-parts.append('@media(prefers-reduced-motion:reduce){.scanner{animation:none!important;transform:translateX(440px)}} </style><g clip-path="url(#crop)">')
+    duration=12.8+i*.63+rng.random()*1.5
+    parts.append(f'.s{i}{{animation:flow {duration:.3f}s linear {-4.7+i*.39:.3f}s infinite}} .t{i}{{animation:flow {duration+6.3:.3f}s linear {-13.9+i*.57:.3f}s infinite}}')
+parts.append('@media(prefers-reduced-motion:reduce){.scanner{animation:none!important;transform:translateX(340px)}} </style><g clip-path="url(#crop)" mask="url(#edges)">')
 for i in range(8):
     y=24+i*6
-    parts.append(f'<path d="M0 {y}H1200" stroke="#6b0000" stroke-opacity=".24"/><rect class="scanner s{i}" y="{y-1}" width="{rng.randint(220,380)}" height="2" fill="url(#pulse)"/>')
+    width=rng.randint(420,640)
+    parts.append(f'<path d="M0 {y}H1200" stroke="#72212a" stroke-opacity=".13"/><g class="scanner s{i}"><rect y="{y-2}" width="{width}" height="4" opacity=".10" fill="url(#pulse)"/><rect y="{y-.6}" width="{width}" height="1.2" fill="url(#pulse)"/></g><rect class="scanner t{i}" y="{y-.4}" width="{width-85}" height=".8" opacity=".45" fill="url(#pulse)"/>')
 parts.append('</g></svg>')
 (assets/'ecosystem-separator.svg').write_text('\n'.join(parts),encoding='utf-8')
 
@@ -29,9 +34,6 @@ def panel(name,width,height,lines,red=False):
     content+='</svg>'
     (assets/name).write_text(content,encoding='utf-8')
 
-panel('router-name.svg',240,112,['cto-legends'],True)
-panel('router-role.svg',240,112,['single-skill','router'],True)
-panel('router-purpose.svg',720,112,['One entry point for the Legends ecosystem.','Discover modules, load instructions, and check readiness.'],True)
 for file,width,label in [('module',240,'Module'),('focus',240,'Focus'),('capabilities',720,'What you can do')]:
     panel(f'heading-{file}.svg',width,48,[label])
 
@@ -40,15 +42,15 @@ s=p.read_text(encoding='utf-8')
 start=s.index('<table width="100%">',s.index('### The ecosystem'))
 end=s.index('</table>',start)+len('</table>')
 s=s[:start]+'''<table width="100%"><tr>
-<td width="20%"><a href="https://github.com/avalonreset/cto-legends"><img src="assets/router-name.svg" width="100%" alt="cto-legends" /></a></td>
-<td width="20%"><img src="assets/router-role.svg" width="100%" alt="single-skill router" /></td>
-<td width="60%"><img src="assets/router-purpose.svg" width="100%" alt="One entry point for the Legends ecosystem. Discover modules, load instructions, and check readiness." /></td>
+<td width="20%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td>
+<td width="20%" valign="top"><strong>Single-skill router</strong></td>
+<td width="60%" valign="top">One entry point for the Legends ecosystem. Discover modules, load instructions, and check readiness.</td>
 </tr></table>'''+s[end:]
 s=s.replace('height="56" alt=""','height="90" alt=""')
 old='<tr><th width="20%" align="left">Module</th><th width="20%" align="left">Focus</th><th width="60%" align="left">What you can do</th></tr>'
 new='<tr>'+''.join(f'<th width="{w}%" align="left"><img src="assets/heading-{n}.svg" width="100%" alt="{label}" /></th>' for w,n,label in [(20,'module','Module'),(20,'focus','Focus'),(60,'capabilities','What you can do')])+'</tr>'
-assert old in s
+assert old in s or new in s
 p.write_text(s.replace(old,new),encoding='utf-8')
 for path in assets.glob('*.svg'):
     ET.parse(path)
-print('Generated eight independently timed scanner tracks and six shaded panels; SVG XML validated.')
+print('Generated eight layered left-to-right shimmer tracks; restored text router; retained shaded headings. SVG XML validated.')
