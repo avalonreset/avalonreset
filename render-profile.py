@@ -42,9 +42,9 @@ s=p.read_text(encoding='utf-8')
 start=s.index('<table width="100%">',s.index('### The ecosystem'))
 end=s.index('</table>',start)+len('</table>')
 s=s[:start]+'''<table width="100%"><tr>
-<td width="276" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td>
-<td width="204" valign="top"><strong>single-skill-router</strong></td>
-<td width="720" valign="top">central capability index, module manager, and execution router.</td>
+<td width="277" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td>
+<td width="220" valign="top"><strong>single-skill-router</strong></td>
+<td width="703" valign="top">central capability index, module manager, and execution router.</td>
 </tr></table>'''+s[end:]
 s=s.replace('height="56" alt=""','height="90" alt=""')
 old='<tr><th width="20%" align="left">Module</th><th width="20%" align="left">Focus</th><th width="720" align="left">What you can do</th></tr>'
