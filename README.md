@@ -39,9 +39,9 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 ### The ecosystem
 
 <table width="100%"><tr>
-<td width="20%"><a href="https://github.com/avalonreset/cto-legends"><img src="assets/router-name.svg" width="100%" alt="cto-legends" /></a></td>
-<td width="20%"><img src="assets/router-role.svg" width="100%" alt="single-skill router" /></td>
-<td width="60%"><img src="assets/router-purpose.svg" width="100%" alt="One entry point for the Legends ecosystem. Discover modules, load instructions, and check readiness." /></td>
+<td width="20%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td>
+<td width="20%" valign="top"><strong>Single-skill router</strong></td>
+<td width="60%" valign="top">One entry point for the Legends ecosystem. Discover modules, load instructions, and check readiness.</td>
 </tr></table>
 
 <p><img src="assets/ecosystem-separator.svg" width="100%" height="90" alt="" /></p>
