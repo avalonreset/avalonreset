@@ -42,7 +42,7 @@ s=p.read_text(encoding='utf-8')
 start=s.index('<table width="100%">',s.index('### The ecosystem'))
 end=s.index('</table>',start)+len('</table>')
 s=s[:start]+'''<table width="100%"><tr>
-<td width="277" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td>
+<td width="277" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a> &nbsp;&lt;---</td>
 <td width="220" valign="top"><strong>single-skill-router</strong></td>
 <td width="703" valign="top">central capability index, module manager, and execution router.</td>
 </tr></table>'''+s[end:]
