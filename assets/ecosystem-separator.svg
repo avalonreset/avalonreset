@@ -1,14 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="32" viewBox="0 0 1200 32" role="img" aria-label="Animated red and white ecosystem separator">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="56" viewBox="0 0 1200 56">
 <defs>
 <linearGradient id="rail"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".5" stop-color="#ff0000" stop-opacity=".65"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
-<linearGradient id="shine"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".35" stop-color="#ff0000" stop-opacity=".65"/><stop offset=".5" stop-color="#ffffff"/><stop offset=".65" stop-color="#ff0000" stop-opacity=".65"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
-<clipPath id="clip"><rect y="10" width="1200" height="12"/></clipPath>
+<linearGradient id="pulse"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".4" stop-color="#ff0000"/><stop offset=".5" stop-color="#ffffff"/><stop offset=".6" stop-color="#ff0000"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
+<clipPath id="left"><path d="M0 25H566V31H0Z"/></clipPath>
+<clipPath id="right"><path d="M634 25H1200V31H634Z"/></clipPath>
 </defs>
 <style>
-@keyframes glide{from{transform:translateX(-360px)}to{transform:translateX(1200px)}}
-.sweep{animation:glide 5s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.sweep{animation:none;transform:translateX(420px)}}
+@keyframes converge{from{transform:translateX(-180px)}to{transform:translateX(590px)}}
+@keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
+.signal{animation:converge 4.8s ease-in-out infinite}
+.core{animation:breathe 4.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.signal{animation:none;transform:translateX(320px)}.core{animation:none}}
 </style>
-<path d="M0 16H1200" stroke="url(#rail)" stroke-width="1"/>
-<g clip-path="url(#clip)"><g class="sweep"><rect y="12" width="360" height="8" rx="4" fill="url(#shine)" opacity=".12"/><rect y="15" width="360" height="2" rx="1" fill="url(#shine)"/></g></g>
+<path d="M0 28H566M634 28H1200" stroke="url(#rail)"/>
+<path d="M574 28L588 14H612L626 28L612 42H588Z" fill="#ff0000" fill-opacity=".06" stroke="#ff0000" stroke-opacity=".45"/>
+<path d="M594 28L600 22L606 28L600 34Z" fill="#ffffff" class="core"/>
+<g clip-path="url(#left)"><rect class="signal" y="27" width="180" height="2" fill="url(#pulse)"/></g>
+<g transform="translate(1200 0) scale(-1 1)"><g clip-path="url(#left)"><rect class="signal" y="27" width="180" height="2" fill="url(#pulse)"/></g></g>
 </svg>
