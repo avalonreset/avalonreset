@@ -43,8 +43,8 @@ start=s.index('<table width="100%">',s.index('### The ecosystem'))
 end=s.index('</table>',start)+len('</table>')
 s=s[:start]+'''<table width="100%"><tr>
 <td width="20%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a></td>
-<td width="20%" valign="top"><strong>Single-skill router</strong></td>
-<td width="60%" valign="top">One entry point for the Legends ecosystem. Discover modules, load instructions, and check readiness.</td>
+<td width="20%" valign="top"><strong>single-skill-router</strong></td>
+<td width="60%" valign="top">one skill to discover legends modules, load instructions, and check readiness.</td>
 </tr></table>'''+s[end:]
 s=s.replace('height="56" alt=""','height="90" alt=""')
 old='<tr><th width="20%" align="left">Module</th><th width="20%" align="left">Focus</th><th width="60%" align="left">What you can do</th></tr>'
