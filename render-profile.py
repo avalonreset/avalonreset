@@ -54,3 +54,7 @@ p.write_text(s.replace(old,new),encoding='utf-8')
 for path in assets.glob('*.svg'):
     ET.parse(path)
 print('Generated eight layered left-to-right shimmer tracks; restored text router; retained shaded headings. SVG XML validated.')
+
+# Keep the current layered animation when regenerating the full profile.
+import runpy
+runpy.run_path(str(root / 'render-shimmer.py'))
