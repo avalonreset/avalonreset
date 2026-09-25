@@ -51,6 +51,7 @@ Give your agent the [cto-legends repository](https://github.com/avalonreset/cto-
 | **[legends-obs](https://github.com/avalonreset/legends-obs-kit)** | Video Recording | Agent-operated OBS Studio controller on Windows: hardware inspection, scene and encoder planning, rollback snapshots, verified recording pipelines, and optional cursor overlay extra. |
 | **[hyperyap](https://github.com/avalonreset/hyperyap)** | Local Voice Typing | Native desktop dictation powered by NVIDIA Parakeet: app-focused paste, custom vocabulary, configurable shortcuts, and local transcription. |
 | **[legends-firecrawl](https://github.com/avalonreset/legends-firecrawl)** | Web Research | Unified Firecrawl web operations and Alexandria data intelligence with credit efficiency and automated IP safety routing. |
+| **[legends-yt-dlp](https://github.com/avalonreset/legends-yt-dlp)** | Video Capture | Repeatable yt-dlp source pulls, verification, transcripts, search, and clip-building with pacing, bulk guardrails, and optional Mullvad VPN. |
 
 
 ---
