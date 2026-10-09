@@ -34,21 +34,22 @@ def panel(name,width,height,lines,red=False):
     content+='</svg>'
     (assets/name).write_text(content,encoding='utf-8')
 
-for file,width,label in [('module',276,'module'),('focus',204,'focus'),('capabilities',720,'capability streamline')]:
+for file,width,label in [('module',276,'module'),('focus',204,'focus'),('capabilities',720,'capability streamlined')]:
     panel(f'heading-{file}.svg',width,48,[label])
 
 p=root/'README.md'
 s=p.read_text(encoding='utf-8')
-start=s.index('<table width="100%">',s.index('### The ecosystem'))
-end=s.index('</table>',start)+len('</table>')
+start=s.index('<table width="100%">',s.lower().index('### the ecosystem'))
+# Only regenerate the router row; the same table now owns every module row.
+end=s.index('</tr>',start)+len('</tr>')
 s=s[:start]+'''<table width="100%"><tr>
-<td width="277" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a> &nbsp;&lt;---</td>
-<td width="220" valign="top"><strong>single-skill-router</strong></td>
-<td width="703" valign="top">central capability index, module manager, and execution router.</td>
-</tr></table>'''+s[end:]
+<td width="25%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a> &nbsp;&lt;--- install</td>
+<td width="20%" valign="top"><strong>single-skill-router</strong></td>
+<td width="55%" valign="top">central capability index, module manager, and execution router.</td>
+</tr>'''+s[end:]
 s=s.replace('height="56" alt=""','height="90" alt=""')
 old='<tr><th width="20%" align="left">Module</th><th width="20%" align="left">Focus</th><th width="720" align="left">What you can do</th></tr>'
-new='<tr>'+''.join(f'<th width="{w}" align="left"><img src="assets/heading-{n}.svg" width="100%" alt="{label}" /></th>' for w,n,label in [(276,'module','module'),(204,'focus','focus'),(720,'capabilities','capability streamline')])+'</tr>'
+new='<tr>'+''.join(f'<th scope="col" align="left"><img src="assets/heading-{n}.svg" width="100%" alt="{label}" /></th>' for n,label in [('module','module'),('focus','focus'),('capabilities','capability streamlined')])+'</tr>'
 assert old in s or new in s
 p.write_text(s.replace(old,new),encoding='utf-8')
 for path in assets.glob('*.svg'):
