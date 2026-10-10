@@ -26,7 +26,7 @@ parts.append('</g></svg>')
 
 def panel(name,width,height,lines,red=False):
     bg=('#310b10','#17080b') if red else ('#303741','#20262e')
-    size=23 if width==240 else 22
+    size=23 if width<=276 else 22
     content=f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img"><title>{escape(" ".join(lines))}</title><defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="{bg[0]}"/><stop offset="1" stop-color="{bg[1]}"/></linearGradient></defs><rect width="{width}" height="{height}" rx="3" fill="url(#bg)"/><path d="M0 1H{width}" stroke="'+('#80212c' if red else '#59616a')+'"/>'
     start=(height-(len(lines)-1)*30)/2+8
     for j,line in enumerate(lines):
