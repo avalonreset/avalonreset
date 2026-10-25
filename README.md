@@ -29,7 +29,7 @@
 ### the ecosystem
 
 <table width="100%"><tr>
-<td width="25%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong><code>cto-legends</code></strong></a> &nbsp;&lt;--- install</td>
+<td width="25%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong>cto-legends</strong></a> &nbsp;&lt;- install</td>
 <td width="20%" valign="top"><strong>single-skill-router</strong></td>
 <td width="55%" valign="top">central capability index, module manager, and execution router.</td>
 </tr>
