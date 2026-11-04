@@ -66,6 +66,7 @@
 ---
 
 - **website:** [cto-legends.com](https://cto-legends.com/) &lt;--- leave a voice message
+- **specifications & benchmarks:** [18 module specs](https://cto-legends.com/modules/cto-legends) · [8 engineering dispatches](https://cto-legends.com/blog?post=codex-vs-claude-code-benchmarks)
 - **pro community:** [ai-marketing-hub-pro](https://www.skool.com/ai-marketing-hub-pro)
 - **free community:** [ai-marketing-hub](https://www.skool.com/ai-marketing-hub)
 - **youtube:** [@avalonreset](https://www.youtube.com/@avalonreset)
