@@ -1,34 +1,7 @@
-<div align="center">
-  <a href="https://cto-legends.com">
-    <img src="assets/banner.svg" alt="cto-legends: capability discovery and execution routing for the open-source legends ecosystem" width="100%" />
-  </a>
-</div>
-
-<p>
-  <a href="https://www.skool.com/ai-marketing-hub-pro"><img align="left" src="https://img.shields.io/badge/community-ai--marketing--hub--pro-ff0000?style=flat-square&labelColor=000000" alt="community: ai-marketing-hub-pro" /></a>
-  <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img align="right" src="https://img.shields.io/badge/license-MIT-ff0000?style=flat-square&labelColor=000000" alt="license MIT" /></a>
-</p>
-<br clear="both" />
-
-[cto-legends](https://github.com/avalonreset/cto-legends) coordinates an expanding ecosystem of open-source tools through a single agent skill. a capability index resolves tasks to specialized markdown instructions; versioned installations, isolated runtimes, and readiness checks support execution through command-line tools and service APIs. [legends-empire](https://github.com/avalonreset/legends-empire) provides the knowledge layer: a navigable ontology of your infrastructure, projects, evidence, and decisions. the objective is cumulative capability: agents that can operate your tools, retrieve prior knowledge, and continue building without reconstructing your world every session.
-
-<p>
-  agent agnostic:
-  <img align="top" src="https://img.shields.io/badge/claude-000000?style=flat-square" alt="claude" />
-  <img align="top" src="https://img.shields.io/badge/codex-000000?style=flat-square" alt="codex" />
-  <img align="top" src="https://img.shields.io/badge/gemini-000000?style=flat-square" alt="gemini" />
-  <img align="top" src="https://img.shields.io/badge/grok-000000?style=flat-square" alt="grok" />
-  <img align="top" src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
-  <img align="top" src="https://img.shields.io/badge/windsurf-000000?style=flat-square" alt="windsurf" />
-  <img align="top" src="https://img.shields.io/badge/aider-000000?style=flat-square" alt="aider" />
-</p>
-
----
-
-### the ecosystem
-
-<p align="center">
-  <img src="assets/ecosystem-separator.svg" width="100%" height="40" alt="" />
+<p align="left">
+  <a href="https://cto-legends.com"><img src="assets/banner.svg" width="99.6%" alt="cto-legends: capability discovery and execution routing for the open-source legends ecosystem" /></a>
+  <a href="https://cto-legends.com"><img src="assets/architecture-deck.svg" width="99.6%" alt="cto-legends architecture and 4-stage routing pipeline" /></a>
+  <img src="assets/ecosystem-separator.svg" width="99.6%" height="40" alt="" />
 </p>
 
 <p align="left">
