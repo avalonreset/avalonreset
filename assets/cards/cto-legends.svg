@@ -1,15 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 36" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 148" width="100%">
   <defs>
-    <linearGradient id="bg-cto" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#4d0a18"/>
-      <stop offset="55%" stop-color="#2b060e"/>
-      <stop offset="100%" stop-color="#1c040a"/>
-    </linearGradient>
+    <radialGradient id="flagship-glow" cx="0%" cy="0%" r="125%" fx="0%" fy="0%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.25"/>
+      <stop offset="48%" stop-color="#991b1b" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#080507" stop-opacity="0.97"/>
+    </radialGradient>
   </defs>
-  <rect x="0.75" y="0.75" width="258.5" height="34.5" rx="4" fill="url(#bg-cto)" stroke="#ff2a4b" stroke-width="1.5"/>
-  <rect x="0.75" y="0.75" width="4" height="34.5" rx="1.5" fill="#ff3355"/>
-  <text x="11" y="22" fill="#ff3355" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="700">&gt;_</text>
-  <text x="28" y="22" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="700">cto-legends</text>
-  <rect x="108" y="8.5" width="144" height="19" rx="3.5" fill="#590c1d" stroke="#ff3355" stroke-width="1"/>
-  <text x="180" y="20.5" fill="#ff8a9d" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="6.6" font-weight="600" text-anchor="middle">master router · only install needed</text>
+  <rect x="2" y="3" width="436" height="142" rx="4" fill="#090406"/>
+  <rect x="2" y="3" width="436" height="142" rx="4" fill="url(#flagship-glow)" stroke="#ef4444" stroke-opacity="0.62" stroke-width="1"/>
+  <line x1="4" y1="4" x2="436" y2="4" stroke="#fecaca" stroke-opacity="0.20" stroke-width="1"/>
+  <rect x="2" y="3" width="3" height="142" rx="1.5" fill="#ef4444"/>
+  <text x="18" y="27" fill="#f87171" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="700">&gt;_</text>
+  <text x="38" y="27" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700">cto-legends</text>
+  <rect x="216" y="13" width="206" height="20" rx="3" fill="#ef4444" fill-opacity="0.20" stroke="#f87171" stroke-opacity="0.52" stroke-width="1"/>
+  <text x="319" y="26.5" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600" text-anchor="middle">master router · only install needed</text>
+  <text x="18" y="53" fill="#f4f4f5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.1">The single local CLI router for Claude Code, Codex, and Cursor:</text>
+  <text x="18" y="70" fill="#f4f4f5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.1">reads one compact startup index and loads 19 isolated Python</text>
+  <text x="18" y="87" fill="#f4f4f5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.1">tools on demand with zero context bloat.</text>
+  <line x1="18" y1="108" x2="422" y2="108" stroke="#ef4444" stroke-opacity="0.28" stroke-width="1"/>
+  <text x="18" y="128" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.8" font-weight="600">master router spec  →</text>
+  <text x="422" y="128" fill="#fca5a5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.5" text-anchor="end">github readme  ↗</text>
 </svg>
