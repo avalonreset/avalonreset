@@ -31,7 +31,7 @@
 <tr>
 <td width="33.33%" valign="top"><a href="https://github.com/avalonreset/cto-legends"><strong>cto-legends</strong></a> &nbsp;&lt;- install</td>
 <td width="33.33%" valign="top"><strong>single-skill-router</strong></td>
-<td width="33.33%" valign="top">capability index, module manager, and router.</td>
+<td width="33.33%" valign="top">capability index and execution router.</td>
 </tr>
 <tr><td colspan="3"><img src="assets/ecosystem-separator.svg" width="100%" height="40" alt="" /></td></tr>
 <tr>
