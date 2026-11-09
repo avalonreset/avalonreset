@@ -21,7 +21,6 @@
   <img align="top" src="https://img.shields.io/badge/cursor-000000?style=flat-square" alt="cursor" />
   <img align="top" src="https://img.shields.io/badge/windsurf-000000?style=flat-square" alt="windsurf" />
   <img align="top" src="https://img.shields.io/badge/aider-000000?style=flat-square" alt="aider" />
-  <img align="top" src="https://img.shields.io/badge/muse-000000?style=flat-square" alt="muse" />
 </p>
 
 ---
@@ -34,28 +33,129 @@
 <td width="55%" valign="top">central capability index, module manager, and execution router.</td>
 </tr>
 <tr><td colspan="3"><img src="assets/ecosystem-separator.svg" width="100%" height="40" alt="" /></td></tr>
-<tr><th scope="col" align="left"><img src="assets/heading-module.svg" width="100%" alt="module" /></th><th scope="col" align="left"><img src="assets/heading-focus.svg" width="100%" alt="focus" /></th><th scope="col" align="left"><img src="assets/heading-capabilities.svg" width="100%" alt="capability streamlined" /></th></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-empire"><strong>legends-empire</strong></a></td><td valign="top">digital ontology</td><td valign="top">preserve source-cited research and update vault notes through recoverable transactions on linux, macOS, and native windows (local NTFS). attach versioned module knowledge libraries while preserving your own notes. <a href="https://github.com/avalonreset/legends-empire/blob/main/docs/stewardship.md"><strong>vault stewardship</strong></a> finds broken links, neglected projects, and incomplete handoffs, then supports reviewed repairs and verification. includes an optional shared-root adapter for <a href="https://www.skool.com/ai-marketing-hub-pro/about"><strong>ai marketing hub home</strong></a>.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-hetzner"><strong>legends-hetzner</strong></a></td><td valign="top">cloud infrastructure</td><td valign="top">inspect hetzner cloud projects, scan cost-optimized CX/CAX stock in german and finnish datacenters, apply fractional CTO sizing, review hash-locked server plans, and snipe or provision through the official hcloud CLI. standalone or attachable to your empire vault.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-coolify"><strong>legends-coolify</strong></a></td><td valign="top">self-hosted applications</td><td valign="top">inspect your coolify applications, deployment history, environment names and backup schedules, then prepare deployment and recovery plans. a read-only companion to legends-hetzner, with source-cited runbooks for windows, macOS and linux. use its knowledge library standalone or attach it to your empire vault.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-cloudflare"><strong>legends-cloudflare</strong></a></td><td valign="top">DNS and zones</td><td valign="top">inspect cloudflare zones, nameservers, and DNS records, preview single-record changes, apply confirmed updates, and verify API readback. includes a source-cited obsidian knowledge vault and an attachable empire library.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-astro"><strong>legends-astro</strong></a></td><td valign="top">astro v7 sites</td><td valign="top">inspect astro v7 workspaces, extract pre-migration contracts from wordpress or HTML, scaffold content layer collections, and verify built dist parity for SEO, client scripts, and draft safety. includes a pinned withastro/docs snapshot and an attachable empire library.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-stripe"><strong>legends-stripe</strong></a></td><td valign="top">stripe payments &amp; treasury</td><td valign="top">audit .env price IDs across test and live modes, lint product catalogs and sync idempotent price ladders with SHA-256 plan locks, reconcile cent-exact treasury balances and stripe drag fees, detect subscription dunning and double-billed customers, and fortify raw-body webhook HMAC verification with astro and python blueprints. includes an attachable empire library.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-gohighlevel"><strong>legends-gohighlevel</strong></a></td><td valign="top">gohighlevel CRM &amp; agency</td><td valign="top">inspect and rebrand gohighlevel sub-accounts, pipelines, calendars, workflows v3, voice and conversation AI, and custom objects; batch-clone V2 snapshots with headless PIT minting and internal workflow step X-ray; preview CRM mutations with API readback; and run live 5-layer agency permission, dashboard RBAC, SMTP, and 1.05x rebilling governance. includes a source-cited knowledge vault and an attachable empire library.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-geogrid"><strong>legends-geogrid</strong></a></td><td valign="top">local maps SEO</td><td valign="top">open-source google maps rank checker: circular-lattice search grids, full-bleed competitive map companion, business-name review dossiers with multi-vantage street view and optional Jev 1.14 optical signage verification, and multi-query strategy reports at raw dataforseo cost.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-dataforseo"><strong>legends-dataforseo</strong></a></td><td valign="top">search data engine</td><td valign="top">high-throughput python client and CLI for dataforseo: SERP queues, google maps, google business profile lookups, keyword research, official API discovery, and reusable evidence export. no MCP server required.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-firecrawl"><strong>legends-firecrawl</strong></a></td><td valign="top">web research</td><td valign="top">official firecrawl web operations and alexandria data queries with complete saved evidence, offline retrieval, integrity verification, and explicit reuse checks.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-github"><strong>legends-github</strong></a></td><td valign="top">repo optimization</td><td valign="top">repository optimization suite for claude, codex, and gemini. audits repos with search-demand evidence, improves readme copy, tunes metadata, manages releases, and verifies social previews.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-grant"><strong>legends-grant</strong></a></td><td valign="top">grant research</td><td valign="top">US grant discovery, public notice collection, eligibility review, and evidence-linked proposal drafting for businesses, nonprofits, tribes, governments, researchers, and individuals.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-jev"><strong>legends-jev</strong></a></td><td valign="top">optical and decision intelligence</td><td valign="top">typed optical recognition (OCR), storefront signage verification with bounding boxes, and candidate action selection for computer use, application control, and browser workflows with TypeSafe Jev 1.14.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-obs"><strong>legends-obs</strong></a></td><td valign="top">video recording</td><td valign="top">agent-operated OBS studio controller on windows: hardware inspection, scene and encoder planning, rollback snapshots, verified recording pipelines, and optional cursor overlay extra.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-captions"><strong>legends-captions</strong></a></td><td valign="top">video captions</td><td valign="top">agentic caption QA and rendering: contextual ASR correction, forced-alignment timing, active-word captions, proof frames, and revision memory.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-yt-dlp"><strong>legends-yt-dlp</strong></a></td><td valign="top">video capture</td><td valign="top">repeatable yt-dlp source pulls, verification, transcripts, search, and clip-building with pacing, bulk guardrails, and optional mullvad VPN.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-stable-audio-3"><strong>legends-stable-audio-3</strong></a></td><td valign="top">audio production</td><td valign="top">agent-operated stable audio 3: hardware-aware batch planning, continuous audio mixes, custom adapters, and sound effect generation.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-hyperyap"><strong>legends-hyperyap</strong></a></td><td valign="top">local voice typing</td><td valign="top">native desktop dictation powered by NVIDIA parakeet: app-focused paste, custom vocabulary, configurable shortcuts, and local transcription.</td></tr>
-<tr><td valign="top"><a href="https://github.com/avalonreset/legends-ambient-intelligence"><strong>legends-ambient-intelligence</strong></a></td><td valign="top">ambient audio</td><td valign="top">passive audio capture, deduplicated archiving, offline transcription, and vault distillation for voice memos and recorder ingest.</td></tr>
 </table>
 
+<table width="100%">
+<tr>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-empire"><img src="assets/cards/legends-empire.svg" width="100%" alt="legends-empire — foundation · mit" /></a>
+  <p>govern your local obsidian and markdown vault with SHA-256 file integrity locks, crash-safe write transactions, immutable evidence staging, and stewardship audits.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-empire"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-empire#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-astro"><img src="assets/cards/legends-astro.svg" width="100%" alt="legends-astro — foundation · mit" /></a>
+  <p>migrate wordpress, next.js, or legacy HTML sites to astro v7 with pre-build route and SEO parity contracts, offline docs, and post-build dist verification.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-astro"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-astro#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-hetzner"><img src="assets/cards/legends-hetzner.svg" width="100%" alt="legends-hetzner — infrastructure · mit" /></a>
+  <p>scan live european and US hetzner cloud stock, compare cost-optimized x86 and ARM64 sizing, and enforce 10-check preflight plans before provisioning.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-hetzner"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-hetzner#readme">github readme ↗</a></sub></p>
+</td>
+</tr>
+<tr>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-coolify"><img src="assets/cards/legends-coolify.svg" width="100%" alt="legends-coolify — infrastructure · mit" /></a>
+  <p>audit self-hosted coolify servers, docker container states, deployment queues, environment variable keys, and database backup schedules over read-only HTTPS.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-coolify"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-coolify#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-cloudflare"><img src="assets/cards/legends-cloudflare.svg" width="100%" alt="legends-cloudflare — infrastructure · mit" /></a>
+  <p>execute preview-first cloudflare DNS updates and cutovers that preserve orange-cloud proxy states, guard multi-record hostnames, and verify API readback.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-cloudflare"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-cloudflare#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-stripe"><img src="assets/cards/legends-stripe.svg" width="100%" alt="legends-stripe — infrastructure · mit" /></a>
+  <p>audit stripe .env price IDs, sync test and live price ladders, reconcile fixed-fee drag and net retained cash to the cent, and verify raw-body HMAC webhooks.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-stripe"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-stripe#readme">github readme ↗</a></sub></p>
+</td>
+</tr>
+<tr>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-gohighlevel"><img src="assets/cards/legends-gohighlevel.svg" width="100%" alt="legends-gohighlevel — infrastructure · mit" /></a>
+  <p>operate gohighlevel sub-accounts, batch-clone V2 snapshots with headless PIT minting, X-ray internal workflow steps, and enforce 5-layer agency RBAC governance.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-gohighlevel"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-gohighlevel#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-github"><img src="assets/cards/legends-github.svg" width="100%" alt="legends-github — intelligence · mit" /></a>
+  <p>audit github repository health, package verified releases, align your 20 repo topics with live search demand, and verify 1280x640 social preview cards.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-github"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-github#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-jev"><img src="assets/cards/legends-jev.svg" width="100%" alt="legends-jev — infrastructure · mit" /></a>
+  <p>run local python OCR and visual verification for UI screenshots, exact original-image pixel coordinates, and google street view storefront signage audits.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-jev"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-jev#readme">github readme ↗</a></sub></p>
+</td>
+</tr>
+<tr>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-geogrid"><img src="assets/cards/legends-geogrid.svg" width="100%" alt="legends-geogrid — intelligence · mit" /></a>
+  <p>run circular-lattice google maps rank studies up to 30 positions deep at wholesale dataforseo rates, with street view signage dossiers and 18-page PDF reports.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-geogrid"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-geogrid#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-dataforseo"><img src="assets/cards/legends-dataforseo.svg" width="100%" alt="legends-dataforseo — intelligence · mit" /></a>
+  <p>query google organic SERPs, google maps, and keyword volume over the dataforseo API with offline cost previews, zero-dependency python, and local evidence.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-dataforseo"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-dataforseo#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-firecrawl"><img src="assets/cards/legends-firecrawl.svg" width="100%" alt="legends-firecrawl — intelligence · mit" /></a>
+  <p>convert javascript-heavy websites into clean markdown and run preview-gated firecrawl site maps, bounded crawls, and alexandria queries with saved evidence.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-firecrawl"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-firecrawl#readme">github readme ↗</a></sub></p>
+</td>
+</tr>
+<tr>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-grant"><img src="assets/cards/legends-grant.svg" width="100%" alt="legends-grant — intelligence · mit" /></a>
+  <p>search federal, state, and foundation grants across 56 US jurisdictions, verify verbatim eligibility rules against company facts, and check budgets to the cent.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-grant"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-grant#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-obs"><img src="assets/cards/legends-obs.svg" width="100%" alt="legends-obs — studio · mit" /></a>
+  <p>automate OBS studio over its local websocket server with profile backups, window-aware scene switching, hardware encoder checks, and test-clip verification.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-obs"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-obs#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-captions"><img src="assets/cards/legends-captions.svg" width="100%" alt="legends-captions — studio · mit" /></a>
+  <p>repair misheard technical terms, lock letter-by-letter acronym timing, and render frame-accurate word-by-word subtitles for 4K60 vertical and widescreen.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-captions"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-captions#readme">github readme ↗</a></sub></p>
+</td>
+</tr>
+<tr>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-yt-dlp"><img src="assets/cards/legends-yt-dlp.svg" width="100%" alt="legends-yt-dlp — studio · mit" /></a>
+  <p>run a paced yt-dlp video, audio, and youtube transcript pipeline with resumable batch ledgers, local GPU word alignment, and frame-accurate FFmpeg clips.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-yt-dlp"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-yt-dlp#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-stable-audio-3"><img src="assets/cards/legends-stable-audio-3.svg" width="100%" alt="legends-stable-audio-3 — studio · apache-2.0" /></a>
+  <p>generate custom instrumental tracks on your local GPU with stable audio 3 and crossfade multi-hour background mixes with automated silence trimming.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-stable-audio-3"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-stable-audio-3#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-hyperyap"><img src="assets/cards/legends-hyperyap.svg" width="100%" alt="legends-hyperyap — studio · agpl-3.0" /></a>
+  <p>push-to-talk local GPU voice dictation for windows, macOS, and linux: transcribe speech offline with NVIDIA parakeet and paste straight into your active app.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-hyperyap"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-hyperyap#readme">github readme ↗</a></sub></p>
+</td>
+</tr>
+<tr>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-ambient-intelligence"><img src="assets/cards/legends-ambient-intelligence.svg" width="100%" alt="legends-ambient-intelligence — studio · mit" /></a>
+  <p>offline voice memo and meeting transcription pipeline: archive USB voice recorders with SHA-256 deduplication, run local whisper, and distill vault notes.</p>
+  <p><sub><a href="https://cto-legends.com/modules/legends-ambient-intelligence"><strong>engineering spec →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-ambient-intelligence#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://github.com/avalonreset/legends-seo-dungeon"><img src="assets/cards/legends-seo-dungeon.svg" width="100%" alt="legends-seo-dungeon — gamified seo · mit" /></a>
+  <p>turn technical website SEO audits into 16-bit turn-based dungeon battles with chiptune synth audio and exportable fix prompts for codex, claude, and gemini.</p>
+  <p><sub><a href="https://seodungeon.com"><strong>play seodungeon.com →</strong></a> &nbsp;&middot;&nbsp; <a href="https://github.com/avalonreset/legends-seo-dungeon#readme">github readme ↗</a></sub></p>
+</td>
+<td width="33.33%" valign="top">
+  <a href="https://cto-legends.com/blog?post=codex-vs-claude-code-benchmarks"><img src="assets/cards/cto-legends-com.svg" width="100%" alt="cto-legends.com — 20 specs · 8 benchmarks" /></a>
+  <p>explore the interactive 20-package architecture matrices, deterministic boundary specs, and 8 head-to-head engineering benchmarks on the live portal.</p>
+  <p><sub><a href="https://cto-legends.com/home"><strong>ecosystem portal →</strong></a> &nbsp;&middot;&nbsp; <a href="https://cto-legends.com/blog?post=codex-vs-claude-code-benchmarks#readme">read benchmarks ↗</a></sub></p>
+</td>
+</tr>
+</table>
 
 ---
 

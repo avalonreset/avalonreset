@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="42" viewBox="0 0 380 42" role="img">
+  <title>legends-grant — intelligence · mit</title>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1">
+      <stop offset="0" stop-color="#222730"/>
+      <stop offset="1" stop-color="#14181e"/>
+    </linearGradient>
+  </defs>
+  <rect width="380" height="42" rx="4" fill="url(#bg)"/>
+  <path d="M0 1H380" stroke="#48515c" stroke-width="1"/>
+  <rect x="0" y="0" width="3" height="42" rx="1.5" fill="#e53340"/>
+  <text x="13" y="26" fill="#fafafa" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="14.5" font-weight="700">legends-grant</text>
+  <text x="368" y="25" fill="#9ca3af" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="11" text-anchor="end">intelligence · mit</text>
+</svg>
