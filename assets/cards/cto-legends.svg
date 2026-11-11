@@ -15,7 +15,7 @@
   <rect x="646" y="13" width="220" height="21" rx="3" fill="#ef4444" fill-opacity="0.20" stroke="#f87171" stroke-opacity="0.52" stroke-width="1"/>
   <text x="756" y="27" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="600" text-anchor="middle">master router · only install needed</text>
   <text x="20" y="54" fill="#f4f4f5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.6">The single local CLI router for Claude Code, Codex, Cursor, and Gemini: reads one compact ~650-token startup index</text>
-  <text x="20" y="72" fill="#f4f4f5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.6">and loads 20 isolated, SHA-256 verified Python capability modules on demand with zero context window bloat.</text>
+  <text x="20" y="72" fill="#f4f4f5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.6">and loads 21 isolated, SHA-256 verified Python capability modules on demand with zero context window bloat.</text>
   <line x1="20" y1="91" x2="866" y2="91" stroke="#ef4444" stroke-opacity="0.28" stroke-width="1"/>
   <text x="20" y="110" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600">master router spec  →</text>
   <text x="866" y="110" fill="#fca5a5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.8" text-anchor="end">github readme  ↗</text>

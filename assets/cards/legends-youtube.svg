@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292 158" width="100%">
+  <rect x="1" y="2.5" width="290" height="153" rx="4" fill="#000000" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <text x="14" y="25" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="650">legends-youtube</text>
+  <text x="278" y="25" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.8" text-anchor="end">studio · mit</text>
+  <text x="14" y="48" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">Operate YouTube channels over Data API</text>
+  <text x="14" y="63.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">v3 and Analytics API v2 with ETag locks,</text>
+  <text x="14" y="79" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">lossless metadata merges, CTR and quiz</text>
+  <text x="14" y="94.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">audits, and SHA-256 private uploads.</text>
+  <line x1="14" y1="115" x2="278" y2="115" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+  <text x="14" y="136" fill="#f87171" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10">engineering spec  →</text>
+  <text x="278" y="136" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.8" text-anchor="end">github readme  ↗</text>
+</svg>

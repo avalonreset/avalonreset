@@ -40,5 +40,5 @@
   <!-- Section Header -->
   <text x="4" y="160" fill="#ef4444" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="13.5" font-weight="700">&gt;_</text>
   <text x="28" y="160" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="14.5" font-weight="700">the ecosystem</text>
-  <text x="882" y="160" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.5" text-anchor="end">all 21 packages (1 master router + 20 on-demand capability modules)</text>
+  <text x="882" y="160" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.5" text-anchor="end">all 22 packages (1 master router + 21 on-demand capability modules)</text>
 </svg>
