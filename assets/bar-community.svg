@@ -9,5 +9,5 @@
   <text x="164" y="18.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="700" text-anchor="middle"><tspan fill="#ffffff">ai-marketing-hub-pro</tspan><tspan fill="#f87171"> ↗</tspan></text>
 
   <!-- Left-Justified Pointer & Lowercase Statement -->
-  <text x="257" y="18.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600"><tspan fill="#f87171" font-weight="700">&lt;---</tspan><tspan fill="#ffffff"> carefully designed to voltron into the world&apos;s greatest agentic digital marketing system</tspan></text>
+  <text x="257" y="18.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600">&lt;--- carefully designed to voltron into the world&apos;s greatest agentic digital marketing system</text>
 </svg>
