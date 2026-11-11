@@ -34,12 +34,12 @@
 
   <line x1="20" y1="116" x2="716" y2="116" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
 
-  <text x="20" y="139" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="600">mit · python 3.11+ · pypi v0.2.9</text>
+  <rect x="20" y="124" width="176" height="21" rx="3" fill="#090a0e" stroke="#ef4444" stroke-opacity="0.52" stroke-width="1"/>
+  <text x="108" y="138" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="9.8" font-weight="600" text-anchor="middle">$ pip install cto-legends</text>
 
-  <rect x="275" y="124" width="186" height="21" rx="3" fill="#090a0e" stroke="#ef4444" stroke-opacity="0.52" stroke-width="1"/>
-  <text x="368" y="138" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="9.8" font-weight="600" text-anchor="middle">$ pip install cto-legends</text>
+  <text x="210" y="138.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="600">mit · python 3.11+ · pypi v0.2.9</text>
 
-  <text x="716" y="139" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.6" font-weight="700" text-anchor="end">1-click agent handoff &amp; docs  <tspan fill="#f87171">↗</tspan></text>
+  <text x="716" y="138.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.6" font-weight="700" text-anchor="end">1-click agent handoff &amp; docs  <tspan fill="#f87171">↗</tspan></text>
 
   <!-- Right Tucked Operator Portrait (matching cto-legends.com .rr-home-hero-portrait) -->
   <rect x="733" y="12" width="138" height="138" rx="6" fill="#050507"/>
