@@ -1,6 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292 30" width="100%">
-  <rect x="1" y="3" width="76" height="24" rx="3" fill="#000000" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1"/>
-  <text x="39" y="18.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" text-anchor="middle">community</text>
-  <rect x="77" y="3" width="150" height="24" rx="3" fill="#ef4444"/>
-  <text x="152" y="18.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700" text-anchor="middle">ai-marketing-hub-pro</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 30" width="100%">
+  <!-- Left Label Segment -->
+  <rect x="1" y="3" width="76" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="39" y="18.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="600" text-anchor="middle">community</text>
+
+  <!-- High-Contrast Dark-Crimson Value Pill -->
+  <rect x="79" y="3" width="168" height="24" rx="3" fill="#1f070b" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
+  <rect x="79" y="3" width="2.5" height="24" rx="1" fill="#ef4444"/>
+  <text x="164" y="18.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="700" text-anchor="middle"><tspan fill="#ffffff">ai-marketing-hub-pro</tspan><tspan fill="#f87171"> ↗</tspan></text>
 </svg>
