@@ -34,12 +34,12 @@
 
   <line x1="20" y1="116" x2="716" y2="116" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
 
-  <text x="20" y="139" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700">click for 1-click agent drop-in prompt  →</text>
+  <text x="20" y="139" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="600">mit · python 3.11+ · pypi v0.2.9</text>
 
-  <rect x="330" y="124" width="186" height="21" rx="3" fill="#090a0e" stroke="#ef4444" stroke-opacity="0.48" stroke-width="1"/>
-  <text x="423" y="138" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="9.8" font-weight="600" text-anchor="middle">$ pip install cto-legends</text>
+  <rect x="275" y="124" width="186" height="21" rx="3" fill="#090a0e" stroke="#ef4444" stroke-opacity="0.52" stroke-width="1"/>
+  <text x="368" y="138" fill="#fecdd3" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="9.8" font-weight="600" text-anchor="middle">$ pip install cto-legends</text>
 
-  <text x="716" y="139" fill="#fca5a5" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.4" font-weight="600" text-anchor="end">or drop into session  ↗</text>
+  <text x="716" y="139" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.6" font-weight="700" text-anchor="end">1-click agent handoff &amp; docs  <tspan fill="#f87171">↗</tspan></text>
 
   <!-- Right Tucked Operator Portrait (matching cto-legends.com .rr-home-hero-portrait) -->
   <rect x="733" y="12" width="138" height="138" rx="6" fill="#050507"/>
@@ -53,5 +53,5 @@
   <!-- HUD Badge inside Portrait -->
   <rect x="739" y="130" width="126" height="15" rx="3" fill="#050508" fill-opacity="0.90" stroke="#ef4444" stroke-opacity="0.62" stroke-width="0.9"/>
   <circle cx="748" cy="137.5" r="2.3" fill="#ef4444"/>
-  <text x="806" y="140.5" fill="#ffe4e6" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="700" text-anchor="middle">1-click install  →</text>
+  <text x="806" y="140.5" fill="#ffe4e6" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="8.2" font-weight="600" text-anchor="middle">quickstart console ↗</text>
 </svg>
