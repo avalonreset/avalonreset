@@ -26,7 +26,7 @@ def main() -> int:
     if "\u2014" in readme or "\u2013" in readme:
         raise SystemExit("FAIL: Em-dash or en-dash found in README.md")
 
-    referenced = re.findall(r'src="(assets/[^"]+)"', readme)
+    referenced = re.findall(r'src="(assets/[^"?]+)', readme)
     if not referenced:
         raise SystemExit("FAIL: No asset references found in README.md")
 
