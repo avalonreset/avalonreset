@@ -1,7 +1,7 @@
 <p align="left">
   <a href="https://cto-legends.com"><img src="assets/banner.svg" width="99.6%" alt="cto-legends: capability discovery and execution routing for the open-source legends ecosystem" /></a>
-  <a href="https://www.skool.com/ai-marketing-hub-pro"><img src="assets/bar-community.svg" width="49.5%" alt="community: ai-marketing-hub-pro" /></a>
-  <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="assets/bar-license.svg" width="49.5%" alt="license: MIT" /></a>
+  <a href="https://www.skool.com/ai-marketing-hub-pro"><img src="assets/bar-community.svg" width="85.5%" alt="community: ai-marketing-hub-pro - carefully designed to voltron into the world's greatest agentic digital marketing system" /></a>
+  <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="assets/bar-license.svg" width="13.5%" alt="license: MIT" /></a>
   <a href="https://cto-legends.com"><img src="assets/overview-panel.svg" width="99.6%" alt="cto-legends architecture" /></a>
   <img src="assets/ecosystem-separator.svg" width="99.6%" height="40" alt="" />
 </p>
