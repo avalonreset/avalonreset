@@ -7,7 +7,7 @@
 </p>
 
 <p align="left">
-  <a href="https://cto-legends.com/modules/cto-legends"><img src="assets/cards/cto-legends.svg" width="99.6%" alt="cto-legends: Install this one package first - you never install the 21 modules below by hand. Gives your agent a compact ~650-token startup map and auto-installs SHA-256 verified Python CLIs on demand." /></a>
+  <a href="https://cto-legends.com/modules/cto-legends"><img src="assets/cards/cto-legends.svg" width="99.6%" alt="cto-legends: Install this one package first - you never install the 21 modules below by hand. Gives your agent a compact ~650-token startup map and auto-installs SHA-256 verified CLIs on demand." /></a>
   <a href="https://cto-legends.com/modules/legends-empire"><img src="assets/cards/legends-empire.svg" width="32.7%" alt="legends-empire: Govern your local Obsidian and Markdown vault with SHA-256 file integrity locks, crash-safe write transactions, and read-only stewardship audits." /></a>
   <a href="https://cto-legends.com/modules/legends-astro"><img src="assets/cards/legends-astro.svg" width="32.7%" alt="legends-astro: Migrate WordPress, Next.js, or legacy HTML sites to Astro v7 with a pre-build route and SEO parity contract, offline docs, and post-build verification." /></a>
   <a href="https://cto-legends.com/modules/legends-hetzner"><img src="assets/cards/legends-hetzner.svg" width="32.7%" alt="legends-hetzner: Scan live European and US Hetzner Cloud stock, compare cost-optimized x86 and ARM64 sizing, and enforce 10-check preflight provisioning plans." /></a>
