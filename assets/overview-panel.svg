@@ -27,14 +27,14 @@
   <text x="291.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">gemini</text>
   <rect x="324" y="99" width="40" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
   <text x="344.0" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">grok</text>
-  <rect x="370" y="99" width="53" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="396.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">cursor</text>
-  <rect x="429" y="99" width="65" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="461.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">windsurf</text>
-  <rect x="500" y="99" width="84" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="542.0" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">antigravity</text>
-  <rect x="590" y="99" width="47" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="613.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">aider</text>
+  <rect x="370" y="99" width="40" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="390.0" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">muse</text>
+  <rect x="416" y="99" width="53" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="442.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">cursor</text>
+  <rect x="475" y="99" width="65" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="507.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">windsurf</text>
+  <rect x="546" y="99" width="47" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="569.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">aider</text>
   <text x="868" y="112" fill="#f87171" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="600" text-anchor="end">zero context bloat</text>
 
   <!-- Section Header -->
