@@ -37,7 +37,7 @@
   <rect x="20" y="126" width="178" height="22" rx="3" fill="#07080c" stroke="#ef4444" stroke-opacity="0.58" stroke-width="1"/>
   <text x="109" y="140.5" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="9.8" font-weight="600" text-anchor="middle"><tspan fill="#f87171" font-weight="700">$</tspan><tspan fill="#ffffff"> pip install cto-legends</tspan></text>
 
-  <text x="212" y="140.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="600">mit · python 3.11+ · pypi v0.2.9</text>
+  <text x="212" y="140.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="600">pypi v0.2.9 · python 3.11+</text>
 
   <text x="716" y="140.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.6" font-weight="700" text-anchor="end">1-click agent handoff &amp; docs  <tspan fill="#f87171">↗</tspan></text>
 

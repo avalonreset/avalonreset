@@ -1,12 +1,12 @@
 <p align="left">
   <a href="https://cto-legends.com"><img src="assets/banner.svg?v=5" width="99.6%" alt="cto-legends: capability discovery and execution routing for the open-source legends ecosystem" /></a>
   <a href="https://www.skool.com/ai-marketing-hub-pro"><img src="assets/bar-community.svg?v=5" width="99.6%" alt="community: ai-marketing-hub-pro - carefully designed to voltron into the world's greatest agentic digital marketing system" /></a>
-  <a href="https://cto-legends.com"><img src="assets/overview-panel.svg?v=6" width="99.6%" alt="cto-legends architecture" /></a>
+  <a href="https://cto-legends.com"><img src="assets/overview-panel.svg?v=7" width="99.6%" alt="cto-legends architecture" /></a>
   <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="assets/ecosystem-separator.svg?v=5" width="99.6%" alt="license: open source" /></a>
 </p>
 
 <p align="left">
-  <a href="https://cto-legends.com/modules/cto-legends"><img src="assets/cards/cto-legends.svg?v=3" width="99.6%" alt="cto-legends: Install this one package first - you never install the 21 modules below by hand. Gives your agent a compact ~650-token startup map and auto-installs SHA-256 verified CLIs on demand." /></a>
+  <a href="https://cto-legends.com/modules/cto-legends"><img src="assets/cards/cto-legends.svg?v=4" width="99.6%" alt="cto-legends: Install this one package first - you never install the 21 modules below by hand. Gives your agent a compact ~650-token startup map and auto-installs SHA-256 verified CLIs on demand." /></a>
   <a href="https://cto-legends.com/modules/legends-empire"><img src="assets/cards/legends-empire.svg" width="32.7%" alt="legends-empire: Govern your local Obsidian and Markdown vault with SHA-256 file integrity locks, crash-safe write transactions, and read-only stewardship audits." /></a>
   <a href="https://cto-legends.com/modules/legends-astro"><img src="assets/cards/legends-astro.svg" width="32.7%" alt="legends-astro: Migrate WordPress, Next.js, or legacy HTML sites to Astro v7 with a pre-build route and SEO parity contract, offline docs, and post-build verification." /></a>
   <a href="https://cto-legends.com/modules/legends-hetzner"><img src="assets/cards/legends-hetzner.svg" width="32.7%" alt="legends-hetzner: Scan live European and US Hetzner Cloud stock, compare cost-optimized x86 and ARM64 sizing, and enforce 10-check preflight provisioning plans." /></a>
