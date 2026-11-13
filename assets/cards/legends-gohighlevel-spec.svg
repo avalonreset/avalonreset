@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.25 0 148.25 27" width="100%">
-  <rect x="1" y="0.5" width="142" height="26" rx="4" fill="#0a0506" stroke="#ef4444" stroke-opacity="0.45" stroke-width="1"/>
-  <text x="72" y="17.2" fill="#f87171" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="600" text-anchor="middle">engineering spec  →</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.25 0 148.25 30" width="100%">
+  <path d="M1 0 V25.5 A4 4 0 0 0 5 29.5 H146 V0 Z" fill="#0c0405"/>
+  <path d="M1 0 V25.5 A4 4 0 0 0 5 29.5 H146" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="1.5" y1="0.5" x2="146" y2="0.5" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <text x="73.5" y="19.3" fill="#f87171" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="600" text-anchor="middle">engineering spec  →</text>
 </svg>

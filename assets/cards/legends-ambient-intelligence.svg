@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.496 -3 296.5 113" width="100%">
-  <rect x="1" y="2.5" width="290" height="106" rx="4" fill="#000000" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.496 -9 296.5 117" width="100%">
+  <!-- seam-v2 -->
+  <rect x="1" y="2.5" width="290" height="130" rx="4" fill="#000000"/>
+  <path d="M1 108 V6.5 A4 4 0 0 1 5 2.5 H287 A4 4 0 0 1 291 6.5 V108" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>
   <text x="14" y="25" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="650">legends-ambient-intelligence</text>
   <text x="278" y="25" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.8" text-anchor="end">studio · mit</text>
   <text x="14" y="48" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">Offline voice memo and meeting</text>

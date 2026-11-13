@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 886 120" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 886 118" width="100%">
   <!-- split-v1 -->
   <defs>
     <radialGradient id="flagship-glow" cx="0%" cy="0%" r="120%" fx="0%" fy="0%">
@@ -15,11 +15,13 @@
     </clipPath>
   </defs>
 
-  <rect x="1" y="2" width="884" height="116" rx="4" fill="#090406"/>
-  <rect x="1" y="2" width="884" height="116" rx="4" fill="url(#flagship-glow)" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
-  <rect x="1" y="2" width="884" height="116" rx="4" fill="url(#portrait-glow)"/>
+  <!-- seam-v2 -->
+  <rect x="1" y="2" width="884" height="130" rx="4" fill="#090406"/>
+  <rect x="1" y="2" width="884" height="130" rx="4" fill="url(#flagship-glow)"/>
+  <rect x="1" y="2" width="884" height="130" rx="4" fill="url(#portrait-glow)"/>
+  <path d="M1 118 V6 A4 4 0 0 1 5 2 H881 A4 4 0 0 1 885 6 V118" fill="none" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
   <line x1="3" y1="3" x2="883" y2="3" stroke="#fecaca" stroke-opacity="0.22" stroke-width="1"/>
-  <rect x="1" y="2" width="4" height="116" rx="1.5" fill="#ef4444"/>
+  <rect x="1" y="2" width="4" height="130" rx="1.5" fill="#ef4444"/>
 
   <!-- Left Content Column (x=20..716) -->
   <text x="20" y="30" fill="#f87171" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">&gt;_</text>

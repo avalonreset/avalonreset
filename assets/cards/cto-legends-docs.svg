@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="620.2 0 265.8 27" width="100%">
-  <rect x="623.2" y="0.5" width="261.8" height="26" rx="4" fill="#0a0506" stroke="#ef4444" stroke-opacity="0.58" stroke-width="1"/>
-  <text x="754.1" y="17.2" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.4" font-weight="700" text-anchor="middle">1-click agent handoff &amp; docs  <tspan fill="#f87171">↗</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="620.2 0 265.8 32" width="100%">
+  <path d="M620.2 0 V31.5 H881 A4 4 0 0 0 885 27.5 V0 Z" fill="#0c0507"/>
+  <path d="M620.2 31.5 H881 A4 4 0 0 0 885 27.5 V0" fill="none" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
+  <line x1="620.7" y1="0" x2="620.7" y2="31.5" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
+  <line x1="620.2" y1="0.5" x2="884.5" y2="0.5" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
+  <text x="752.6" y="20.4" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.4" font-weight="700" text-anchor="middle">1-click agent handoff &amp; docs  <tspan fill="#f87171">↗</tspan></text>
 </svg>

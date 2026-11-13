@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="354.4 0 265.8 27" width="100%">
-  <rect x="357.4" y="0.5" width="259.8" height="26" rx="4" fill="#000000" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1"/>
-  <text x="487.3" y="17.2" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.4" font-weight="600" text-anchor="middle">github readme  ↗</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="354.4 0 265.8 32" width="100%">
+  <rect x="354.4" y="0" width="265.8" height="31.5" fill="#0c0507"/>
+  <line x1="354.4" y1="31.5" x2="620.2" y2="31.5" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
+  <line x1="354.9" y1="0" x2="354.9" y2="31.5" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
+  <line x1="354.4" y1="0.5" x2="620.2" y2="0.5" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
+  <text x="487.3" y="20.4" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.4" font-weight="700" text-anchor="middle">github readme  ↗</text>
 </svg>
