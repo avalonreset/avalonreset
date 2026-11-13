@@ -38,22 +38,26 @@ MODULES = [
 ]
 
 # Column viewBox x-offsets give flush outer edges and symmetric gutters.
-COL_MIN_X = (-0.004, -2.25, -4.496)
-COL_W = 296.5
+# Gutter = 1.5*COL_W - 437 (18 units); min-x keeps outer edges flush.
+COL_W = 303
+COL_MIN_X = (0, (292 - COL_W) / 2, 292 - COL_W)
 COL_PCT = 33.33
-BODY_TOP, BODY_BOTTOM = -9, 108  # top margin separates card rows; bottom is the seam
+BODY_TOP, BODY_BOTTOM = -16, 108  # top margin separates card rows; bottom is the seam
 FOOT_H = 30
 SPLIT = 146  # card spans x=1..291
-BORDER = 'stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"'
+BORDER = 'stroke="#ffffff" stroke-opacity="0.09" stroke-width="1"'
 
 FLAG_W, FLAG_BOTTOM, FLAG_FOOT_H = 886, 118, 32
 FLAG_B = [0, 354.4, 620.2, FLAG_W]
 RED = 'stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"'
 
 
+SPACED = ' letter-spacing="1.3"'  # small-caps button labels
+
+
 def text(x: float, y: float, fill: str, label: str, size: float = 10, weight: str = "600") -> str:
     return (f'  <text x="{x:g}" y="{y:g}" fill="{fill}" font-family="{FONT}" font-size="{size}" '
-            f'font-weight="{weight}" text-anchor="middle">{label}</text>\n')
+            f'font-weight="{weight}"{SPACED if label.isupper() else ""} text-anchor="middle">{label}</text>\n')
 
 
 def svg(vb: str, body: str) -> str:
@@ -67,31 +71,39 @@ def render_module(name: str, col: int) -> tuple[str, str]:
     # Legacy footer (v1 and earlier) removal.
     s = re.sub(r'\s*<line x1="14" y1="115"[^>]*/>', "", s)
     s = re.sub(r'\s*<text x="(?:14|278)" y="136"[^>]*>[^<]*</text>', "", s)
-    s = re.sub(r'viewBox="[^"]+"', f'viewBox="{m:g} {BODY_TOP} {COL_W} {BODY_BOTTOM - BODY_TOP}"', s, count=1)
-    if "<!-- seam-v2 -->" not in s:
-        s = re.sub(
-            r'<rect x="1" y="2.5" width="290" height="[0-9.]+" rx="4"[^>]*/>',
-            '<!-- seam-v2 -->\n'
-            '  <rect x="1" y="2.5" width="290" height="130" rx="4" fill="#000000"/>\n'
-            f'  <path d="M1 {BODY_BOTTOM} V6.5 A4 4 0 0 1 5 2.5 H287 A4 4 0 0 1 291 6.5 V{BODY_BOTTOM}" fill="none" {BORDER}/>',
-            s, count=1)
+    edge = f"M1 {BODY_BOTTOM} V6.5 A4 4 0 0 1 5 2.5 H287 A4 4 0 0 1 291 6.5 V{BODY_BOTTOM}"
+    head = (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{m:g} {BODY_TOP} {COL_W} {BODY_BOTTOM - BODY_TOP}" width="100%">\n'
+        '  <!-- seam-v3 -->\n'
+        '  <defs>\n'
+        '    <linearGradient id="sheen" x1="0" y1="2.5" x2="0" y2="108" gradientUnits="userSpaceOnUse">'
+        '<stop offset="0" stop-color="#ffffff" stop-opacity="0.05"/><stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/></linearGradient>\n'
+        '    <linearGradient id="edge" x1="0" y1="2.5" x2="0" y2="108" gradientUnits="userSpaceOnUse">'
+        '<stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.09"/></linearGradient>\n'
+        '  </defs>\n'
+        '  <rect x="1" y="2.5" width="290" height="130" rx="4" fill="#000000"/>\n'
+        f'  <path d="{edge} Z" fill="url(#sheen)"/>\n'
+        f'  <path d="{edge}" fill="none" stroke="url(#edge)" stroke-width="1"/>\n'
+    )
+    s = re.sub(r'<svg[^>]*>\n.*?(?=  <text)', lambda _: head, s, count=1, flags=re.S)
     path.write_text(s, encoding="utf-8")
 
     b = FOOT_H - 0.5
     left_w, right_w = SPLIT - m, m + COL_W - SPLIT
-    top = f'  <line x1="{{a}}" y1="0.5" x2="{{b}}" y2="0.5" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>\n'
+    rule = 'stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"'
+    lbl = dict(size=8.6, weight="600")
     left = (
-        f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT} V0 Z" fill="#0c0405"/>\n'
+        f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT} V0 Z" fill="#000000"/>\n'
         f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT}" fill="none" {BORDER}/>\n'
-        + top.format(a=1.5, b=SPLIT)
-        + text((1 + SPLIT) / 2, 19.3, "#f87171", "engineering spec  →")
+        f'  <line x1="14" y1="0.5" x2="{SPLIT}" y2="0.5" {rule}/>\n'
+        + text((1 + SPLIT) / 2, 18.6, "#f87171", "ENGINEERING SPEC →", **lbl)
     )
     right = (
         f'  <path d="M{SPLIT} 0 V{b} H287 A4 4 0 0 0 291 {b - 4} V0 Z" fill="#000000"/>\n'
         f'  <path d="M{SPLIT} {b} H287 A4 4 0 0 0 291 {b - 4} V0" fill="none" {BORDER}/>\n'
-        f'  <line x1="{SPLIT + 0.5}" y1="0" x2="{SPLIT + 0.5}" y2="{b}" {BORDER}/>\n'
-        + top.format(a=SPLIT, b=290.5)
-        + text((SPLIT + 291) / 2, 19.3, "#e4e4e7", "github readme  ↗")
+        f'  <line x1="{SPLIT}" y1="0.5" x2="278" y2="0.5" {rule}/>\n'
+        f'  <line x1="{SPLIT + 0.5}" y1="9" x2="{SPLIT + 0.5}" y2="21" {rule}/>\n'
+        + text((SPLIT + 291) / 2, 18.6, "#d4d4d8", "GITHUB README ↗", **lbl)
     )
     (cards / f"{name}-spec.svg").write_text(svg(f"{m:g} 0 {left_w:g} {FOOT_H}", left), encoding="utf-8")
     (cards / f"{name}-repo.svg").write_text(svg(f"{SPLIT} 0 {right_w:g} {FOOT_H}", right), encoding="utf-8")
@@ -162,12 +174,12 @@ def readme_block(alts: dict, widths: dict) -> str:
     for r in range(0, len(MODULES), 3):
         trio = MODULES[r:r + 3]
         out.append("  " + "<!--\n  -->".join(
-            img(f"{GH}/{n}", f"{n}.svg?v=5", f"{COL_PCT}%", alts[n]) for n in trio))
+            img(f"{GH}/{n}", f"{n}.svg?v=6", f"{COL_PCT}%", alts[n]) for n in trio))
         btns = []
         for n in trio:
             lw, rw = widths[n]
-            btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg?v=2", lw, f"{n} engineering spec"))
-            btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg?v=2", rw, f"{n} GitHub readme"))
+            btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg?v=3", lw, f"{n} engineering spec"))
+            btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg?v=3", rw, f"{n} GitHub readme"))
         out.append("  " + "<!--\n  -->".join(btns))
     out.append("</p>")
     return "\n".join(out)
