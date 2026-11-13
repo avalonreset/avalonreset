@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 354.4 27" width="100%">
+  <rect x="1" y="0.5" width="350.4" height="26" rx="4" fill="#07080c" stroke="#ef4444" stroke-opacity="0.58" stroke-width="1"/>
+  <text x="176.2" y="17.2" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.4" font-weight="600" text-anchor="middle"><tspan fill="#f87171" font-weight="700">$</tspan> pip install cto-legends  ·  pypi v0.2.11</text>
+</svg>

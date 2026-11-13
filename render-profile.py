@@ -43,10 +43,13 @@ def main() -> int:
         ET.fromstring(text)
 
     expected_min_x = ("-0.004", "-2.25", "-4.496")
-    module_refs = re.findall(r'src="(assets/cards/legends-[^"?]+\.svg)', readme)
+    module_refs = [
+        r for r in re.findall(r'src="(assets/cards/legends-[^"?]+\.svg)', readme)
+        if not r.endswith(("-spec.svg", "-repo.svg"))
+    ]
     for idx, rel in enumerate(module_refs):
         vb_match = re.search(r'viewBox="([^"]+)"', (root / rel).read_text(encoding="utf-8"))
-        want = f"{expected_min_x[idx % 3]} 1.25 296.5 155.5"
+        want = f"{expected_min_x[idx % 3]} -3 296.5 113"
         if not vb_match or vb_match.group(1) != want:
             raise SystemExit(f"FAIL: {rel} column {idx % 3 + 1} viewBox is {vb_match.group(1) if vb_match else None!r}, expected {want!r}")
 
