@@ -20,7 +20,10 @@ import sys
 sys.dont_write_bytecode = True
 
 root = Path(__file__).resolve().parent
-cards = root / "assets" / "cards"
+# Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
+# visual change ships under a new folder: bump REV, git mv the files, rerun.
+REV = "r2"
+cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 
 GH = "https://github.com/avalonreset"
@@ -257,7 +260,7 @@ def render_flagship() -> None:
 
 
 def img(href: str, src: str, width: str, alt: str) -> str:
-    return f'<a href="{href}"><img src="assets/cards/{src}" width="{width}" align="top" alt="{alt}" /></a>'
+    return f'<a href="{href}"><img src="assets/cards/{REV}/{src}" width="{width}" align="top" alt="{alt}" /></a>'
 
 
 def readme_block(alts: dict, widths: dict) -> str:
@@ -271,7 +274,7 @@ def readme_block(alts: dict, widths: dict) -> str:
     out.append("  " + "<!--\n  -->".join(
         img(u, f"{f}.svg?v=2", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
         for i, (u, f, a) in enumerate(links)) + "<!--\n  -->"
-        + f'<img src="assets/cards/cto-legends-handoff-label.svg?v=1" width="100%" align="top" alt="agent handoff: {HANDOFF_NOTE[3:]}" />')
+        + f'<img src="assets/cards/{REV}/cto-legends-handoff-label.svg" width="100%" align="top" alt="agent handoff: {HANDOFF_NOTE[3:]}" />')
     out += [
         "</p>",
         "",

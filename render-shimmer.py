@@ -50,7 +50,8 @@ out.append(
 )
 svg = "\n".join(out)
 ET.fromstring(svg)
-(root / "assets/ecosystem-separator.svg").write_text(svg, encoding="utf-8")
+# Path tracks REV in render-cards.py.
+(root / "assets/cards/r2/ecosystem-separator.svg").write_text(svg, encoding="utf-8")
 assert "mask=" not in svg
 assert svg.count('class="flow ') == 80
 print("80 flowing filaments (x=1..714) + right-justified [license][open source] badge (x=728..885); XML valid.")

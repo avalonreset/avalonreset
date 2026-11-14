@@ -16,7 +16,7 @@ readme_path = root / "README.md"
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Validate avalonreset profile SVGs and README layout.")
-    ap.add_argument("--shimmer", action="store_true", help="Regenerate assets/ecosystem-separator.svg")
+    ap.add_argument("--shimmer", action="store_true", help="Regenerate the ecosystem separator")
     args = ap.parse_args()
 
     if args.shimmer:
@@ -44,7 +44,7 @@ def main() -> int:
 
     expected_min_x = ("0", "-5.5", "-11")
     module_refs = [
-        r for r in re.findall(r'src="(assets/cards/legends-[^"?]+\.svg)', readme)
+        r for r in re.findall(r'src="(assets/cards/(?:rd+/)?legends-[^"?]+\.svg)', readme)
         if not r.endswith(("-spec.svg", "-repo.svg"))
     ]
     for idx, rel in enumerate(module_refs):
