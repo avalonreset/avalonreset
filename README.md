@@ -8,9 +8,9 @@
 <!-- CARDS:START -->
 <p align="left">
   <a href="https://github.com/avalonreset/cto-legends"><img src="assets/cards/cto-legends.svg?v=8" width="100%" align="top" alt="cto-legends: Install this one package first - you never install the 21 modules below by hand. Gives your agent a compact ~650-token startup map and auto-installs SHA-256 verified CLIs on demand." /></a>
-  <a href="https://github.com/avalonreset/cto-legends#readme"><img src="assets/cards/cto-legends-repo.svg?v=3" width="33.33%" align="top" alt="cto-legends GitHub readme" /></a><!--
-  --><a href="https://github.com/avalonreset/cto-legends/releases"><img src="assets/cards/cto-legends-releases.svg?v=3" width="33.33%" align="top" alt="cto-legends releases" /></a><!--
-  --><a href="https://cto-legends.com"><img src="assets/cards/cto-legends-docs.svg?v=3" width="33.33%" align="top" alt="cto-legends agent handoff and docs" /></a>
+  <a href="https://github.com/avalonreset/cto-legends#readme"><img src="assets/cards/cto-legends-btn-readme.svg?v=1" width="33.33%" align="top" alt="cto-legends GitHub readme" /></a><!--
+  --><a href="https://github.com/avalonreset/cto-legends/releases"><img src="assets/cards/cto-legends-btn-releases.svg?v=1" width="33.33%" align="top" alt="cto-legends releases" /></a><!--
+  --><a href="https://cto-legends.com"><img src="assets/cards/cto-legends-btn-handoff.svg?v=1" width="33.33%" align="top" alt="cto-legends agent handoff and docs" /></a>
 </p>
 
 <sub><b>AGENT HANDOFF</b> &nbsp;·&nbsp; in a hurry? copy this into Claude Code, Codex or any coding agent</sub>

@@ -134,9 +134,9 @@ def render_flagship() -> None:
     fill = "#0c0507"
     divider = 'stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"'
     segs = [
-        ("cto-legends-repo", "GITHUB README  ↗", "#ffffff"),
-        ("cto-legends-releases", "RELEASES  ↗", "#e4e4e7"),
-        ("cto-legends-docs", 'AGENT HANDOFF &amp; DOCS  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
+        ("cto-legends-btn-readme", 'GITHUB README  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
+        ("cto-legends-btn-releases", 'RELEASES  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
+        ("cto-legends-btn-handoff", 'AGENT HANDOFF &amp; DOCS  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
     ]
     for i, (fname, label, color) in enumerate(segs):
         x0, x1 = FLAG_B[i], FLAG_B[i + 1]
@@ -166,12 +166,12 @@ def img(href: str, src: str, width: str, alt: str) -> str:
 def readme_block(alts: dict, widths: dict) -> str:
     out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends.svg?v=8", "100%", alts["cto-legends"])]
     links = [
-        (f"{GH}/cto-legends#readme", "cto-legends-repo", "cto-legends GitHub readme"),
-        (f"{GH}/cto-legends/releases", "cto-legends-releases", "cto-legends releases"),
-        (SITE, "cto-legends-docs", "cto-legends agent handoff and docs"),
+        (f"{GH}/cto-legends#readme", "cto-legends-btn-readme", "cto-legends GitHub readme"),
+        (f"{GH}/cto-legends/releases", "cto-legends-btn-releases", "cto-legends releases"),
+        (SITE, "cto-legends-btn-handoff", "cto-legends agent handoff and docs"),
     ]
     out.append("  " + "<!--\n  -->".join(
-        img(u, f"{f}.svg?v=3", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
+        img(u, f"{f}.svg?v=1", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
         for i, (u, f, a) in enumerate(links)))
     out += [
         "</p>",
