@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r6"
+REV = "r9"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -152,7 +152,7 @@ CHIP = 'fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"'
 
 FLAG_W, FLAG_BOTTOM, FLAG_FOOT_H = 886, 118, 32
 FLAG_B = [0, FLAG_W / 3, FLAG_W * 2 / 3, FLAG_W]  # equal thirds
-RED = 'stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"'
+RED = 'stroke="#ff0000" stroke-opacity="0.68" stroke-width="1"'
 GAP16, GAP32 = 16 / K_WIDE, 32 / K_WIDE  # spacing system, in wide-panel units
 
 
@@ -207,7 +207,7 @@ def render_banner() -> None:
         "  <!-- Site link, tucked bottom right -->\n"
         + t.run(cta_x, FRAME_B, cs, "cto-legends.com", "#ffffff", "500")
         + f'  <path d="M{ax:.2f} {ay:.2f} L{ax + 9.5:.2f} {ay - 9.5:.2f} M{ax + 2.5:.2f} {ay - 9.5:.2f} H{ax + 9.5:.2f} V{ay - 2.5:.2f}" '
-        'stroke="#ff2738" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none" />\n'
+        'stroke="#ff0000" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none" />\n'
     )
     out = head + t.defs() + pill + "\n" + title + "\n" + rail + subs + cursor + cta + "</svg>\n"
     (cards / "banner.svg").write_text(out, encoding="utf-8")
@@ -219,13 +219,13 @@ def render_bar() -> None:
     t = Typesetter()
     lb = u("label", K_WIDE)
     c_w = width("community", lb) + 24
-    p_txt = '<tspan fill="#ffffff">ai-marketing-hub-pro</tspan><tspan fill="#f87171"> ↗</tspan>'
+    p_txt = '<tspan fill="#ffffff">ai-marketing-hub-pro</tspan><tspan fill="#ff0000"> ↗</tspan>'
     p_w = width(p_txt, lb) + 28
     body = (
         f'  <rect x="1" y="3" width="{c_w:.2f}" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>\n'
         + t.run(1 + c_w / 2, 18.4, lb, "community", "#a1a1aa", "600", "middle")
         + f'  <rect x="{c_w + 3:.2f}" y="3" width="{p_w:.2f}" height="24" rx="3" fill="#1f070b" {RED}/>\n'
-        + f'  <rect x="{c_w + 3:.2f}" y="3" width="2.5" height="24" rx="1" fill="#ef4444"/>\n'
+        + f'  <rect x="{c_w + 3:.2f}" y="3" width="2.5" height="24" rx="1" fill="#ff0000"/>\n'
         + t.run(c_w + 3 + 1.25 + p_w / 2, 18.4, lb, p_txt, "#ffffff", "700", "middle")
         + t.run(c_w + 3 + p_w + 12, 18.4, lb, BAR_TAGLINE, "#ffffff", "600")
     )
@@ -254,7 +254,7 @@ def render_overview() -> str:
     deepest = 0
     for i, (num, head, text) in enumerate(STEPS):
         cx = x0 + i * (col + gap)
-        body += t.run(cx, top, lb, num, "#f87171", "700")
+        body += t.run(cx, top, lb, num, "#ff0000", "700")
         body += t.run(cx + width(num, lb) + 9, top, ti, head, "#ffffff", "700")
         lines = wrap(text, bd, col, 3)
         for j, ln in enumerate(lines):
@@ -275,7 +275,7 @@ def render_overview() -> str:
         body += f'  <rect x="{cx:.2f}" y="{chip_top:.2f}" width="{w:.2f}" height="19" rx="3" {CHIP}/>\n'
         body += t.run(cx + w / 2, base, lb, a, "#e4e4e7", "600", "middle")
         cx += w + 6
-    body += t.run(x1, base, lb, "zero context bloat", "#f87171", "600", "end")
+    body += t.run(x1, base, lb, "zero context bloat", "#ff0000", "600", "end")
     panel_b = chip_top + 19 + 10
     frame = f'  <rect x="1" y="2" width="884" height="{panel_b - 2:.2f}" rx="4" fill="#000000" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>\n'
     # 32px to the flagship: 16px here + the 16px margin of the README <p> that holds the cards.
@@ -319,7 +319,7 @@ def render_module(name: str, col: int) -> tuple:
         f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT} V0 Z" fill="#000000"/>\n'
         f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT}" fill="none" {BORDER}/>\n'
         f'  <line x1="14" y1="0.5" x2="{SPLIT}" y2="0.5" {HAIR}/>\n'
-        + button(tl, (1 + SPLIT) / 2, 18.6, "#f87171", "ENGINEERING SPEC →", lb)
+        + button(tl, (1 + SPLIT) / 2, 18.6, "#ff0000", "ENGINEERING SPEC →", lb)
     )
     right = (
         f'  <path d="M{SPLIT} 0 V{b} H287 A4 4 0 0 0 291 {b - 4} V0 Z" fill="#000000"/>\n'
@@ -340,29 +340,30 @@ def render_flagship() -> None:
     s = path.read_text(encoding="utf-8")
     t = Typesetter()
     hd, bd = u("head", K_WIDE), u("body", K_WIDE)
-    lines = wrap(FLAG_LEAD + " " + FLAG_BODY, bd, 716 - 20, 3)
-    assert lines[0].startswith(FLAG_LEAD), "lead must open line 1"
-    lines[0] = f'<tspan fill="#ffffff" font-weight="700">{FLAG_LEAD}</tspan>{lines[0][len(FLAG_LEAD):]}'
+    # The portrait is square art, so its slot is square (side = card height): the whole image shows,
+    # edge to edge, with no crop. The copy column runs to a 20u gutter before it.
+    px0 = 885 - (FLAG_BOTTOM - 2)
+    # The bold lead stands alone on line 1; the body takes lines 2 and 3.
+    lines = [f'<tspan fill="#ffffff" font-weight="700">{FLAG_LEAD}</tspan>'] + wrap(FLAG_BODY, bd, px0 - 20 - 20, 2)
     runs = (
         t.run(20, 30, hd, FLAG_TITLE, "#ffffff", "700")
-        + t.run(20 + width(FLAG_TITLE, hd) + 12, 30, bd, FLAG_TAG, "#fca5a5", "600")
+        + t.run(20 + width(FLAG_TITLE, hd) + 12, 30, bd, FLAG_TAG, "#ff0000", "600")
         + "".join(t.run(20, 60 + 18 * i, bd, ln, "#d4d4d8") for i, ln in enumerate(lines))
     )
-    block = "  <!-- Left Content Column (x=20..716) -->\n" + t.defs() + runs + "\n"
+    block = f"  <!-- Left Content Column (x=20..{px0 - 20}) -->\n" + t.defs() + runs + "\n"
     s, n = re.subn(r"  <!-- Left Content Column.*?(?=  <!-- Right Tucked)", lambda _: block, s, count=1, flags=re.S)
     if n != 1:
         raise SystemExit("FAIL: flagship SVG markers missing")
     # Portrait: full bleed into the card's right edge, top border to footer seam, no frame.
     # Clipped to the card's rounded top-right corner; a 20u gutter separates it from the copy.
     href = re.search(r'<image [^>]*href="([^"]+)"', s).group(1)
-    px0 = 716 + 20
     edge = f"M{px0} 2 H881 A4 4 0 0 1 885 6 V{FLAG_BOTTOM}"
     s = re.sub(r'<clipPath id="babe-clip">.*?</clipPath>',
                f'<clipPath id="babe-clip"><path d="{edge} H{px0} Z"/></clipPath>', s, count=1, flags=re.S)
     portrait = (
         "  <!-- Right Tucked Operator Portrait (full bleed) -->\n"
         f'  <image x="{px0}" y="2" width="{885 - px0}" height="{FLAG_BOTTOM - 2}" clip-path="url(#babe-clip)" '
-        f'preserveAspectRatio="xMidYMax slice" href="{href}"/>\n'
+        f'preserveAspectRatio="xMidYMid slice" href="{href}"/>\n'
         f'  <path d="{edge}" fill="none" {RED}/>\n'
     )
     s = re.sub(r"  <!-- Right Tucked.*?(?=</svg>)", lambda _: portrait, s, count=1, flags=re.S)
@@ -371,11 +372,11 @@ def render_flagship() -> None:
 
     b = FLAG_FOOT_H - 0.5
     fill = "#0c0507"
-    divider = 'stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"'
+    divider = 'stroke="#ff0000" stroke-opacity="0.30" stroke-width="1"'
     segs = [
-        ("cto-legends-foot-readme", 'GITHUB README  <tspan fill="#f87171">↗</tspan>'),
-        ("cto-legends-foot-releases", 'RELEASES  <tspan fill="#f87171">↗</tspan>'),
-        ("cto-legends-foot-handoff", 'DOCS &amp; AGENT HANDOFF  <tspan fill="#f87171">↗</tspan>'),
+        ("cto-legends-foot-readme", 'GITHUB README  <tspan fill="#ff0000">↗</tspan>'),
+        ("cto-legends-foot-releases", 'RELEASES  <tspan fill="#ff0000">↗</tspan>'),
+        ("cto-legends-foot-handoff", 'DOCS &amp; AGENT HANDOFF  <tspan fill="#ff0000">↗</tspan>'),
     ]
     for i, (fname, label) in enumerate(segs):
         x0, x1 = FLAG_B[i], FLAG_B[i + 1]
@@ -400,7 +401,7 @@ def render_flagship() -> None:
     # Handoff label: 24px above (from the flagship footer), 16px below (README <p> margin).
     t = Typesetter()
     ti = u("title", K_WIDE)
-    label = (t.run(2, 0, ti, "&gt;_", "#ef4444", "700")
+    label = (t.run(2, 0, ti, "&gt;_", "#ff0000", "700")
              + t.run(2 + width("&gt;_", ti) + 8, 0, ti, "agent handoff", "#ffffff", "700")
              + t.run(2 + width("&gt;_", ti) + 8 + width("agent handoff", ti) + 12, 0, bd, HANDOFF_NOTE, "#a1a1aa"))
     top = ti * CAP + 24 / K_WIDE

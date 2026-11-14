@@ -13,7 +13,7 @@ root = Path(__file__).parent
 rng = random.Random(20260925)
 out = ['''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -8.2 886 41.7" width="100%">
 <defs>
-<linearGradient id="light"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".2" stop-color="#bd101f" stop-opacity=".2"/><stop offset=".48" stop-color="#ff2738" stop-opacity=".75"/><stop offset=".62" stop-color="#fff"/><stop offset=".73" stop-color="#ff3645" stop-opacity=".8"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
+<linearGradient id="light"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".2" stop-color="#c00000" stop-opacity=".2"/><stop offset=".48" stop-color="#ff0000" stop-opacity=".75"/><stop offset=".62" stop-color="#fff"/><stop offset=".73" stop-color="#ff1a1a" stop-opacity=".8"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
 <clipPath id="crop"><rect x="1" y="0" width="713" height="36"/></clipPath></defs><style>''']
 layers = []
 for rail in range(8):
@@ -49,15 +49,15 @@ T = Typesetter()
 chips = (
     '  <rect x="728" y="6" width="58" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>\n'
     + T.run(757, 21.4, 9.62, "license", "#a1a1aa", "600", "middle")
-    + '  <rect x="788" y="6" width="97" height="24" rx="3" fill="#1f070b" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>\n'
-    '  <rect x="788" y="6" width="2.5" height="24" rx="1" fill="#ef4444"/>\n'
+    + '  <rect x="788" y="6" width="97" height="24" rx="3" fill="#1f070b" stroke="#ff0000" stroke-opacity="0.68" stroke-width="1"/>\n'
+    '  <rect x="788" y="6" width="2.5" height="24" rx="1" fill="#ff0000"/>\n'
     + T.run(837.5, 21.4, 9.62, "open source", "#ffffff", "700", "middle")
 )
 out.append(T.defs() + chips + "</svg>")
 svg = "\n".join(out)
 ET.fromstring(svg)
 # Path tracks REV in render-cards.py.
-(root / "assets/cards/r6/ecosystem-separator.svg").write_text(svg, encoding="utf-8")
+(root / "assets/cards/r9/ecosystem-separator.svg").write_text(svg, encoding="utf-8")
 assert "mask=" not in svg
 assert svg.count('class="flow ') == 80
 print("80 flowing filaments (x=1..714) + right-justified [license][open source] badge (x=728..885); XML valid.")
