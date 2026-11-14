@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 354.4 32" width="100%">
-  <path d="M1 0 V27.5 A4 4 0 0 0 5 31.5 H354.4 V0 Z" fill="#0c0507"/>
-  <path d="M1 0 V27.5 A4 4 0 0 0 5 31.5 H354.4" fill="none" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
-  <rect x="1" y="0" width="4" height="28.5" fill="#ef4444"/>
-  <line x1="5" y1="0.5" x2="354.4" y2="0.5" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
-  <text x="179.7" y="20.4" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.4" font-weight="700" text-anchor="middle"><tspan fill="#f87171" font-weight="700">$</tspan> pip install cto-legends  ·  pypi v0.2.11</text>
-</svg>

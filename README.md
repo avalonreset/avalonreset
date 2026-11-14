@@ -8,9 +8,18 @@
 <!-- CARDS:START -->
 <p align="left">
   <a href="https://github.com/avalonreset/cto-legends"><img src="assets/cards/cto-legends.svg?v=8" width="100%" align="top" alt="cto-legends: Install this one package first - you never install the 21 modules below by hand. Gives your agent a compact ~650-token startup map and auto-installs SHA-256 verified CLIs on demand." /></a>
-  <a href="https://pypi.org/project/cto-legends/"><img src="assets/cards/cto-legends-pip.svg?v=2" width="40.00%" align="top" alt="pip install cto-legends on PyPI" /></a><!--
-  --><a href="https://github.com/avalonreset/cto-legends#readme"><img src="assets/cards/cto-legends-repo.svg?v=2" width="30.00%" align="top" alt="cto-legends GitHub readme" /></a><!--
-  --><a href="https://cto-legends.com"><img src="assets/cards/cto-legends-docs.svg?v=2" width="30.00%" align="top" alt="cto-legends agent handoff and docs" /></a>
+  <a href="https://github.com/avalonreset/cto-legends#readme"><img src="assets/cards/cto-legends-repo.svg?v=3" width="33.33%" align="top" alt="cto-legends GitHub readme" /></a><!--
+  --><a href="https://github.com/avalonreset/cto-legends/releases"><img src="assets/cards/cto-legends-releases.svg?v=3" width="33.33%" align="top" alt="cto-legends releases" /></a><!--
+  --><a href="https://cto-legends.com"><img src="assets/cards/cto-legends-docs.svg?v=3" width="33.33%" align="top" alt="cto-legends agent handoff and docs" /></a>
+</p>
+
+<sub><b>AGENT HANDOFF</b> &nbsp;·&nbsp; in a hurry? copy this into Claude Code, Codex or any coding agent</sub>
+
+```text
+Set up https://github.com/avalonreset/cto-legends and check which modules apply to this workspace.
+```
+
+<p align="left">
   <a href="https://github.com/avalonreset/legends-empire"><img src="assets/cards/legends-empire.svg?v=6" width="33.33%" align="top" alt="legends-empire: Govern your local Obsidian and Markdown vault with SHA-256 file integrity locks, crash-safe write transactions, and read-only stewardship audits." /></a><!--
   --><a href="https://github.com/avalonreset/legends-astro"><img src="assets/cards/legends-astro.svg?v=6" width="33.33%" align="top" alt="legends-astro: Migrate WordPress, Next.js, or legacy HTML sites to Astro v7 with a pre-build route and SEO parity contract, offline docs, and post-build verification." /></a><!--
   --><a href="https://github.com/avalonreset/legends-hetzner"><img src="assets/cards/legends-hetzner.svg?v=6" width="33.33%" align="top" alt="legends-hetzner: Scan live European and US Hetzner Cloud stock, compare cost-optimized x86 and ARM64 sizing, and enforce 10-check preflight provisioning plans." /></a>

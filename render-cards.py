@@ -48,16 +48,18 @@ SPLIT = 146  # card spans x=1..291
 BORDER = 'stroke="#ffffff" stroke-opacity="0.09" stroke-width="1"'
 
 FLAG_W, FLAG_BOTTOM, FLAG_FOOT_H = 886, 118, 32
-FLAG_B = [0, 354.4, 620.2, FLAG_W]
+FLAG_B = [0, FLAG_W / 3, FLAG_W * 2 / 3, FLAG_W]  # equal thirds
 RED = 'stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"'
 
 
+HANDOFF = f"Set up {GH}/cto-legends and check which modules apply to this workspace."
+PLAIN = re.compile(r"<[^>]+>|&[a-z]+;")
 SPACED = ' letter-spacing="1.3"'  # small-caps button labels
 
 
 def text(x: float, y: float, fill: str, label: str, size: float = 10, weight: str = "600") -> str:
     return (f'  <text x="{x:g}" y="{y:g}" fill="{fill}" font-family="{FONT}" font-size="{size}" '
-            f'font-weight="{weight}"{SPACED if label.isupper() else ""} text-anchor="middle">{label}</text>\n')
+            f'font-weight="{weight}"{SPACED if PLAIN.sub("", label).isupper() else ""} text-anchor="middle">{label}</text>\n')
 
 
 def svg(vb: str, body: str) -> str:
@@ -132,9 +134,9 @@ def render_flagship() -> None:
     fill = "#0c0507"
     divider = 'stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"'
     segs = [
-        ("cto-legends-pip", '<tspan fill="#f87171" font-weight="700">$</tspan> pip install cto-legends  ·  pypi v0.2.11', "#ffffff"),
-        ("cto-legends-repo", "github readme  ↗", "#e4e4e7"),
-        ("cto-legends-docs", '1-click agent handoff &amp; docs  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
+        ("cto-legends-repo", "GITHUB README  ↗", "#ffffff"),
+        ("cto-legends-releases", "RELEASES  ↗", "#e4e4e7"),
+        ("cto-legends-docs", 'AGENT HANDOFF &amp; DOCS  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
     ]
     for i, (fname, label, color) in enumerate(segs):
         x0, x1 = FLAG_B[i], FLAG_B[i + 1]
@@ -153,8 +155,8 @@ def render_flagship() -> None:
             body += f'  <line x1="{x0 + 0.5:g}" y1="0" x2="{x0 + 0.5:g}" y2="{b}" {divider}/>\n'
         body += f'  <line x1="{max(x0, 5):g}" y1="0.5" x2="{min(x1, 884.5):g}" y2="0.5" {divider}/>\n'
         cx = ((5 if i == 0 else x0) + (885 if i == 2 else x1)) / 2
-        body += text(cx, 20.4, color, label, size=10.4, weight="700")
-        (cards / f"{fname}.svg").write_text(svg(f"{x0:g} 0 {x1 - x0:g} {FLAG_FOOT_H}", body), encoding="utf-8")
+        body += text(cx, 20.4, color, label, size=9.4, weight="700")
+        (cards / f"{fname}.svg").write_text(svg(f"{x0:.3f} 0 {x1 - x0:.3f} {FLAG_FOOT_H}", body), encoding="utf-8")
 
 
 def img(href: str, src: str, width: str, alt: str) -> str:
@@ -164,13 +166,24 @@ def img(href: str, src: str, width: str, alt: str) -> str:
 def readme_block(alts: dict, widths: dict) -> str:
     out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends.svg?v=8", "100%", alts["cto-legends"])]
     links = [
-        ("https://pypi.org/project/cto-legends/", "cto-legends-pip", "pip install cto-legends on PyPI"),
         (f"{GH}/cto-legends#readme", "cto-legends-repo", "cto-legends GitHub readme"),
+        (f"{GH}/cto-legends/releases", "cto-legends-releases", "cto-legends releases"),
         (SITE, "cto-legends-docs", "cto-legends agent handoff and docs"),
     ]
     out.append("  " + "<!--\n  -->".join(
-        img(u, f"{f}.svg?v=2", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
+        img(u, f"{f}.svg?v=3", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
         for i, (u, f, a) in enumerate(links)))
+    out += [
+        "</p>",
+        "",
+        "<sub><b>AGENT HANDOFF</b> &nbsp;·&nbsp; in a hurry? copy this into Claude Code, Codex or any coding agent</sub>",
+        "",
+        "```text",
+        HANDOFF,
+        "```",
+        "",
+        '<p align="left">',
+    ]
     for r in range(0, len(MODULES), 3):
         trio = MODULES[r:r + 3]
         out.append("  " + "<!--\n  -->".join(
