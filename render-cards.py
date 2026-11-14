@@ -113,7 +113,7 @@ def render_module(name: str, col: int) -> tuple[str, str]:
 
 
 def render_flagship() -> None:
-    path = cards / "cto-legends.svg"
+    path = cards / "cto-legends-flagship.svg"
     s = path.read_text(encoding="utf-8")
     if "<!-- seam-v2 -->" not in s:
         s = re.sub(r'viewBox="0 0 886 [0-9.]+"', f'viewBox="0 0 886 {FLAG_BOTTOM}"', s, count=1)
@@ -134,9 +134,9 @@ def render_flagship() -> None:
     fill = "#0c0507"
     divider = 'stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"'
     segs = [
-        ("cto-legends-btn-readme", 'GITHUB README  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
-        ("cto-legends-btn-releases", 'RELEASES  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
-        ("cto-legends-btn-handoff", 'AGENT HANDOFF &amp; DOCS  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
+        ("cto-legends-foot-readme", 'GITHUB README  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
+        ("cto-legends-foot-releases", 'RELEASES  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
+        ("cto-legends-foot-handoff", 'AGENT HANDOFF &amp; DOCS  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
     ]
     for i, (fname, label, color) in enumerate(segs):
         x0, x1 = FLAG_B[i], FLAG_B[i + 1]
@@ -163,14 +163,14 @@ def img(href: str, src: str, width: str, alt: str) -> str:
 
 
 def readme_block(alts: dict, widths: dict) -> str:
-    out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends.svg?v=9", "100%", alts["cto-legends"])]
+    out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends-flagship.svg?v=1", "100%", alts["cto-legends"])]
     links = [
-        (f"{GH}/cto-legends#readme", "cto-legends-btn-readme", "cto-legends GitHub readme"),
-        (f"{GH}/cto-legends/releases", "cto-legends-btn-releases", "cto-legends releases"),
-        (SITE, "cto-legends-btn-handoff", "cto-legends agent handoff and docs"),
+        (f"{GH}/cto-legends#readme", "cto-legends-foot-readme", "cto-legends GitHub readme"),
+        (f"{GH}/cto-legends/releases", "cto-legends-foot-releases", "cto-legends releases"),
+        (SITE, "cto-legends-foot-handoff", "cto-legends agent handoff and docs"),
     ]
     out.append("  " + "<!--\n  -->".join(
-        img(u, f"{f}.svg?v=2", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
+        img(u, f"{f}.svg?v=1", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
         for i, (u, f, a) in enumerate(links)))
     out += [
         "</p>",
