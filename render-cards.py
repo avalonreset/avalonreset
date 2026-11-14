@@ -9,7 +9,7 @@ Page story, one job per element:
   handoff     the copyable agent prompt (the only >_ on the page: it is a paste-into-terminal action)
   modules     heading, separator, then the 21 module cards
 
-All text is outlined from IBM Plex Mono by typeset.py, so metrics are identical on every OS
+All text is outlined from the Legends Font by typeset.py, so metrics are identical on every OS
 and wrap() is exact. Module cards are a body image plus a footer cut into separate link
 images; align="top" removes the inline-image baseline gap so the pieces join with no seam.
 
@@ -21,12 +21,12 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from typeset import EM, Typesetter, width  # noqa: E402
+from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r5"
+REV = "r6"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -154,7 +154,6 @@ FLAG_W, FLAG_BOTTOM, FLAG_FOOT_H = 886, 118, 32
 FLAG_B = [0, FLAG_W / 3, FLAG_W * 2 / 3, FLAG_W]  # equal thirds
 RED = 'stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"'
 GAP16, GAP32 = 16 / K_WIDE, 32 / K_WIDE  # spacing system, in wide-panel units
-CAP = 0.698  # Plex Mono cap height per em
 
 
 def svg(vb: str, body: str, t: Typesetter = None) -> str:
@@ -191,7 +190,7 @@ def render_banner() -> None:
         f'  <circle cx="{cx:.2f}" cy="{cy:.2f}" r="4.5" fill="#ff0000" class="beacon" />\n'
         + t.run(tx, base, sz, BANNER_PILL, "#ffffff", "600")
     )
-    # Title keeps the original Legends wordmark glyphs from the template, not outlined Plex Bold.
+    # Title keeps the original Legends wordmark glyphs from the template, not re-outlined.
     title = src[src.index("  <!-- Title: cto-legends"):src.index("  <!-- Divider Rail Base")].rstrip() + "\n"
     subs = ("  <!-- What it is / what you get -->\n"
             + t.run(50, 195, 28, BANNER_L1, "#ffffff", "500")
@@ -363,7 +362,7 @@ def render_flagship() -> None:
     portrait = (
         "  <!-- Right Tucked Operator Portrait (full bleed) -->\n"
         f'  <image x="{px0}" y="2" width="{885 - px0}" height="{FLAG_BOTTOM - 2}" clip-path="url(#babe-clip)" '
-        f'preserveAspectRatio="xMidYMid slice" href="{href}"/>\n'
+        f'preserveAspectRatio="xMidYMax slice" href="{href}"/>\n'
         f'  <path d="{edge}" fill="none" {RED}/>\n'
     )
     s = re.sub(r"  <!-- Right Tucked.*?(?=</svg>)", lambda _: portrait, s, count=1, flags=re.S)
@@ -484,7 +483,7 @@ def main() -> int:
     readme = splice(readme, "HEADER", header_block(overview_alt))
     readme = splice(readme, "CARDS", cards_block(widths))
     readme_path.write_text(readme, encoding="utf-8")
-    print(f"Rendered banner, bar, overview, flagship, heading and {len(MODULES)} module cards (outlined IBM Plex Mono).")
+    print(f"Rendered banner, bar, overview, flagship, heading and {len(MODULES)} module cards (outlined {FONT}).")
     return 0
 
 
