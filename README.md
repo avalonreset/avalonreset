@@ -1,8 +1,8 @@
 <p align="left">
-  <a href="https://cto-legends.com"><img src="assets/banner.svg?v=5" width="100%" alt="cto-legends: capability discovery and execution routing for the open-source legends ecosystem" /></a>
-  <a href="https://www.skool.com/ai-marketing-hub-pro"><img src="assets/bar-community.svg?v=5" width="100%" alt="community: ai-marketing-hub-pro - carefully designed to voltron into the world's greatest agentic digital marketing system" /></a>
-  <a href="https://github.com/avalonreset/cto-legends"><img src="assets/overview-panel.svg?v=8" width="100%" alt="cto-legends architecture" /></a>
-  <a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="assets/ecosystem-separator.svg?v=5" width="100%" alt="license: open source" /></a>
+  <a href="https://cto-legends.com"><img src="assets/banner.svg?v=5" width="100%" align="top" alt="cto-legends: capability discovery and execution routing for the open-source legends ecosystem" /></a><!--
+  --><a href="https://www.skool.com/ai-marketing-hub-pro"><img src="assets/bar-community.svg?v=6" width="100%" align="top" alt="community: ai-marketing-hub-pro - carefully designed to voltron into the world's greatest agentic digital marketing system" /></a><!--
+  --><a href="https://github.com/avalonreset/cto-legends"><img src="assets/overview-panel.svg?v=9" width="100%" align="top" alt="cto-legends architecture" /></a><!--
+  --><a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="assets/ecosystem-separator.svg?v=6" width="100%" align="top" alt="license: open source" /></a>
 </p>
 
 <!-- CARDS:START -->
