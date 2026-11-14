@@ -49,7 +49,7 @@ def main() -> int:
     ]
     for idx, rel in enumerate(module_refs):
         vb_match = re.search(r'viewBox="([^"]+)"', (root / rel).read_text(encoding="utf-8"))
-        want = f"{expected_min_x[idx % 3]} -16 303 124"
+        want = f"{expected_min_x[idx % 3]} -16 303 126"
         if not vb_match or vb_match.group(1) != want:
             raise SystemExit(f"FAIL: {rel} column {idx % 3 + 1} viewBox is {vb_match.group(1) if vb_match else None!r}, expected {want!r}")
 

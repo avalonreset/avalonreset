@@ -165,8 +165,8 @@
 <g class="flow f79" opacity="0.433"><path d="M0 31.45 C53.40 30.55 124.60 32.35 178 31.45" stroke="url(#light)" stroke-width="3.8" opacity=".12"/><path d="M0 31.45 C53.40 30.55 124.60 32.35 178 31.45" stroke="url(#light)" stroke-width="0.71"/></g>
 </g>
   <rect x="728" y="6" width="58" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="757" y="21.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="600" text-anchor="middle">license</text>
+  <text x="757" y="21.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">license</text>
   <rect x="788" y="6" width="97" height="24" rx="3" fill="#1f070b" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
   <rect x="788" y="6" width="2.5" height="24" rx="1" fill="#ef4444"/>
-  <text x="837.5" y="21.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700" text-anchor="middle">open source</text>
+  <text x="837.5" y="21.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="700" text-anchor="middle">open source</text>
 </svg>

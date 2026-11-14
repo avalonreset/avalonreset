@@ -42,10 +42,10 @@ out.extend(layers)
 out.append("</g>")
 out.append(
     '  <rect x="728" y="6" width="58" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>\n'
-    '  <text x="757" y="21.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, \'SF Mono\', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="600" text-anchor="middle">license</text>\n'
+    '  <text x="757" y="21.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, \'SF Mono\', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">license</text>\n'
     '  <rect x="788" y="6" width="97" height="24" rx="3" fill="#1f070b" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>\n'
     '  <rect x="788" y="6" width="2.5" height="24" rx="1" fill="#ef4444"/>\n'
-    '  <text x="837.5" y="21.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, \'SF Mono\', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700" text-anchor="middle">open source</text>\n'
+    '  <text x="837.5" y="21.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, \'SF Mono\', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="700" text-anchor="middle">open source</text>\n'
     "</svg>"
 )
 svg = "\n".join(out)

@@ -27,6 +27,68 @@ GH = "https://github.com/avalonreset"
 SITE = "https://cto-legends.com"
 FONT = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace"
 
+# Type scale, in rendered px at GitHub's ~829px README width. Four sizes only:
+#   head 14 (section headings) / title 12 (card titles) / body 11 (prose) / label 9 (chips, meta, buttons)
+# lowercase label = information; UPPERCASE letter-spaced label = clickable action; an arrow = a link.
+TYPE = {"head": 14, "title": 12, "body": 11, "label": 9}
+K_CARD = 829 * 0.3333 / 303  # px per SVG unit, module cards
+K_WIDE = 829 / 886           # px per SVG unit, full-width panels
+MONO_EM = 0.6025             # widest advance in the font stack (SF Mono / Menlo)
+
+
+def u(role: str, k: float) -> float:
+    return round(TYPE[role] / k, 2)
+
+
+def wrap(text: str, size: float, width: float, lines: int) -> list:
+    """Greedy wrap at spaces only (never mid-word or at hyphens); fail loudly on overflow."""
+    cap = int(width / (size * MONO_EM))
+    out, cur = [], ""
+    for w in text.split():
+        if cur and len(cur) + 1 + len(w) > cap:
+            out.append(cur)
+            cur = w
+        else:
+            cur = f"{cur} {w}" if cur else w
+    out.append(cur)
+    if len(out) > lines:
+        raise SystemExit(f"FAIL: copy needs {len(out)} lines (max {lines}, {cap} chars): {text}")
+    return out
+
+
+# Module card copy: (category, license, one outcome-first sentence, 3 lines max).
+COPY = {
+    "legends-empire": ("foundation", "mit", "Turn your Obsidian vault into agent memory, with SHA-256 integrity locks and crash-safe writes."),
+    "legends-astro": ("foundation", "mit", "Move WordPress, Next.js, or HTML sites to Astro with every route and SEO tag accounted for."),
+    "legends-hetzner": ("infrastructure", "mit", "Check live Hetzner stock in the EU and US, size servers for cost, and preflight every build."),
+    "legends-coolify": ("infrastructure", "mit", "Audit your Coolify servers read-only: containers, deploy queues, env keys, and backups."),
+    "legends-cloudflare": ("infrastructure", "mit", "Change Cloudflare DNS without surprises: preview each edit, keep proxy settings, confirm it is live."),
+    "legends-stripe": ("infrastructure", "mit", "Keep Stripe in sync: match Test and Live prices, reconcile fees to the cent, and verify webhooks."),
+    "legends-buzz": ("infrastructure", "mit", "Run self-hosted Block Buzz Nostr relays from the command line, with no MCP daemon to babysit."),
+    "legends-gohighlevel": ("infrastructure", "mit", "Run GoHighLevel agencies at scale: batch-clone snapshots, X-ray workflows, lock down permissions."),
+    "legends-github": ("intelligence", "mit", "Keep repos launch-ready: health audits, verified releases, and topics matched to search demand."),
+    "legends-jev": ("infrastructure", "mit", "Give your agent eyes: local OCR, exact pixel coordinates, and storefront sign checks."),
+    "legends-geogrid": ("intelligence", "mit", "Map local Google Maps rankings across a circular grid at wholesale rates, with 21-page PDF reports."),
+    "legends-dataforseo": ("intelligence", "mit", "Pull Google SERPs, Maps listings, and keyword volume from DataForSEO, cost previewed first."),
+    "legends-firecrawl": ("intelligence", "mit", "Turn JavaScript-heavy sites into clean Markdown with preview-first, bounded Firecrawl crawls."),
+    "legends-grant": ("intelligence", "mit", "Find grants across 56 US jurisdictions and check every eligibility rule word for word."),
+    "legends-obs": ("studio", "mit", "Drive OBS Studio from your agent: scene switching, encoder checks, profile backups, and test clips."),
+    "legends-captions": ("studio", "mit", "Frame-accurate, word-by-word subtitles for 4K60 video, with tech terms and acronyms spelled right."),
+    "legends-youtube": ("studio", "mit", "Run YouTube channels through the official APIs: safe metadata edits, CTR audits, private uploads."),
+    "legends-yt-dlp": ("studio", "mit", "Pull video, audio, and transcripts in paced, resumable batches, then cut clips frame-accurate."),
+    "legends-stable-audio-3": ("studio", "apache-2.0", "Make custom instrumental music on your own GPU and blend it into seamless multi-hour mixes."),
+    "legends-hyperyap": ("studio", "agpl-3.0", "Push-to-talk dictation that runs offline on your GPU and types into any app on Windows, macOS, or Linux."),
+    "legends-ambient-intelligence": ("studio", "mit", "Turn voice recorder and meeting audio into structured Obsidian notes, entirely offline."),
+}
+
+# Flagship card copy (886-unit panel; body column x=20..716).
+FLAG_TAG = "// start here"
+FLAG_PILL = "1 install unlocks all 21 modules"
+FLAG_LEAD = "Install this one package. Never install the 21 modules below by hand."
+FLAG_BODY = ("Your agent starts with a ~650-token map of every tool instead of 50,000 tokens of MCP schemas, "
+             "then installs the exact module a task calls for, SHA-256 verified, the moment it is needed.")
+HANDOFF_NOTE = "// in a hurry? paste this into claude code, codex, or any coding agent"
+
 MODULES = [
     "legends-empire", "legends-astro", "legends-hetzner",
     "legends-coolify", "legends-cloudflare", "legends-stripe",
@@ -42,7 +104,7 @@ MODULES = [
 COL_W = 303
 COL_MIN_X = (0, (292 - COL_W) / 2, 292 - COL_W)
 COL_PCT = 33.33
-BODY_TOP, BODY_BOTTOM = -16, 108  # top margin separates card rows; bottom is the seam
+BODY_TOP, BODY_BOTTOM = -16, 110  # top margin separates card rows; bottom is the seam
 FOOT_H = 30
 SPLIT = 146  # card spans x=1..291
 BORDER = 'stroke="#ffffff" stroke-opacity="0.09" stroke-width="1"'
@@ -54,12 +116,18 @@ RED = 'stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"'
 
 HANDOFF = f"Set up {GH}/cto-legends and check which modules apply to this workspace."
 PLAIN = re.compile(r"<[^>]+>|&[a-z]+;")
-SPACED = ' letter-spacing="1.3"'  # small-caps button labels
 
 
 def text(x: float, y: float, fill: str, label: str, size: float = 10, weight: str = "600") -> str:
+    spaced = f' letter-spacing="{size * 0.1:.2f}"' if PLAIN.sub("", label).isupper() else ""
     return (f'  <text x="{x:g}" y="{y:g}" fill="{fill}" font-family="{FONT}" font-size="{size}" '
-            f'font-weight="{weight}"{SPACED if PLAIN.sub("", label).isupper() else ""} text-anchor="middle">{label}</text>\n')
+            f'font-weight="{weight}"{spaced} text-anchor="middle">{label}</text>\n')
+
+
+def ltext(x: float, y: float, fill: str, body: str, size: float, weight: str = "400", anchor: str = "start") -> str:
+    a = "" if anchor == "start" else f' text-anchor="{anchor}"'
+    return (f'  <text x="{x:g}" y="{y:g}" fill="{fill}" font-family="{FONT}" font-size="{size}" '
+            f'font-weight="{weight}"{a}>{body}</text>\n')
 
 
 def svg(vb: str, body: str) -> str:
@@ -87,13 +155,18 @@ def render_module(name: str, col: int) -> tuple[str, str]:
         f'  <path d="{edge} Z" fill="url(#sheen)"/>\n'
         f'  <path d="{edge}" fill="none" stroke="url(#edge)" stroke-width="1"/>\n'
     )
-    s = re.sub(r'<svg[^>]*>\n.*?(?=  <text)', lambda _: head, s, count=1, flags=re.S)
-    path.write_text(s, encoding="utf-8")
+    cat, lic, desc = COPY[name]
+    t, lb, bd = u("title", K_CARD), u("label", K_CARD), u("body", K_CARD)
+    body = ltext(14, 25, "#ffffff", name, t, "700")
+    body += ltext(14, 40, "#a1a1aa", f"{cat} · {lic}", lb, "600")
+    for i, line in enumerate(wrap(desc, bd, 278 - 14, 3)):
+        body += ltext(14, 60 + 17 * i, "#a1a1aa", line, bd)
+    path.write_text(head + body + "</svg>\n", encoding="utf-8")
 
     b = FOOT_H - 0.5
     left_w, right_w = SPLIT - m, m + COL_W - SPLIT
     rule = 'stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"'
-    lbl = dict(size=8.6, weight="600")
+    lbl = dict(size=u("label", K_CARD), weight="600")
     left = (
         f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT} V0 Z" fill="#000000"/>\n'
         f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT}" fill="none" {BORDER}/>\n'
@@ -130,6 +203,31 @@ def render_flagship() -> None:
             raise SystemExit("FAIL: flagship SVG did not match expected markup")
         path.write_text(s, encoding="utf-8")
 
+    hd, bd, lb = u("head", K_WIDE), u("body", K_WIDE), u("label", K_WIDE)
+    lines = wrap(FLAG_LEAD + " " + FLAG_BODY, bd, 716 - 20, 3)
+    assert lines[0].startswith(FLAG_LEAD), "lead must open line 1"
+    lines[0] = f'<tspan fill="#ffffff" font-weight="700">{FLAG_LEAD}</tspan>{lines[0][len(FLAG_LEAD):]}'
+    block = (
+        "  <!-- Left Content Column (x=20..716) -->\n"
+        + ltext(20, 30, "#f87171", "&gt;_", hd, "700")
+        + ltext(44, 30, "#ffffff", "cto-legends", hd, "700")
+        + ltext(156, 30, "#fca5a5", FLAG_TAG, bd, "600")
+        + "\n  <rect x=\"478\" y=\"13\" width=\"238\" height=\"22\" rx=\"3\" fill=\"#ef4444\" fill-opacity=\"0.22\" stroke=\"#f87171\" stroke-opacity=\"0.58\" stroke-width=\"1\"/>\n"
+        + ltext(597, 27.6, "#ffe4e6", FLAG_PILL, lb, "700", "middle")
+        + "\n"
+        + "".join(ltext(20, 60 + 18 * i, "#d4d4d8", ln, bd) for i, ln in enumerate(lines))
+        + "\n"
+    )
+    s = path.read_text(encoding="utf-8")
+    s = re.sub(r"  <!-- Left Content Column.*?(?=  <!-- Right Tucked)", lambda _: block, s, count=1, flags=re.S)
+    path.write_text(s, encoding="utf-8")
+
+    # Handoff label: same voice as "the ecosystem" heading, title tier; 24px above, 16px below (README <p> margin).
+    t = u("title", K_WIDE)
+    label = (ltext(4, 0, "#ef4444", "&gt;_", t, "700") + ltext(24, 0, "#ffffff", "agent handoff", t, "700")
+             + ltext(24 + 13 * t * MONO_EM + 12, 0, "#a1a1aa", HANDOFF_NOTE, bd))
+    (cards / "cto-legends-handoff-label.svg").write_text(svg(f"0 {-9 - 24 / K_WIDE:.2f} 886 {9 + 24 / K_WIDE + 3.5:.2f}", label), encoding="utf-8")
+
     b = FLAG_FOOT_H - 0.5
     fill = "#0c0507"
     divider = 'stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"'
@@ -154,7 +252,7 @@ def render_flagship() -> None:
             body += f'  <line x1="{x0 + 0.5:g}" y1="0" x2="{x0 + 0.5:g}" y2="{b}" {divider}/>\n'
         body += f'  <line x1="{max(x0, 1.5):g}" y1="0.5" x2="{min(x1, 884.5):g}" y2="0.5" {divider}/>\n'
         cx = ((1 if i == 0 else x0) + (885 if i == 2 else x1)) / 2
-        body += text(cx, 20.4, color, label, size=9.4, weight="700")
+        body += text(cx, 20.4, color, label, size=u("label", K_WIDE), weight="700")
         (cards / f"{fname}.svg").write_text(svg(f"{x0:.3f} 0 {x1 - x0:.3f} {FLAG_FOOT_H}", body), encoding="utf-8")
 
 
@@ -163,19 +261,19 @@ def img(href: str, src: str, width: str, alt: str) -> str:
 
 
 def readme_block(alts: dict, widths: dict) -> str:
-    out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends-flagship.svg?v=1", "100%", alts["cto-legends"])]
+    flag_alt = f"cto-legends: {FLAG_LEAD} {FLAG_BODY}"
+    out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends-flagship.svg?v=2", "100%", flag_alt)]
     links = [
         (f"{GH}/cto-legends#readme", "cto-legends-foot-readme", "cto-legends GitHub readme"),
         (f"{GH}/cto-legends/releases", "cto-legends-foot-releases", "cto-legends releases"),
         (SITE, "cto-legends-foot-handoff", "cto-legends agent handoff and docs"),
     ]
     out.append("  " + "<!--\n  -->".join(
-        img(u, f"{f}.svg?v=1", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
-        for i, (u, f, a) in enumerate(links)))
+        img(u, f"{f}.svg?v=2", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
+        for i, (u, f, a) in enumerate(links)) + "<!--\n  -->"
+        + f'<img src="assets/cards/cto-legends-handoff-label.svg?v=1" width="100%" align="top" alt="agent handoff: {HANDOFF_NOTE[3:]}" />')
     out += [
         "</p>",
-        "",
-        "<sub><b>AGENT HANDOFF</b> &nbsp;·&nbsp; in a hurry? copy this into Claude Code, Codex or any coding agent</sub>",
         "",
         "```text",
         HANDOFF,
@@ -186,12 +284,12 @@ def readme_block(alts: dict, widths: dict) -> str:
     for r in range(0, len(MODULES), 3):
         trio = MODULES[r:r + 3]
         out.append("  " + "<!--\n  -->".join(
-            img(f"{GH}/{n}", f"{n}.svg?v=6", f"{COL_PCT}%", alts[n]) for n in trio))
+            img(f"{GH}/{n}", f"{n}.svg?v=7", f"{COL_PCT}%", f"{n}: {COPY[n][2]}") for n in trio))
         btns = []
         for n in trio:
             lw, rw = widths[n]
-            btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg?v=3", lw, f"{n} engineering spec"))
-            btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg?v=3", rw, f"{n} GitHub readme"))
+            btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg?v=4", lw, f"{n} engineering spec"))
+            btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg?v=4", rw, f"{n} GitHub readme"))
         out.append("  " + "<!--\n  -->".join(btns))
     out.append("</p>")
     return "\n".join(out)
@@ -199,10 +297,9 @@ def readme_block(alts: dict, widths: dict) -> str:
 
 def main() -> int:
     readme = readme_path.read_text(encoding="utf-8")
-    alts = dict(re.findall(r'src="assets/cards/([a-z0-9-]+)\.svg\?v=\d+" width="[0-9.]+%"(?: align="top")? alt="([^"]+)"', readme))
-    missing = [n for n in ["cto-legends", *MODULES] if n not in alts]
-    if missing:
-        raise SystemExit(f"FAIL: alt text missing for {missing}")
+    alts = {}
+    if set(COPY) != set(MODULES):
+        raise SystemExit(f"FAIL: COPY and MODULES differ: {set(COPY) ^ set(MODULES)}")
     widths = {n: render_module(n, i % 3) for i, n in enumerate(MODULES)}
     render_flagship()
     block = readme_block(alts, widths)

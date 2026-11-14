@@ -1,16 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5.5 -16 303 124" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5.5 -16 303 126" width="100%">
   <!-- seam-v3 -->
   <defs>
     <linearGradient id="sheen" x1="0" y1="2.5" x2="0" y2="108" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffffff" stop-opacity="0.05"/><stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
     <linearGradient id="edge" x1="0" y1="2.5" x2="0" y2="108" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.09"/></linearGradient>
   </defs>
   <rect x="1" y="2.5" width="290" height="130" rx="4" fill="#000000"/>
-  <path d="M1 108 V6.5 A4 4 0 0 1 5 2.5 H287 A4 4 0 0 1 291 6.5 V108 Z" fill="url(#sheen)"/>
-  <path d="M1 108 V6.5 A4 4 0 0 1 5 2.5 H287 A4 4 0 0 1 291 6.5 V108" fill="none" stroke="url(#edge)" stroke-width="1"/>
-  <text x="14" y="25" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="650">legends-astro</text>
-  <text x="278" y="25" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.8" text-anchor="end">foundation · mit</text>
-  <text x="14" y="48" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">Migrate WordPress, Next.js, or legacy HTML</text>
-  <text x="14" y="63.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">sites to Astro v7 with a pre-build route</text>
-  <text x="14" y="79" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">and SEO parity contract, offline docs, and</text>
-  <text x="14" y="94.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.1">post-build verification.</text>
+  <path d="M1 110 V6.5 A4 4 0 0 1 5 2.5 H287 A4 4 0 0 1 291 6.5 V110 Z" fill="url(#sheen)"/>
+  <path d="M1 110 V6.5 A4 4 0 0 1 5 2.5 H287 A4 4 0 0 1 291 6.5 V110" fill="none" stroke="url(#edge)" stroke-width="1"/>
+  <text x="14" y="25" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="13.16" font-weight="700">legends-astro</text>
+  <text x="14" y="40" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.87" font-weight="600">foundation · mit</text>
+  <text x="14" y="60" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="12.06" font-weight="400">Move WordPress, Next.js, or HTML</text>
+  <text x="14" y="77" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="12.06" font-weight="400">sites to Astro with every route and</text>
+  <text x="14" y="94" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="12.06" font-weight="400">SEO tag accounted for.</text>
 </svg>

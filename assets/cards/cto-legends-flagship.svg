@@ -23,16 +23,16 @@
   <line x1="3" y1="3" x2="883" y2="3" stroke="#fecaca" stroke-opacity="0.22" stroke-width="1"/>
 
   <!-- Left Content Column (x=20..716) -->
-  <text x="20" y="30" fill="#f87171" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">&gt;_</text>
-  <text x="43" y="30" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="14.5" font-weight="700">cto-legends</text>
-  <text x="150" y="30" fill="#fca5a5" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="10.8" font-weight="600">// start here: the only package you install</text>
+  <text x="20" y="30" fill="#f87171" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="14.96" font-weight="700">&gt;_</text>
+  <text x="44" y="30" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="14.96" font-weight="700">cto-legends</text>
+  <text x="156" y="30" fill="#fca5a5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.76" font-weight="600">// start here</text>
 
   <rect x="478" y="13" width="238" height="22" rx="3" fill="#ef4444" fill-opacity="0.22" stroke="#f87171" stroke-opacity="0.58" stroke-width="1"/>
-  <text x="597" y="28" fill="#ffe4e6" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="9.8" font-weight="700" text-anchor="middle">1 install unlocks all 21 modules</text>
+  <text x="597" y="27.6" fill="#ffe4e6" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.62" font-weight="700" text-anchor="middle">1 install unlocks all 21 modules</text>
 
-  <text x="20" y="58" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="11.2"><tspan fill="#ffffff" font-weight="700">Install this one package first: never install the 21 modules below by hand.</tspan> Gives your agent</text>
-  <text x="20" y="77" fill="#d4d4d8" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="11.2">a compact ~650-token startup map instead of 50,000 tokens of bloated MCP schemas, and auto-installs</text>
-  <text x="20" y="96" fill="#d4d4d8" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="11.2">the exact SHA-256 verified CLI and domain runbook vault on demand whenever a task needs it.</text>
+  <text x="20" y="60" fill="#d4d4d8" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.76" font-weight="400"><tspan fill="#ffffff" font-weight="700">Install this one package. Never install the 21 modules below by hand.</tspan> Your agent starts with a</text>
+  <text x="20" y="78" fill="#d4d4d8" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.76" font-weight="400">~650-token map of every tool instead of 50,000 tokens of MCP schemas, then installs the exact</text>
+  <text x="20" y="96" fill="#d4d4d8" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="11.76" font-weight="400">module a task calls for, SHA-256 verified, the moment it is needed.</text>
 
   <!-- Right Tucked Operator Portrait (matching cto-legends.com .rr-home-hero-portrait) -->
   <rect x="775" y="12" width="96" height="96" rx="6" fill="#050507"/>
