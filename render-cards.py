@@ -26,7 +26,7 @@ from typeset import EM, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r4"
+REV = "r5"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -48,11 +48,17 @@ def u(role: str, k: float) -> float:
 
 
 def wrap(text: str, size: float, width_u: float, lines: int) -> list:
-    """Greedy wrap at spaces only (never mid-word or at hyphens); fail loudly on overflow."""
+    """Greedy wrap at spaces only (never mid-word or at hyphens); fail loudly on overflow.
+    A line never ends on the first word of a new sentence: that word moves down with the rest."""
     cap = int(width_u / (size * EM) + 1e-6)
     out, cur = [], ""
     for w in text.split():
         if cur and len(cur) + 1 + len(w) > cap:
+            words = cur.split(" ")
+            if len(words) > 2 and words[-2][-1] in ".!?:" and len(words[-1]) + 1 + len(w) <= cap:
+                out.append(" ".join(words[:-1]))
+                cur = f"{words[-1]} {w}"
+                continue
             out.append(cur)
             cur = w
         else:
@@ -171,17 +177,19 @@ def render_banner() -> None:
     rail = src[src.index("  <!-- Divider Rail Base"):src.index("  <!-- Subtitle Lines")]
     t = Typesetter()
 
-    pill_size, pad = 18, 18
-    text_w = width(BANNER_PILL, pill_size)
-    pill_w = 21 + 4.5 + 14 + text_w + pad
-    px = 1150 - pill_w
-    cx = px + 21
-    head = re.sub(r"transform-origin: [\d.]+px [\d.]+px", f"transform-origin: {cx:.2f}px 54px", head)
+    # One 50u frame: title and rail start at x=50, rail ends at x=1150. The slogan tucks into the
+    # top-right corner (cap top y=50) and the site link into the bottom-right (baseline y=270).
+    # No pill borders: a glowing dot, then text, like cto-legends.com.
+    FRAME_R, FRAME_T, FRAME_B = 1150, 50, 270
+    sz = 18
+    base = FRAME_T + sz * CAP
+    tx = FRAME_R - width(BANNER_PILL, sz)
+    cx, cy = tx - 15, base - sz * CAP / 2
+    head = re.sub(r"transform-origin: [\d.]+px [\d.]+px", f"transform-origin: {cx:.2f}px {cy:.2f}px", head)
     pill = (
-        "  <!-- Status pill -->\n"
-        f'  <rect x="{px:.2f}" y="40" width="{pill_w:.2f}" height="28" rx="14" fill="#050505" stroke="#ff0000" stroke-opacity="0.3" stroke-width="1" />\n'
-        f'  <circle cx="{cx:.2f}" cy="54" r="4.5" fill="#ff0000" class="beacon" />\n'
-        + t.run(cx + 18.5, 60.3, pill_size, BANNER_PILL, "#ffffff", "600")
+        "  <!-- Slogan, tucked top right -->\n"
+        f'  <circle cx="{cx:.2f}" cy="{cy:.2f}" r="4.5" fill="#ff0000" class="beacon" />\n'
+        + t.run(tx, base, sz, BANNER_PILL, "#ffffff", "600")
     )
     # Title keeps the original Legends wordmark glyphs from the template, not outlined Plex Bold.
     title = src[src.index("  <!-- Title: cto-legends"):src.index("  <!-- Divider Rail Base")].rstrip() + "\n"
@@ -189,14 +197,18 @@ def render_banner() -> None:
             + t.run(50, 195, 28, BANNER_L1, "#ffffff", "500")
             + t.run(50, 245, 28, BANNER_L2, "#a1a1aa", "400"))
     l2_end = 50 + width(BANNER_L2, 28)
-    if l2_end + 22 > 926 - 24:
-        raise SystemExit("FAIL: banner line 2 runs into the site pill")
+    cs = 18.5
+    ax = FRAME_R - 9.5  # arrow is 9.5u wide, ends on the frame
+    cta_x = ax - 10 - width("cto-legends.com", cs)
+    if l2_end + 22 > cta_x - 24:
+        raise SystemExit("FAIL: banner line 2 runs into the site link")
     cursor = f'  <rect x="{l2_end + 8:.2f}" y="224" width="14" height="24" fill="#ff0000" class="cursor" />\n'
+    ay = FRAME_B - 1
     cta = (
-        "  <!-- Site link -->\n"
-        '  <rect x="926" y="222" width="224" height="29" rx="14.5" fill="#080304" stroke="#ff0000" stroke-opacity="0.38" stroke-width="1" />\n'
-        + t.run(944, 242.5, 18.5, "cto-legends.com", "#ffffff", "500")
-        + '  <path d="M1121 241.5 L1130.5 232 M1123.5 232 H1130.5 V239" stroke="#ff2738" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none" />\n'
+        "  <!-- Site link, tucked bottom right -->\n"
+        + t.run(cta_x, FRAME_B, cs, "cto-legends.com", "#ffffff", "500")
+        + f'  <path d="M{ax:.2f} {ay:.2f} L{ax + 9.5:.2f} {ay - 9.5:.2f} M{ax + 2.5:.2f} {ay - 9.5:.2f} H{ax + 9.5:.2f} V{ay - 2.5:.2f}" '
+        'stroke="#ff2738" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none" />\n'
     )
     out = head + t.defs() + pill + "\n" + title + "\n" + rail + subs + cursor + cta + "</svg>\n"
     (cards / "banner.svg").write_text(out, encoding="utf-8")
@@ -341,6 +353,21 @@ def render_flagship() -> None:
     s, n = re.subn(r"  <!-- Left Content Column.*?(?=  <!-- Right Tucked)", lambda _: block, s, count=1, flags=re.S)
     if n != 1:
         raise SystemExit("FAIL: flagship SVG markers missing")
+    # Portrait: full bleed into the card's right edge, top border to footer seam, no frame.
+    # Clipped to the card's rounded top-right corner; a 20u gutter separates it from the copy.
+    href = re.search(r'<image [^>]*href="([^"]+)"', s).group(1)
+    px0 = 716 + 20
+    edge = f"M{px0} 2 H881 A4 4 0 0 1 885 6 V{FLAG_BOTTOM}"
+    s = re.sub(r'<clipPath id="babe-clip">.*?</clipPath>',
+               f'<clipPath id="babe-clip"><path d="{edge} H{px0} Z"/></clipPath>', s, count=1, flags=re.S)
+    portrait = (
+        "  <!-- Right Tucked Operator Portrait (full bleed) -->\n"
+        f'  <image x="{px0}" y="2" width="{885 - px0}" height="{FLAG_BOTTOM - 2}" clip-path="url(#babe-clip)" '
+        f'preserveAspectRatio="xMidYMid slice" href="{href}"/>\n'
+        f'  <path d="{edge}" fill="none" {RED}/>\n'
+    )
+    s = re.sub(r"  <!-- Right Tucked.*?(?=</svg>)", lambda _: portrait, s, count=1, flags=re.S)
+    assert max(width(re.sub(r"<[^>]+>", "", ln), bd) for ln in lines) + 20 <= px0 - 20 + 1e-6
     path.write_text(s, encoding="utf-8")
 
     b = FLAG_FOOT_H - 0.5
