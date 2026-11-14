@@ -21,7 +21,6 @@
   <rect x="1" y="2" width="884" height="130" rx="4" fill="url(#portrait-glow)"/>
   <path d="M1 118 V6 A4 4 0 0 1 5 2 H881 A4 4 0 0 1 885 6 V118" fill="none" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
   <line x1="3" y1="3" x2="883" y2="3" stroke="#fecaca" stroke-opacity="0.22" stroke-width="1"/>
-  <rect x="1" y="2" width="4" height="130" rx="1.5" fill="#ef4444"/>
 
   <!-- Left Content Column (x=20..716) -->
   <text x="20" y="30" fill="#f87171" font-family="ui-monospace, SFMono-Regular, &apos;SF Mono&apos;, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700">&gt;_</text>

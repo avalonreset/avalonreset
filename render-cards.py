@@ -144,7 +144,6 @@ def render_flagship() -> None:
         if i == 0:
             body += f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{x1} V0 Z" fill="{fill}"/>\n'
             body += f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{x1}" fill="none" {RED}/>\n'
-            body += f'  <rect x="1" y="0" width="4" height="{b - 3}" fill="#ef4444"/>\n'
         elif i == 2:
             body += f'  <path d="M{x0} 0 V{b} H881 A4 4 0 0 0 885 {b - 4} V0 Z" fill="{fill}"/>\n'
             body += f'  <path d="M{x0} {b} H881 A4 4 0 0 0 885 {b - 4} V0" fill="none" {RED}/>\n'
@@ -153,8 +152,8 @@ def render_flagship() -> None:
             body += f'  <line x1="{x0}" y1="{b}" x2="{x1}" y2="{b}" {RED}/>\n'
         if i > 0:
             body += f'  <line x1="{x0 + 0.5:g}" y1="0" x2="{x0 + 0.5:g}" y2="{b}" {divider}/>\n'
-        body += f'  <line x1="{max(x0, 5):g}" y1="0.5" x2="{min(x1, 884.5):g}" y2="0.5" {divider}/>\n'
-        cx = ((5 if i == 0 else x0) + (885 if i == 2 else x1)) / 2
+        body += f'  <line x1="{max(x0, 1.5):g}" y1="0.5" x2="{min(x1, 884.5):g}" y2="0.5" {divider}/>\n'
+        cx = ((1 if i == 0 else x0) + (885 if i == 2 else x1)) / 2
         body += text(cx, 20.4, color, label, size=9.4, weight="700")
         (cards / f"{fname}.svg").write_text(svg(f"{x0:.3f} 0 {x1 - x0:.3f} {FLAG_FOOT_H}", body), encoding="utf-8")
 
@@ -164,14 +163,14 @@ def img(href: str, src: str, width: str, alt: str) -> str:
 
 
 def readme_block(alts: dict, widths: dict) -> str:
-    out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends.svg?v=8", "100%", alts["cto-legends"])]
+    out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends.svg?v=9", "100%", alts["cto-legends"])]
     links = [
         (f"{GH}/cto-legends#readme", "cto-legends-btn-readme", "cto-legends GitHub readme"),
         (f"{GH}/cto-legends/releases", "cto-legends-btn-releases", "cto-legends releases"),
         (SITE, "cto-legends-btn-handoff", "cto-legends agent handoff and docs"),
     ]
     out.append("  " + "<!--\n  -->".join(
-        img(u, f"{f}.svg?v=1", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
+        img(u, f"{f}.svg?v=2", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
         for i, (u, f, a) in enumerate(links)))
     out += [
         "</p>",
