@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r13"
+REV = "r14"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -128,13 +128,20 @@ COPY = {
 }
 
 MODULES = [
-    "legends-empire", "legends-astro", "legends-hetzner",
-    "legends-coolify", "legends-cloudflare", "legends-stripe",
-    "legends-buzz", "legends-gohighlevel", "legends-github",
-    "legends-jev", "legends-geogrid", "legends-dataforseo",
-    "legends-firecrawl", "legends-grant", "legends-obs",
-    "legends-captions", "legends-youtube", "legends-yt-dlp",
-    "legends-stable-audio-3", "legends-hyperyap", "legends-ambient-intelligence",
+    # The journey a newcomer walks, in rows of three:
+    # 1. foundation: memory, a server, a deploy platform on it
+    "legends-empire", "legends-hetzner", "legends-coolify",
+    # 2. go live: a domain, a website, the code behind it
+    "legends-cloudflare", "legends-astro", "legends-github",
+    # 3. do business: get paid, run the CRM, then start getting found
+    "legends-stripe", "legends-gohighlevel", "legends-dataforseo",
+    # 4. know your market: local rankings, the wider web, money to grow
+    "legends-geogrid", "legends-firecrawl", "legends-grant",
+    # 5-6. make content: channel, recording, subtitles, source clips, music
+    "legends-youtube", "legends-obs", "legends-captions",
+    "legends-yt-dlp", "legends-stable-audio-3",
+    # 6-7. power tools for the operator: voice, meeting notes, eyes, relays
+    "legends-hyperyap", "legends-ambient-intelligence", "legends-jev", "legends-buzz",
 ]
 
 # ---------------------------------------------------------------- geometry
