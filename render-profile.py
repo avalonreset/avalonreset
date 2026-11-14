@@ -44,9 +44,11 @@ def main() -> int:
 
     expected_min_x = ("0", "-5.5", "-11")
     module_refs = [
-        r for r in re.findall(r'src="(assets/cards/(?:rd+/)?legends-[^"?]+\.svg)', readme)
+        r for r in re.findall(r'src="(assets/cards/(?:r\d+/)?legends-[^"?]+\.svg)', readme)
         if not r.endswith(("-spec.svg", "-repo.svg"))
     ]
+    if len(module_refs) != 21:
+        raise SystemExit(f"FAIL: expected 21 module card refs, found {len(module_refs)}")
     for idx, rel in enumerate(module_refs):
         vb_match = re.search(r'viewBox="([^"]+)"', (root / rel).read_text(encoding="utf-8"))
         want = f"{expected_min_x[idx % 3]} -16 303 126"
