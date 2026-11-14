@@ -84,7 +84,6 @@
   <!-- Elegant Dynamic Rolling Shimmer (End-to-End) -->
   <g clip-path="url(#railClip)">
     <rect x="0" y="143" width="700" height="4" fill="url(#shimmerGrad2)" class="shimmer-wave-2" filter="url(#shimmerGlow)" />
-    <rect x="0" y="143" width="500" height="4" fill="url(#shimmerGrad1)" class="shimmer-wave-1" filter="url(#shimmerGlow)" />
   </g>
 
   <!-- What it is / what you get -->

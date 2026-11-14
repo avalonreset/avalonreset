@@ -44,8 +44,8 @@ def ribbon(P: float, amps, phases, x0: float, x1: float, step: float = 4.5) -> s
 
 # (colour, opacity, width, count), drawn back to front: oxblood body, crimson, black strands that
 # cut shadows through the weave, then fine true-red threads on top. No white anywhere.
-KINDS = [("#4d0000", 0.75, 2.4, 3), ("#990000", 0.6, 1.4, 4), ("#000000", 0.6, 1.1, 3),
-         ("#cc0000", 0.55, 0.8, 4), ("#ff0000", 0.6, 0.5, 4)]
+KINDS = [("#4d0000", 0.9, 3.2, 3), ("#990000", 0.75, 1.6, 4), ("#cc0000", 0.7, 0.9, 4),
+         ("#ff0000", 0.85, 0.6, 4), ("#000000", 0.95, 1.5, 5)]   # black last: it cuts dark lanes through the red
 n = 0
 for colour, op, sw, count in KINDS:
     for _ in range(count):
@@ -56,8 +56,8 @@ for colour, op, sw, count in KINDS:
         amps = [a * k for a in raw]
         phases = [rng.uniform(0, 2 * math.pi) for _ in raw]
         d = ribbon(P, amps, phases, 0, END + P + 6)
-        dur = rng.uniform(16, 34) * (P / 400)          # slow, soothing drift
-        breathe = rng.uniform(7, 15)
+        dur = rng.uniform(5, 13) * (P / 400)           # wide speed spread: layers slide past each other
+        breathe = rng.uniform(3.5, 8)
         css.append(f".w{n}{{animation:drift{n} {dur:.2f}s linear {-rng.uniform(0, dur):.2f}s infinite}}"
                    f"@keyframes drift{n}{{to{{transform:translateX(-{P:.2f}px)}}}}"
                    f".b{n}{{transform-origin:0 {MID}px;animation:breathe {breathe:.2f}s ease-in-out {-rng.uniform(0, breathe):.2f}s infinite alternate}}")
@@ -67,7 +67,7 @@ for colour, op, sw, count in KINDS:
         n += 1
 
 style = ("".join(css)
-         + "@keyframes breathe{from{transform:scaleY(.72)}to{transform:scaleY(1)}}"
+         + "@keyframes breathe{from{transform:scaleY(.45)}to{transform:scaleY(1)}}"
          + "@media(prefers-reduced-motion:reduce){*{animation:none!important}}")
 
 T = Typesetter()
@@ -82,8 +82,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -8.2 886 41.7" widt
 <g mask="url(#trail)"><g clip-path="url(#crop)" fill="none">
 <g filter="url(#soft)">{"".join(glow)}</g>
 {"".join(core)}
-</g>
-<path d="M1 {TOP + .5}H{END:.2f}M1 {BOT - .5}H{END:.2f}" stroke="#990000" stroke-opacity=".45" stroke-width="1"/></g>
+</g></g>
 {T.defs()}{badge}</svg>'''
 ET.fromstring(svg)
 (rc.cards / "ecosystem-separator.svg").write_text(svg, encoding="utf-8")

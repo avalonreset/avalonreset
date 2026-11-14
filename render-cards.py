@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r12"
+REV = "r13"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -174,6 +174,8 @@ def render_banner() -> None:
     src = BANNER_TEMPLATE.read_text(encoding="utf-8")
     head = src[:src.index("  <!-- Live Status Badge")]
     rail = src[src.index("  <!-- Divider Rail Base"):src.index("  <!-- Subtitle Lines")]
+    # Owner (2026-11-14): no white highlight sliding along the rail. Keep only the red wave.
+    rail = re.sub(r'\s*<rect [^>]*shimmerGrad1[^>]*/>', "", rail)
     t = Typesetter()
 
     # One 50u frame: title and rail start at x=50, rail ends at x=1150. The slogan tucks into the
