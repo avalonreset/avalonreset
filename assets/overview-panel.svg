@@ -18,23 +18,23 @@
 
   <line x1="18" y1="90" x2="868" y2="90" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
 
-  <text x="18" y="112" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="600">agent agnostic:</text>
-  <rect x="122" y="99" width="53" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="148.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">claude</text>
-  <rect x="181" y="99" width="47" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="204.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">codex</text>
-  <rect x="234" y="99" width="53" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="260.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">gemini</text>
-  <rect x="293" y="99" width="40" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="313.0" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">grok</text>
-  <rect x="339" y="99" width="40" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="359.0" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">muse</text>
-  <rect x="385" y="99" width="65" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="417.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">deepseek</text>
-  <rect x="456" y="99" width="40" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="476.0" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">qwen</text>
-  <rect x="502" y="99" width="36" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="520.0" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">glm</text>
+  <text x="18" y="112" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10.2" font-weight="600">vendor agnostic:</text>
+  <rect x="128" y="99" width="53" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="154.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">claude</text>
+  <rect x="187" y="99" width="47" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="210.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">codex</text>
+  <rect x="240" y="99" width="53" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="266.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">gemini</text>
+  <rect x="299" y="99" width="40" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="319" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">grok</text>
+  <rect x="345" y="99" width="40" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="365" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">muse</text>
+  <rect x="391" y="99" width="65" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="423.5" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">deepseek</text>
+  <rect x="462" y="99" width="40" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="482" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">qwen</text>
+  <rect x="508" y="99" width="36" height="19" rx="3" fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="526" y="112" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">glm</text>
   <text x="868" y="112" fill="#f87171" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="600" text-anchor="end">zero context bloat</text>
 
   <!-- Section Header -->
