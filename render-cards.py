@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r14"
+REV = "r15"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -497,28 +497,32 @@ YOU_HREF = "https://github.com/avalonreset/cto-legends#readme"   # the call to a
 MEME_HREF = "https://cto-legends.com"                            # the punchline: what it is all for
 
 # Closing row under the grid: the square portrait and the 16:9 meme at one shared height, filling
-# the 886u row exactly with a 16px gutter (left padding of the meme SVG, so the README joins them
+# the 886u row exactly full bleed with no gutter (the README joins them
 # with no whitespace). 32px section gap above: 16px README paragraph + 16px viewBox padding.
-CLOSE_G = GAP16
+CLOSE_G = 0  # full bleed: the two images meet with no gutter (owner 2026-11-14)
 CLOSE_H = (886 - CLOSE_G) / (1 + 16 / 9)
 CLOSE_YOU_W, CLOSE_MEME_W = CLOSE_H, CLOSE_H * 16 / 9
 
 
-def framed(src: Path, mime: str, w: float, h: float, cid: str) -> str:
-    """An image clipped to the card corner radius, with the card hairline border on top."""
+def framed(src: Path, mime: str, w: float, h: float, cid: str, side: str) -> str:
+    """Half of a full-bleed pair: rounded on its outer side, square and borderless at the seam."""
     import base64
     data = base64.b64encode(src.read_bytes()).decode()
-    rect = f'x="0.5" y="0.5" width="{w - 1:.2f}" height="{h - 1:.2f}" rx="6"'
-    return (f'<clipPath id="{cid}"><rect {rect}/></clipPath>\n'
+    r, t, bt = 6, 0.5, h - 0.5
+    if side == "left":
+        edge = f"M{w:.2f} {t} H{r + t} A{r} {r} 0 0 0 {t} {r + t} V{bt - r:.2f} A{r} {r} 0 0 0 {r + t} {bt:.2f} H{w:.2f}"
+    else:
+        edge = f"M0 {t} H{w - r - t:.2f} A{r} {r} 0 0 1 {w - t:.2f} {r + t} V{bt - r:.2f} A{r} {r} 0 0 1 {w - r - t:.2f} {bt:.2f} H0"
+    return (f'<clipPath id="{cid}"><path d="{edge} Z"/></clipPath>\n'
             f'<image href="data:{mime};base64,{data}" x="0" y="0" width="{w:.2f}" height="{h:.2f}" '
             f'preserveAspectRatio="xMidYMid slice" clip-path="url(#{cid})"/>\n'
-            f'<rect {rect} fill="none" {BORDER}/>\n')
+            f'<path d="{edge}" fill="none" {BORDER}/>\n')
 
 
 def render_closing() -> None:
     h, top = CLOSE_H, GAP16
-    you = framed(root / "assets" / "you-yes-you.webp", "image/webp", CLOSE_YOU_W, h, "yc")
-    meme = framed(root / "assets" / "bizintel.webp", "image/webp", CLOSE_MEME_W, h, "mc")
+    you = framed(root / "assets" / "you-yes-you.webp", "image/webp", CLOSE_YOU_W, h, "yc", "left")
+    meme = framed(root / "assets" / "bizintel.webp", "image/webp", CLOSE_MEME_W, h, "mc", "right")
     (cards / "closing-you.svg").write_text(svg(f"0 {-top:.2f} {CLOSE_YOU_W:.2f} {h + top:.2f}", you), encoding="utf-8")
     (cards / "closing-meme.svg").write_text(
         svg(f"{-CLOSE_G:.2f} {-top:.2f} {CLOSE_MEME_W + CLOSE_G:.2f} {h + top:.2f}", meme), encoding="utf-8")
