@@ -1,34 +1,39 @@
 #!/usr/bin/env python3
-"""Render split module cards for the avalonreset profile README.
+"""Render every text-bearing image on the avalonreset profile README.
 
-Each card is a body image plus a footer cut into separate link images, so
-every visible button is its own real link while the card still reads as one
-unit. All card images use align="top", which removes the inline-image
-baseline gap so body and footer join with no seam.
+Page story, one job per element:
+  banner      what cto-legends is (one line) and what you get
+  community   the community bar (tagline locked, owner-written)
+  overview    why it matters and how it works, in three steps
+  flagship    start here: the one package you install
+  handoff     the copyable agent prompt (the only >_ on the page: it is a paste-into-terminal action)
+  modules     heading, separator, then the 21 module cards
 
-  card body          -> github.com/avalonreset/<repo>
-  engineering spec   -> cto-legends.com/modules/<repo>
-  github readme      -> github.com/avalonreset/<repo>#readme
+All text is outlined from IBM Plex Mono by typeset.py, so metrics are identical on every OS
+and wrap() is exact. Module cards are a body image plus a footer cut into separate link
+images; align="top" removes the inline-image baseline gap so the pieces join with no seam.
 
-Idempotent: rerun after editing card text. Rewrites the README block between
-CARDS:START / CARDS:END.
+Idempotent: rerun after editing copy. Rewrites README between HEADER:* and CARDS:* markers.
 """
 from pathlib import Path
 import re
 import sys
 
 sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from typeset import EM, Typesetter, width  # noqa: E402
 
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r2"
+REV = "r3"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
+BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
 
 GH = "https://github.com/avalonreset"
 SITE = "https://cto-legends.com"
-FONT = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace"
+SKOOL = "https://www.skool.com/ai-marketing-hub-pro"
 
 # Type scale, in rendered px at GitHub's ~829px README width. Four sizes only:
 #   head 14 (section headings) / title 12 (card titles) / body 11 (prose) / label 9 (chips, meta, buttons)
@@ -36,16 +41,15 @@ FONT = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monosp
 TYPE = {"head": 14, "title": 12, "body": 11, "label": 9}
 K_CARD = 829 * 0.3333 / 303  # px per SVG unit, module cards
 K_WIDE = 829 / 886           # px per SVG unit, full-width panels
-MONO_EM = 0.6025             # widest advance in the font stack (SF Mono / Menlo)
 
 
 def u(role: str, k: float) -> float:
     return round(TYPE[role] / k, 2)
 
 
-def wrap(text: str, size: float, width: float, lines: int) -> list:
+def wrap(text: str, size: float, width_u: float, lines: int) -> list:
     """Greedy wrap at spaces only (never mid-word or at hyphens); fail loudly on overflow."""
-    cap = int(width / (size * MONO_EM))
+    cap = int(width_u / (size * EM) + 1e-6)
     out, cur = [], ""
     for w in text.split():
         if cur and len(cur) + 1 + len(w) > cap:
@@ -58,6 +62,36 @@ def wrap(text: str, size: float, width: float, lines: int) -> list:
         raise SystemExit(f"FAIL: copy needs {len(out)} lines (max {lines}, {cap} chars): {text}")
     return out
 
+
+# ---------------------------------------------------------------- copy
+
+BANNER_L1 = "a package manager for ai coding agents"
+BANNER_L2 = "install one skill. get 21 tools on demand."
+BANNER_PILL = "free &amp; open source"
+BANNER_ALT = "cto-legends: a package manager for AI coding agents. Install one skill, get 21 tools on demand."
+
+BAR_TAGLINE = "&lt;--- carefully designed to voltron into the world&apos;s greatest agentic digital marketing system"  # locked
+
+OVERVIEW_LEAD = "A coding agent is only as useful as the tools it can reach."
+OVERVIEW_REST = "cto-legends gives it 21 of them and loads each one only when a task needs it."
+STEPS = [
+    ("01", "install one skill", "pip install cto-legends, then register its single skill with your coding agent."),
+    ("02", "ask in plain words", 'Say what you need: "audit my Stripe fees" or "move my DNS to Cloudflare."'),
+    ("03", "the right module runs", "Your agent installs the matching module on the spot and uses it. Nothing to install by hand."),
+]
+AGENTS = ["claude", "codex", "gemini", "grok", "muse", "deepseek", "qwen", "glm"]
+
+FLAG_TITLE = "start here"
+FLAG_TAG = "// the one package you install"
+FLAG_LEAD = "Install cto-legends and register its skill with your agent. That is the whole setup."
+FLAG_BODY = ("The 21 modules below stay off your machine until a task needs one. Then your agent installs "
+             "it from a pinned, checksum-verified release, in its own environment, and checks it is ready.")
+
+HANDOFF_NOTE = "// paste this into claude code, codex or any coding agent and it does the setup"
+HANDOFF = f"Set up {GH}/cto-legends and check which modules apply to this workspace."
+
+MODULES_HEAD = "the modules"
+MODULES_NOTE = "21 modules · each one installs only when a task needs it"
 
 # Module card copy: (category, license, one outcome-first sentence, 3 lines max).
 COPY = {
@@ -84,14 +118,6 @@ COPY = {
     "legends-ambient-intelligence": ("studio", "mit", "Turn voice recorder and meeting audio into structured Obsidian notes, entirely offline."),
 }
 
-# Flagship card copy (886-unit panel; body column x=20..716).
-FLAG_TAG = "// start here"
-FLAG_PILL = "1 install unlocks all 21 modules"
-FLAG_LEAD = "Install this one package. Never install the 21 modules below by hand."
-FLAG_BODY = ("Your agent starts with a ~650-token map of every tool instead of 50,000 tokens of MCP schemas, "
-             "then installs the exact module a task calls for, SHA-256 verified, the moment it is needed.")
-HANDOFF_NOTE = "// in a hurry? paste this into claude code, codex, or any coding agent"
-
 MODULES = [
     "legends-empire", "legends-astro", "legends-hetzner",
     "legends-coolify", "legends-cloudflare", "legends-stripe",
@@ -102,8 +128,9 @@ MODULES = [
     "legends-stable-audio-3", "legends-hyperyap", "legends-ambient-intelligence",
 ]
 
+# ---------------------------------------------------------------- geometry
+
 # Column viewBox x-offsets give flush outer edges and symmetric gutters.
-# Gutter = 1.5*COL_W - 437 (18 units); min-x keeps outer edges flush.
 COL_W = 303
 COL_MIN_X = (0, (292 - COL_W) / 2, 292 - COL_W)
 COL_PCT = 33.33
@@ -111,42 +138,144 @@ BODY_TOP, BODY_BOTTOM = -16, 110  # top margin separates card rows; bottom is th
 FOOT_H = 30
 SPLIT = 146  # card spans x=1..291
 BORDER = 'stroke="#ffffff" stroke-opacity="0.09" stroke-width="1"'
+HAIR = 'stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"'
+CHIP = 'fill="#090a0e" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"'
 
 FLAG_W, FLAG_BOTTOM, FLAG_FOOT_H = 886, 118, 32
 FLAG_B = [0, FLAG_W / 3, FLAG_W * 2 / 3, FLAG_W]  # equal thirds
 RED = 'stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"'
+GAP16, GAP32 = 16 / K_WIDE, 32 / K_WIDE  # spacing system, in wide-panel units
+CAP = 0.698  # Plex Mono cap height per em
 
 
-HANDOFF = f"Set up {GH}/cto-legends and check which modules apply to this workspace."
-PLAIN = re.compile(r"<[^>]+>|&[a-z]+;")
+def svg(vb: str, body: str, t: Typesetter = None) -> str:
+    defs = t.defs() if t else ""
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" width="100%">\n{defs}{body}</svg>\n'
 
 
-def text(x: float, y: float, fill: str, label: str, size: float = 10, weight: str = "600") -> str:
-    spaced = f' letter-spacing="{size * 0.1:.2f}"' if PLAIN.sub("", label).isupper() else ""
-    return (f'  <text x="{x:g}" y="{y:g}" fill="{fill}" font-family="{FONT}" font-size="{size}" '
-            f'font-weight="{weight}"{spaced} text-anchor="middle">{label}</text>\n')
+def button(t: Typesetter, cx: float, y: float, fill: str, label: str, size: float, weight: str = "600") -> str:
+    """Centered action label; UPPERCASE gets 0.1em tracking."""
+    plain = re.sub(r"<[^>]+>|&\w+;", "", label)
+    spacing = size * 0.1 if plain.isupper() else 0.0
+    return t.run(cx, y, size, label, fill, weight, "middle", spacing)
 
 
-def ltext(x: float, y: float, fill: str, body: str, size: float, weight: str = "400", anchor: str = "start") -> str:
-    a = "" if anchor == "start" else f' text-anchor="{anchor}"'
-    return (f'  <text x="{x:g}" y="{y:g}" fill="{fill}" font-family="{FONT}" font-size="{size}" '
-            f'font-weight="{weight}"{a}>{body}</text>\n')
+# ---------------------------------------------------------------- banner
+
+def render_banner() -> None:
+    src = BANNER_TEMPLATE.read_text(encoding="utf-8")
+    head = src[:src.index("  <!-- Live Status Badge")]
+    rail = src[src.index("  <!-- Divider Rail Base"):src.index("  <!-- Subtitle Lines")]
+    t = Typesetter()
+
+    pill_size, pad = 18, 18
+    text_w = width(BANNER_PILL, pill_size)
+    pill_w = 21 + 4.5 + 14 + text_w + pad
+    px = 1150 - pill_w
+    cx = px + 21
+    head = re.sub(r"transform-origin: [\d.]+px [\d.]+px", f"transform-origin: {cx:.2f}px 54px", head)
+    pill = (
+        "  <!-- Status pill -->\n"
+        f'  <rect x="{px:.2f}" y="40" width="{pill_w:.2f}" height="28" rx="14" fill="#050505" stroke="#ff0000" stroke-opacity="0.3" stroke-width="1" />\n'
+        f'  <circle cx="{cx:.2f}" cy="54" r="4.5" fill="#ff0000" class="beacon" />\n'
+        + t.run(cx + 18.5, 60.3, pill_size, BANNER_PILL, "#ffffff", "600")
+    )
+    title = "  <!-- Title -->\n" + t.run(50, 105, 66, "cto-legends", "#ff0000", "700")
+    subs = ("  <!-- What it is / what you get -->\n"
+            + t.run(50, 195, 28, BANNER_L1, "#ffffff", "500")
+            + t.run(50, 245, 28, BANNER_L2, "#a1a1aa", "400"))
+    l2_end = 50 + width(BANNER_L2, 28)
+    if l2_end + 22 > 926 - 24:
+        raise SystemExit("FAIL: banner line 2 runs into the site pill")
+    cursor = f'  <rect x="{l2_end + 8:.2f}" y="224" width="14" height="24" fill="#ff0000" class="cursor" />\n'
+    cta = (
+        "  <!-- Site link -->\n"
+        '  <rect x="926" y="222" width="224" height="29" rx="14.5" fill="#080304" stroke="#ff0000" stroke-opacity="0.38" stroke-width="1" />\n'
+        + t.run(944, 242.5, 18.5, "cto-legends.com", "#ffffff", "500")
+        + '  <path d="M1121 241.5 L1130.5 232 M1123.5 232 H1130.5 V239" stroke="#ff2738" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none" />\n'
+    )
+    out = head + t.defs() + pill + "\n" + title + "\n" + rail + subs + cursor + cta + "</svg>\n"
+    (cards / "banner.svg").write_text(out, encoding="utf-8")
 
 
-def svg(vb: str, body: str) -> str:
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" width="100%">\n{body}</svg>\n'
+# ---------------------------------------------------------------- community bar (tagline locked)
+
+def render_bar() -> None:
+    t = Typesetter()
+    lb = u("label", K_WIDE)
+    c_w = width("community", lb) + 24
+    p_txt = '<tspan fill="#ffffff">ai-marketing-hub-pro</tspan><tspan fill="#f87171"> ↗</tspan>'
+    p_w = width(p_txt, lb) + 28
+    body = (
+        f'  <rect x="1" y="3" width="{c_w:.2f}" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>\n'
+        + t.run(1 + c_w / 2, 18.4, lb, "community", "#a1a1aa", "600", "middle")
+        + f'  <rect x="{c_w + 3:.2f}" y="3" width="{p_w:.2f}" height="24" rx="3" fill="#1f070b" {RED}/>\n'
+        + f'  <rect x="{c_w + 3:.2f}" y="3" width="2.5" height="24" rx="1" fill="#ef4444"/>\n'
+        + t.run(c_w + 3 + 1.25 + p_w / 2, 18.4, lb, p_txt, "#ffffff", "700", "middle")
+        + t.run(c_w + 3 + p_w + 12, 18.4, lb, BAR_TAGLINE, "#ffffff", "600")
+    )
+    (cards / "bar-community.svg").write_text(svg("0 -14.6 886 42.1", body, t), encoding="utf-8")
 
 
-def render_module(name: str, col: int) -> tuple[str, str]:
-    path = cards / f"{name}.svg"
-    s = path.read_text(encoding="utf-8")
+# ---------------------------------------------------------------- overview
+
+def render_overview() -> str:
+    t = Typesetter()
+    bd, ti, lb = u("body", K_WIDE), u("title", K_WIDE), u("label", K_WIDE)
+    x0, x1 = 18, 868
+    body = ""
+    y = 2 + 14 + bd * CAP  # 14u inner top pad to cap height
+    # Claim on line 1 (white bold), answer on line 2: one sentence each, no widows.
+    for ln, fill, wt in ((OVERVIEW_LEAD, "#ffffff", "700"), (OVERVIEW_REST, "#d4d4d8", "400")):
+        wrap(ln, bd, x1 - x0, 1)
+        body += t.run(x0, y, bd, ln, fill, wt)
+        y += 18
+    div1 = y - 18 + 15
+    body += f'  <line x1="{x0}" y1="{div1:.2f}" x2="{x1}" y2="{div1:.2f}" {HAIR}/>\n'
+
+    gap = 28
+    col = (x1 - x0 - 2 * gap) / 3
+    top = div1 + 15 + ti * CAP
+    deepest = 0
+    for i, (num, head, text) in enumerate(STEPS):
+        cx = x0 + i * (col + gap)
+        body += t.run(cx, top, lb, num, "#f87171", "700")
+        body += t.run(cx + width(num, lb) + 9, top, ti, head, "#ffffff", "700")
+        lines = wrap(text, bd, col, 3)
+        for j, ln in enumerate(lines):
+            body += t.run(cx, top + 20 + 17 * j, bd, ln, "#a1a1aa")
+        deepest = max(deepest, top + 20 + 17 * (len(lines) - 1))
+        if i:
+            body += f'  <line x1="{cx - gap / 2:.2f}" y1="{top - ti * CAP:.2f}" x2="{cx - gap / 2:.2f}" y2="{deepest + 4:.2f}" {HAIR}/>\n'
+    div2 = deepest + 15
+    body += f'  <line x1="{x0}" y1="{div2:.2f}" x2="{x1}" y2="{div2:.2f}" {HAIR}/>\n'
+
+    chip_top = div2 + 10
+    base = chip_top + 13
+    lab = "vendor agnostic:"
+    body += t.run(x0, base, lb, lab, "#a1a1aa", "600")
+    cx = x0 + width(lab, lb) + 10
+    for a in AGENTS:
+        w = width(a, lb) + 18
+        body += f'  <rect x="{cx:.2f}" y="{chip_top:.2f}" width="{w:.2f}" height="19" rx="3" {CHIP}/>\n'
+        body += t.run(cx + w / 2, base, lb, a, "#e4e4e7", "600", "middle")
+        cx += w + 6
+    body += t.run(x1, base, lb, "zero context bloat", "#f87171", "600", "end")
+    panel_b = chip_top + 19 + 10
+    frame = f'  <rect x="1" y="2" width="884" height="{panel_b - 2:.2f}" rx="4" fill="#000000" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>\n'
+    # 32px to the flagship: 16px here + the 16px margin of the README <p> that holds the cards.
+    vb = f"0 {-GAP16 + 2:.2f} 886 {panel_b + GAP16 + GAP16 - 2:.2f}"
+    (cards / "overview-panel.svg").write_text(svg(vb, frame + body, t), encoding="utf-8")
+    steps = " ".join(f"{n}. {h}: {x}" for n, h, x in STEPS)
+    return f"{OVERVIEW_LEAD} {OVERVIEW_REST} {steps}"
+
+
+# ---------------------------------------------------------------- module cards
+
+def render_module(name: str, col: int) -> tuple:
     m = COL_MIN_X[col]
-    # Legacy footer (v1 and earlier) removal.
-    s = re.sub(r'\s*<line x1="14" y1="115"[^>]*/>', "", s)
-    s = re.sub(r'\s*<text x="(?:14|278)" y="136"[^>]*>[^<]*</text>', "", s)
     edge = f"M1 {BODY_BOTTOM} V6.5 A4 4 0 0 1 5 2.5 H287 A4 4 0 0 1 291 6.5 V{BODY_BOTTOM}"
-    head = (
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{m:g} {BODY_TOP} {COL_W} {BODY_BOTTOM - BODY_TOP}" width="100%">\n'
+    frame = (
         '  <!-- seam-v3 -->\n'
         '  <defs>\n'
         '    <linearGradient id="sheen" x1="0" y1="2.5" x2="0" y2="108" gradientUnits="userSpaceOnUse">'
@@ -159,88 +288,68 @@ def render_module(name: str, col: int) -> tuple[str, str]:
         f'  <path d="{edge}" fill="none" stroke="url(#edge)" stroke-width="1"/>\n'
     )
     cat, lic, desc = COPY[name]
-    t, lb, bd = u("title", K_CARD), u("label", K_CARD), u("body", K_CARD)
-    body = ltext(14, 25, "#ffffff", name, t, "700")
-    body += ltext(14, 40, "#a1a1aa", f"{cat} · {lic}", lb, "600")
+    t = Typesetter()
+    ti, lb, bd = u("title", K_CARD), u("label", K_CARD), u("body", K_CARD)
+    body = t.run(14, 25, ti, name, "#ffffff", "700")
+    body += t.run(14, 40, lb, f"{cat} · {lic}", "#a1a1aa", "600")
     for i, line in enumerate(wrap(desc, bd, 278 - 14, 3)):
-        body += ltext(14, 60 + 17 * i, "#a1a1aa", line, bd)
-    path.write_text(head + body + "</svg>\n", encoding="utf-8")
+        body += t.run(14, 60 + 17 * i, bd, line, "#a1a1aa")
+    (cards / f"{name}.svg").write_text(
+        svg(f"{m:g} {BODY_TOP} {COL_W} {BODY_BOTTOM - BODY_TOP}", frame + body, t), encoding="utf-8")
 
     b = FOOT_H - 0.5
     left_w, right_w = SPLIT - m, m + COL_W - SPLIT
-    rule = 'stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"'
-    lbl = dict(size=u("label", K_CARD), weight="600")
+    tl, tr = Typesetter(), Typesetter()
     left = (
         f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT} V0 Z" fill="#000000"/>\n'
         f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{SPLIT}" fill="none" {BORDER}/>\n'
-        f'  <line x1="14" y1="0.5" x2="{SPLIT}" y2="0.5" {rule}/>\n'
-        + text((1 + SPLIT) / 2, 18.6, "#f87171", "ENGINEERING SPEC →", **lbl)
+        f'  <line x1="14" y1="0.5" x2="{SPLIT}" y2="0.5" {HAIR}/>\n'
+        + button(tl, (1 + SPLIT) / 2, 18.6, "#f87171", "ENGINEERING SPEC →", lb)
     )
     right = (
         f'  <path d="M{SPLIT} 0 V{b} H287 A4 4 0 0 0 291 {b - 4} V0 Z" fill="#000000"/>\n'
         f'  <path d="M{SPLIT} {b} H287 A4 4 0 0 0 291 {b - 4} V0" fill="none" {BORDER}/>\n'
-        f'  <line x1="{SPLIT}" y1="0.5" x2="278" y2="0.5" {rule}/>\n'
-        f'  <line x1="{SPLIT + 0.5}" y1="9" x2="{SPLIT + 0.5}" y2="21" {rule}/>\n'
-        + text((SPLIT + 291) / 2, 18.6, "#d4d4d8", "GITHUB README ↗", **lbl)
+        f'  <line x1="{SPLIT}" y1="0.5" x2="278" y2="0.5" {HAIR}/>\n'
+        f'  <line x1="{SPLIT + 0.5}" y1="9" x2="{SPLIT + 0.5}" y2="21" {HAIR}/>\n'
+        + button(tr, (SPLIT + 291) / 2, 18.6, "#d4d4d8", "GITHUB README ↗", lb)
     )
-    (cards / f"{name}-spec.svg").write_text(svg(f"{m:g} 0 {left_w:g} {FOOT_H}", left), encoding="utf-8")
-    (cards / f"{name}-repo.svg").write_text(svg(f"{SPLIT} 0 {right_w:g} {FOOT_H}", right), encoding="utf-8")
+    (cards / f"{name}-spec.svg").write_text(svg(f"{m:g} 0 {left_w:g} {FOOT_H}", left, tl), encoding="utf-8")
+    (cards / f"{name}-repo.svg").write_text(svg(f"{SPLIT} 0 {right_w:g} {FOOT_H}", right, tr), encoding="utf-8")
     return f"{left_w / COL_W * COL_PCT:.3f}%", f"{right_w / COL_W * COL_PCT:.3f}%"
 
+
+# ---------------------------------------------------------------- flagship, handoff, modules heading
 
 def render_flagship() -> None:
     path = cards / "cto-legends-flagship.svg"
     s = path.read_text(encoding="utf-8")
-    if "<!-- seam-v2 -->" not in s:
-        s = re.sub(r'viewBox="0 0 886 [0-9.]+"', f'viewBox="0 0 886 {FLAG_BOTTOM}"', s, count=1)
-        s = s.replace('<rect x="1" y="2" width="884" height="116" rx="4" fill="#090406"/>',
-                      '<!-- seam-v2 -->\n  <rect x="1" y="2" width="884" height="130" rx="4" fill="#090406"/>')
-        s = s.replace(f'<rect x="1" y="2" width="884" height="116" rx="4" fill="url(#flagship-glow)" {RED}/>',
-                      '<rect x="1" y="2" width="884" height="130" rx="4" fill="url(#flagship-glow)"/>')
-        s = s.replace('<rect x="1" y="2" width="884" height="116" rx="4" fill="url(#portrait-glow)"/>',
-                      '<rect x="1" y="2" width="884" height="130" rx="4" fill="url(#portrait-glow)"/>\n'
-                      f'  <path d="M1 {FLAG_BOTTOM} V6 A4 4 0 0 1 5 2 H881 A4 4 0 0 1 885 6 V{FLAG_BOTTOM}" fill="none" {RED}/>')
-        s = s.replace('<rect x="1" y="2" width="4" height="116" rx="1.5" fill="#ef4444"/>',
-                      '<rect x="1" y="2" width="4" height="130" rx="1.5" fill="#ef4444"/>')
-        if "<!-- seam-v2 -->" not in s or f"V{FLAG_BOTTOM}" not in s:
-            raise SystemExit("FAIL: flagship SVG did not match expected markup")
-        path.write_text(s, encoding="utf-8")
-
-    hd, bd, lb = u("head", K_WIDE), u("body", K_WIDE), u("label", K_WIDE)
+    t = Typesetter()
+    hd, bd = u("head", K_WIDE), u("body", K_WIDE)
     lines = wrap(FLAG_LEAD + " " + FLAG_BODY, bd, 716 - 20, 3)
     assert lines[0].startswith(FLAG_LEAD), "lead must open line 1"
     lines[0] = f'<tspan fill="#ffffff" font-weight="700">{FLAG_LEAD}</tspan>{lines[0][len(FLAG_LEAD):]}'
-    block = (
-        "  <!-- Left Content Column (x=20..716) -->\n"
-        + ltext(20, 30, "#f87171", "&gt;_", hd, "700")
-        + ltext(44, 30, "#ffffff", "cto-legends", hd, "700")
-        + ltext(156, 30, "#fca5a5", FLAG_TAG, bd, "600")
-        + "\n  <rect x=\"478\" y=\"13\" width=\"238\" height=\"22\" rx=\"3\" fill=\"#ef4444\" fill-opacity=\"0.22\" stroke=\"#f87171\" stroke-opacity=\"0.58\" stroke-width=\"1\"/>\n"
-        + ltext(597, 27.6, "#ffe4e6", FLAG_PILL, lb, "700", "middle")
-        + "\n"
-        + "".join(ltext(20, 60 + 18 * i, "#d4d4d8", ln, bd) for i, ln in enumerate(lines))
-        + "\n"
+    runs = (
+        t.run(20, 30, hd, FLAG_TITLE, "#ffffff", "700")
+        + t.run(20 + width(FLAG_TITLE, hd) + 12, 30, bd, FLAG_TAG, "#fca5a5", "600")
+        + "".join(t.run(20, 60 + 18 * i, bd, ln, "#d4d4d8") for i, ln in enumerate(lines))
     )
-    s = path.read_text(encoding="utf-8")
-    s = re.sub(r"  <!-- Left Content Column.*?(?=  <!-- Right Tucked)", lambda _: block, s, count=1, flags=re.S)
+    block = "  <!-- Left Content Column (x=20..716) -->\n" + t.defs() + runs + "\n"
+    s, n = re.subn(r"  <!-- Left Content Column.*?(?=  <!-- Right Tucked)", lambda _: block, s, count=1, flags=re.S)
+    if n != 1:
+        raise SystemExit("FAIL: flagship SVG markers missing")
     path.write_text(s, encoding="utf-8")
-
-    # Handoff label: same voice as "the ecosystem" heading, title tier; 24px above, 16px below (README <p> margin).
-    t = u("title", K_WIDE)
-    label = (ltext(4, 0, "#ef4444", "&gt;_", t, "700") + ltext(24, 0, "#ffffff", "agent handoff", t, "700")
-             + ltext(24 + 13 * t * MONO_EM + 12, 0, "#a1a1aa", HANDOFF_NOTE, bd))
-    (cards / "cto-legends-handoff-label.svg").write_text(svg(f"0 {-9 - 24 / K_WIDE:.2f} 886 {9 + 24 / K_WIDE + 3.5:.2f}", label), encoding="utf-8")
 
     b = FLAG_FOOT_H - 0.5
     fill = "#0c0507"
     divider = 'stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"'
     segs = [
-        ("cto-legends-foot-readme", 'GITHUB README  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
-        ("cto-legends-foot-releases", 'RELEASES  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
-        ("cto-legends-foot-handoff", 'AGENT HANDOFF &amp; DOCS  <tspan fill="#f87171">↗</tspan>', "#ffffff"),
+        ("cto-legends-foot-readme", 'GITHUB README  <tspan fill="#f87171">↗</tspan>'),
+        ("cto-legends-foot-releases", 'RELEASES  <tspan fill="#f87171">↗</tspan>'),
+        ("cto-legends-foot-handoff", 'DOCS &amp; AGENT HANDOFF  <tspan fill="#f87171">↗</tspan>'),
     ]
-    for i, (fname, label, color) in enumerate(segs):
+    for i, (fname, label) in enumerate(segs):
         x0, x1 = FLAG_B[i], FLAG_B[i + 1]
+        ft = Typesetter()
         body = ""
         if i == 0:
             body += f'  <path d="M1 0 V{b - 4} A4 4 0 0 0 5 {b} H{x1} V0 Z" fill="{fill}"/>\n'
@@ -255,63 +364,96 @@ def render_flagship() -> None:
             body += f'  <line x1="{x0 + 0.5:g}" y1="0" x2="{x0 + 0.5:g}" y2="{b}" {divider}/>\n'
         body += f'  <line x1="{max(x0, 1.5):g}" y1="0.5" x2="{min(x1, 884.5):g}" y2="0.5" {divider}/>\n'
         cx = ((1 if i == 0 else x0) + (885 if i == 2 else x1)) / 2
-        body += text(cx, 20.4, color, label, size=u("label", K_WIDE), weight="700")
-        (cards / f"{fname}.svg").write_text(svg(f"{x0:.3f} 0 {x1 - x0:.3f} {FLAG_FOOT_H}", body), encoding="utf-8")
+        body += button(ft, cx, 20.4, "#ffffff", label, u("label", K_WIDE), "700")
+        (cards / f"{fname}.svg").write_text(svg(f"{x0:.3f} 0 {x1 - x0:.3f} {FLAG_FOOT_H}", body, ft), encoding="utf-8")
+
+    # Handoff label: 24px above (from the flagship footer), 16px below (README <p> margin).
+    t = Typesetter()
+    ti = u("title", K_WIDE)
+    label = (t.run(2, 0, ti, "&gt;_", "#ef4444", "700")
+             + t.run(2 + width("&gt;_", ti) + 8, 0, ti, "agent handoff", "#ffffff", "700")
+             + t.run(2 + width("&gt;_", ti) + 8 + width("agent handoff", ti) + 12, 0, bd, HANDOFF_NOTE, "#a1a1aa"))
+    top = ti * CAP + 24 / K_WIDE
+    (cards / "cto-legends-handoff-label.svg").write_text(svg(f"0 {-top:.2f} 886 {top + 3.5:.2f}", label, t), encoding="utf-8")
 
 
-def img(href: str, src: str, width: str, alt: str) -> str:
-    return f'<a href="{href}"><img src="assets/cards/{REV}/{src}" width="{width}" align="top" alt="{alt}" /></a>'
+def render_modules_heading() -> None:
+    # 32px section gap above: 16px come from the code block's margin, 16px live here.
+    t = Typesetter()
+    hd, lb = u("head", K_WIDE), u("label", K_WIDE)
+    body = (t.run(2, 0, hd, MODULES_HEAD, "#ffffff", "700")
+            + t.run(884, 0, lb, MODULES_NOTE, "#a1a1aa", "400", "end"))
+    top = hd * CAP + GAP16
+    (cards / "modules-heading.svg").write_text(svg(f"0 {-top:.2f} 886 {top + 4:.2f}", body, t), encoding="utf-8")
 
 
-def readme_block(alts: dict, widths: dict) -> str:
-    flag_alt = f"cto-legends: {FLAG_LEAD} {FLAG_BODY}"
-    out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends-flagship.svg?v=2", "100%", flag_alt)]
+# ---------------------------------------------------------------- README
+
+def img(href: str, src: str, width_: str, alt: str) -> str:
+    tag = f'<img src="assets/cards/{REV}/{src}" width="{width_}" align="top" alt="{alt}" />'
+    return f'<a href="{href}">{tag}</a>' if href else tag
+
+
+def header_block(overview_alt: str) -> str:
+    bar_alt = "community: ai-marketing-hub-pro - carefully designed to voltron into the world's greatest agentic digital marketing system"
+    parts = [
+        img(SITE, "banner.svg", "100%", BANNER_ALT),
+        img(SKOOL, "bar-community.svg", "100%", bar_alt),
+        img(f"{GH}/cto-legends", "overview-panel.svg", "100%", f"how cto-legends works: {overview_alt}"),
+    ]
+    return '<p align="left">\n  ' + "<!--\n  -->".join(parts) + "\n</p>"
+
+
+def cards_block(widths: dict) -> str:
+    flag_alt = f"start here: {FLAG_LEAD} {FLAG_BODY}"
+    out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends-flagship.svg", "100%", flag_alt)]
     links = [
         (f"{GH}/cto-legends#readme", "cto-legends-foot-readme", "cto-legends GitHub readme"),
         (f"{GH}/cto-legends/releases", "cto-legends-foot-releases", "cto-legends releases"),
-        (SITE, "cto-legends-foot-handoff", "cto-legends agent handoff and docs"),
+        (SITE, "cto-legends-foot-handoff", "cto-legends docs and agent handoff"),
     ]
     out.append("  " + "<!--\n  -->".join(
-        img(u, f"{f}.svg?v=2", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
-        for i, (u, f, a) in enumerate(links)) + "<!--\n  -->"
-        + f'<img src="assets/cards/{REV}/cto-legends-handoff-label.svg" width="100%" align="top" alt="agent handoff: {HANDOFF_NOTE[3:]}" />')
-    out += [
-        "</p>",
-        "",
-        "```text",
-        HANDOFF,
-        "```",
-        "",
-        '<p align="left">',
-    ]
+        img(h, f"{f}.svg", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
+        for i, (h, f, a) in enumerate(links)) + "<!--\n  -->"
+        + img("", "cto-legends-handoff-label.svg", "100%", f"agent handoff: {HANDOFF_NOTE[3:]}"))
+    out += ["</p>", "", "```text", HANDOFF, "```", "", '<p align="left">']
+    out.append("  " + img("", "modules-heading.svg", "100%", f"{MODULES_HEAD}: {MODULES_NOTE}") + "<!--\n  -->"
+               + img(f"{GH}/cto-legends/blob/main/LICENSE", "ecosystem-separator.svg", "100%", "license: open source"))
     for r in range(0, len(MODULES), 3):
         trio = MODULES[r:r + 3]
         out.append("  " + "<!--\n  -->".join(
-            img(f"{GH}/{n}", f"{n}.svg?v=7", f"{COL_PCT}%", f"{n}: {COPY[n][2]}") for n in trio))
+            img(f"{GH}/{n}", f"{n}.svg", f"{COL_PCT}%", f"{n}: {COPY[n][2]}") for n in trio))
         btns = []
         for n in trio:
             lw, rw = widths[n]
-            btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg?v=4", lw, f"{n} engineering spec"))
-            btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg?v=4", rw, f"{n} GitHub readme"))
+            btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg", lw, f"{n} engineering spec"))
+            btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg", rw, f"{n} GitHub readme"))
         out.append("  " + "<!--\n  -->".join(btns))
     out.append("</p>")
     return "\n".join(out)
 
 
+def splice(readme: str, name: str, block: str) -> str:
+    start, end = f"<!-- {name}:START -->", f"<!-- {name}:END -->"
+    if start not in readme or end not in readme:
+        raise SystemExit(f"FAIL: {name} markers missing from README.md")
+    return re.sub(re.escape(start) + r".*?" + re.escape(end), lambda _: f"{start}\n{block}\n{end}", readme, flags=re.S)
+
+
 def main() -> int:
-    readme = readme_path.read_text(encoding="utf-8")
-    alts = {}
     if set(COPY) != set(MODULES):
         raise SystemExit(f"FAIL: COPY and MODULES differ: {set(COPY) ^ set(MODULES)}")
+    render_banner()
+    render_bar()
+    overview_alt = render_overview()
     widths = {n: render_module(n, i % 3) for i, n in enumerate(MODULES)}
     render_flagship()
-    block = readme_block(alts, widths)
-    start, end = "<!-- CARDS:START -->", "<!-- CARDS:END -->"
-    if start not in readme:
-        raise SystemExit("FAIL: CARDS markers missing from README.md")
-    readme = re.sub(re.escape(start) + r".*?" + re.escape(end), lambda _: f"{start}\n{block}\n{end}", readme, flags=re.S)
+    render_modules_heading()
+    readme = readme_path.read_text(encoding="utf-8")
+    readme = splice(readme, "HEADER", header_block(overview_alt))
+    readme = splice(readme, "CARDS", cards_block(widths))
     readme_path.write_text(readme, encoding="utf-8")
-    print(f"Rendered {len(MODULES)} module cards + flagship with seamless split footers.")
+    print(f"Rendered banner, bar, overview, flagship, heading and {len(MODULES)} module cards (outlined IBM Plex Mono).")
     return 0
 
 

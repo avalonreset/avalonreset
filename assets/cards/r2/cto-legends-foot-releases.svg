@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="295.333 0 295.333 32" width="100%">
-  <rect x="295.3333333333333" y="0" width="295.333" height="31.5" fill="#0c0507"/>
-  <line x1="295.3333333333333" y1="31.5" x2="590.6666666666666" y2="31.5" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>
-  <line x1="295.833" y1="0" x2="295.833" y2="31.5" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
-  <line x1="295.333" y1="0.5" x2="590.667" y2="0.5" stroke="#ef4444" stroke-opacity="0.30" stroke-width="1"/>
-  <text x="443" y="20.4" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace" font-size="9.62" font-weight="700" letter-spacing="0.96" text-anchor="middle">RELEASES  <tspan fill="#f87171">↗</tspan></text>
-</svg>

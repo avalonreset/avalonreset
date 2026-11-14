@@ -2,7 +2,12 @@
 from pathlib import Path
 import math
 import random
+import sys
 import xml.etree.ElementTree as ET
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from typeset import Typesetter  # noqa: E402
 
 root = Path(__file__).parent
 rng = random.Random(20260925)
@@ -40,18 +45,19 @@ out.append(
 )
 out.extend(layers)
 out.append("</g>")
-out.append(
+T = Typesetter()
+chips = (
     '  <rect x="728" y="6" width="58" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>\n'
-    '  <text x="757" y="21.5" fill="#a1a1aa" font-family="ui-monospace, SFMono-Regular, \'SF Mono\', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="600" text-anchor="middle">license</text>\n'
-    '  <rect x="788" y="6" width="97" height="24" rx="3" fill="#1f070b" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>\n'
+    + T.run(757, 21.4, 9.62, "license", "#a1a1aa", "600", "middle")
+    + '  <rect x="788" y="6" width="97" height="24" rx="3" fill="#1f070b" stroke="#ef4444" stroke-opacity="0.68" stroke-width="1"/>\n'
     '  <rect x="788" y="6" width="2.5" height="24" rx="1" fill="#ef4444"/>\n'
-    '  <text x="837.5" y="21.5" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, \'SF Mono\', Menlo, Monaco, Consolas, monospace" font-size="9.6" font-weight="700" text-anchor="middle">open source</text>\n'
-    "</svg>"
+    + T.run(837.5, 21.4, 9.62, "open source", "#ffffff", "700", "middle")
 )
+out.append(T.defs() + chips + "</svg>")
 svg = "\n".join(out)
 ET.fromstring(svg)
 # Path tracks REV in render-cards.py.
-(root / "assets/cards/r2/ecosystem-separator.svg").write_text(svg, encoding="utf-8")
+(root / "assets/cards/r3/ecosystem-separator.svg").write_text(svg, encoding="utf-8")
 assert "mask=" not in svg
 assert svg.count('class="flow ') == 80
 print("80 flowing filaments (x=1..714) + right-justified [license][open source] badge (x=728..885); XML valid.")
