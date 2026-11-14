@@ -21,7 +21,7 @@ Set up https://github.com/avalonreset/cto-legends and check which modules apply 
 
 <p align="left">
   <img src="assets/cards/r10/modules-heading.svg" width="100%" align="top" alt="the modules: 21 modules · each one installs only when a task needs it" /><!--
-  --><a href="https://github.com/avalonreset/cto-legends/blob/main/LICENSE"><img src="assets/cards/r10/ecosystem-separator.svg" width="100%" align="top" alt="license: open source" /></a>
+  --><a href="https://github.com/avalonreset/cto-legends#development-contributing-and-license"><img src="assets/cards/r10/ecosystem-separator.svg" width="100%" align="top" alt="license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)" /></a>
   <a href="https://github.com/avalonreset/legends-empire"><img src="assets/cards/r10/legends-empire.svg" width="33.33%" align="top" alt="legends-empire: Turn your Obsidian vault into agent memory, with SHA-256 integrity locks and crash-safe writes." /></a><!--
   --><a href="https://github.com/avalonreset/legends-astro"><img src="assets/cards/r10/legends-astro.svg" width="33.33%" align="top" alt="legends-astro: Move WordPress, Next.js, or HTML sites to Astro with every route and SEO tag accounted for." /></a><!--
   --><a href="https://github.com/avalonreset/legends-hetzner"><img src="assets/cards/r10/legends-hetzner.svg" width="33.33%" align="top" alt="legends-hetzner: Check live Hetzner stock in the EU and US, size servers for cost, and preflight every build." /></a>

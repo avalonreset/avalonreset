@@ -466,7 +466,7 @@ def cards_block(widths: dict) -> str:
         + img("", "cto-legends-handoff-label.svg", "100%", f"agent handoff: {HANDOFF_NOTE[3:]}"))
     out += ["</p>", "", "```text", HANDOFF, "```", "", '<p align="left">']
     out.append("  " + img("", "modules-heading.svg", "100%", f"{MODULES_HEAD}: {MODULES_NOTE}") + "<!--\n  -->"
-               + img(f"{GH}/cto-legends/blob/main/LICENSE", "ecosystem-separator.svg", "100%", "license: open source"))
+               + img(f"{GH}/cto-legends#development-contributing-and-license", "ecosystem-separator.svg", "100%", "license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)"))
     for r in range(0, len(MODULES), 3):
         trio = MODULES[r:r + 3]
         out.append("  " + "<!--\n  -->".join(
