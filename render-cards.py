@@ -490,28 +490,49 @@ def cards_block(widths: dict) -> str:
     return "\n".join(out)
 
 
+YOU_ALT = "A smiling red demon girl in a black dress points straight at you: YOU. YES, YOU."
 MEME_ALT = ("Two figures in black on red, Greek vase style. One asks: wait, it was business intelligence "
             "this whole time? The other, holding a torch-lit staff: always has been.")
+YOU_HREF = "https://github.com/avalonreset/cto-legends#readme"   # the call to action: go install it
+MEME_HREF = "https://cto-legends.com"                            # the punchline: what it is all for
+
+# Closing row under the grid: the square portrait and the 16:9 meme at one shared height, filling
+# the 886u row exactly with a 16px gutter (left padding of the meme SVG, so the README joins them
+# with no whitespace). 32px section gap above: 16px README paragraph + 16px viewBox padding.
+CLOSE_G = GAP16
+CLOSE_H = (886 - CLOSE_G) / (1 + 16 / 9)
+CLOSE_YOU_W, CLOSE_MEME_W = CLOSE_H, CLOSE_H * 16 / 9
 
 
-def render_meme() -> None:
-    """The closing meme under the grid: the owner's art embedded whole, framed like the cards.
-
-    32px section gap above: 16px from the README paragraph boundary, 16px of viewBox padding here.
-    The image is base64 inside the SVG because GitHub blocks external hrefs in README SVGs."""
+def framed(src: Path, mime: str, w: float, h: float, cid: str) -> str:
+    """An image clipped to the card corner radius, with the card hairline border on top."""
     import base64
-    data = base64.b64encode((root / "assets" / "bizintel.webp").read_bytes()).decode()
-    h = 886 * 1152 / 2048
-    body = (f'<clipPath id="mc"><rect x="0.5" y="0.5" width="885" height="{h - 1:.2f}" rx="6"/></clipPath>\n'
-            f'<image href="data:image/webp;base64,{data}" x="0" y="0" width="886" height="{h:.2f}" '
-            f'preserveAspectRatio="xMidYMid slice" clip-path="url(#mc)"/>\n'
-            f'<rect x="0.5" y="0.5" width="885" height="{h - 1:.2f}" rx="6" fill="none" {BORDER}/>\n')
-    (cards / "bizintel-meme.svg").write_text(svg(f"0 {-GAP16:.2f} 886 {h + GAP16:.2f}", body), encoding="utf-8")
+    data = base64.b64encode(src.read_bytes()).decode()
+    rect = f'x="0.5" y="0.5" width="{w - 1:.2f}" height="{h - 1:.2f}" rx="6"'
+    return (f'<clipPath id="{cid}"><rect {rect}/></clipPath>\n'
+            f'<image href="data:{mime};base64,{data}" x="0" y="0" width="{w:.2f}" height="{h:.2f}" '
+            f'preserveAspectRatio="xMidYMid slice" clip-path="url(#{cid})"/>\n'
+            f'<rect {rect} fill="none" {BORDER}/>\n')
+
+
+def render_closing() -> None:
+    h, top = CLOSE_H, GAP16
+    you = framed(root / "assets" / "you-yes-you.webp", "image/webp", CLOSE_YOU_W, h, "yc")
+    meme = framed(root / "assets" / "bizintel.webp", "image/webp", CLOSE_MEME_W, h, "mc")
+    (cards / "closing-you.svg").write_text(svg(f"0 {-top:.2f} {CLOSE_YOU_W:.2f} {h + top:.2f}", you), encoding="utf-8")
+    (cards / "closing-meme.svg").write_text(
+        svg(f"{-CLOSE_G:.2f} {-top:.2f} {CLOSE_MEME_W + CLOSE_G:.2f} {h + top:.2f}", meme), encoding="utf-8")
+    old = cards / "bizintel-meme.svg"
+    if old.exists():
+        old.unlink()
 
 
 def meme_block() -> str:
-    return ('<p align="center">\n  <a href="assets/bizintel.webp">'
-            f'<img src="assets/cards/{REV}/bizintel-meme.svg" width="100%" align="top" alt="{MEME_ALT}" /></a>\n</p>')
+    you_pct = int(CLOSE_YOU_W / 886 * 100000) / 1000
+    meme_pct = int((CLOSE_MEME_W + CLOSE_G) / 886 * 100000) / 1000
+    return ('<p align="center">\n  '
+            + img(YOU_HREF, "closing-you.svg", f"{you_pct:.3f}%", YOU_ALT) + "<!--\n  -->"
+            + img(MEME_HREF, "closing-meme.svg", f"{meme_pct:.3f}%", MEME_ALT) + "\n</p>")
 
 
 def splice(readme: str, name: str, block: str) -> str:
@@ -530,7 +551,7 @@ def main() -> int:
     widths = {n: render_module(n, i % 3) for i, n in enumerate(MODULES)}
     render_flagship()
     render_modules_heading()
-    render_meme()
+    render_closing()
     readme = readme_path.read_text(encoding="utf-8")
     readme = splice(readme, "HEADER", header_block(overview_alt))
     readme = splice(readme, "CARDS", cards_block(widths))

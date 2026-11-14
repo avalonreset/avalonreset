@@ -89,6 +89,7 @@ Set up https://github.com/avalonreset/cto-legends and check which modules apply 
 <!-- CARDS:END -->
 <!-- MEME:START -->
 <p align="center">
-  <a href="assets/bizintel.webp"><img src="assets/cards/r14/bizintel-meme.svg" width="100%" align="top" alt="Two figures in black on red, Greek vase style. One asks: wait, it was business intelligence this whole time? The other, holding a torch-lit staff: always has been." /></a>
+  <a href="https://github.com/avalonreset/cto-legends#readme"><img src="assets/cards/r14/closing-you.svg" width="35.305%" align="top" alt="A smiling red demon girl in a black dress points straight at you: YOU. YES, YOU." /></a><!--
+  --><a href="https://cto-legends.com"><img src="assets/cards/r14/closing-meme.svg" width="64.694%" align="top" alt="Two figures in black on red, Greek vase style. One asks: wait, it was business intelligence this whole time? The other, holding a torch-lit staff: always has been." /></a>
 </p>
 <!-- MEME:END -->
