@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r15"
+REV = "r16"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -106,22 +106,22 @@ MODULES_NOTE = "21 modules · each one installs only when a task needs it"
 COPY = {
     "legends-empire": ("foundation", "mit", "Turn your Obsidian vault into agent memory, with SHA-256 integrity locks and crash-safe writes."),
     "legends-astro": ("foundation", "mit", "Move WordPress, Next.js, or HTML sites to Astro with every route and SEO tag accounted for."),
-    "legends-hetzner": ("infrastructure", "mit", "Check live Hetzner stock in the EU and US, size servers for cost, and preflight every build."),
+    "legends-hetzner": ("infrastructure", "mit", "Check live Hetzner stock in Germany and Finland, size servers for cost, and preflight every build."),
     "legends-coolify": ("infrastructure", "mit", "Audit your Coolify servers read-only: containers, deploy queues, env keys, and backups."),
     "legends-cloudflare": ("infrastructure", "mit", "Change Cloudflare DNS without surprises: preview each edit, keep proxy settings, confirm it is live."),
     "legends-stripe": ("infrastructure", "mit", "Keep Stripe in sync: match Test and Live prices, reconcile fees to the cent, and verify webhooks."),
     "legends-buzz": ("infrastructure", "mit", "Run self-hosted Block Buzz Nostr relays from the command line, with no MCP daemon to babysit."),
     "legends-gohighlevel": ("infrastructure", "mit", "Run GoHighLevel agencies at scale: batch-clone snapshots, X-ray workflows, lock down permissions."),
     "legends-github": ("intelligence", "mit", "Keep repos launch-ready: health audits, verified releases, and topics matched to search demand."),
-    "legends-jev": ("infrastructure", "mit", "Give your agent eyes: local OCR, exact pixel coordinates, and storefront sign checks."),
-    "legends-geogrid": ("intelligence", "mit", "Map local Google Maps rankings across a circular grid at wholesale rates, with 21-page PDF reports."),
+    "legends-jev": ("infrastructure", "mit", "Give your agent eyes: hosted OCR, exact pixel coordinates, and storefront sign checks."),
+    "legends-geogrid": ("intelligence", "mit", "Map local Google Maps rankings across a circular grid at wholesale rates, with 18-page PDF reports."),
     "legends-dataforseo": ("intelligence", "mit", "Pull Google SERPs, Maps listings, and keyword volume from DataForSEO, cost previewed first."),
     "legends-firecrawl": ("intelligence", "mit", "Turn JavaScript-heavy sites into clean Markdown with preview-first, bounded Firecrawl crawls."),
     "legends-grant": ("intelligence", "mit", "Find grants across 56 US jurisdictions and check every eligibility rule word for word."),
     "legends-obs": ("studio", "mit", "Drive OBS Studio from your agent: scene switching, encoder checks, profile backups, and test clips."),
-    "legends-captions": ("studio", "mit", "Frame-accurate, word-by-word subtitles for 4K60 video, with tech terms and acronyms spelled right."),
+    "legends-captions": ("studio", "mit", "Word-by-word subtitles timed by forced alignment, with tech terms and acronyms spelled right."),
     "legends-youtube": ("studio", "mit", "Run YouTube channels through the official APIs: safe metadata edits, CTR audits, private uploads."),
-    "legends-yt-dlp": ("studio", "mit", "Pull video, audio, and transcripts in paced, resumable batches, then cut clips frame-accurate."),
+    "legends-yt-dlp": ("studio", "mit", "Pull video, audio, and transcripts in paced, resumable batches, then plan reviewable clips."),
     "legends-stable-audio-3": ("studio", "apache-2.0", "Make custom instrumental music on your own GPU and blend it into seamless multi-hour mixes."),
     "legends-hyperyap": ("studio", "agpl-3.0", "Push-to-talk dictation that runs offline on your GPU and types into any app on Windows, macOS, or Linux."),
     "legends-ambient-intelligence": ("studio", "mit", "Turn voice recorder and meeting audio into structured Obsidian notes, entirely offline."),
