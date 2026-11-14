@@ -44,11 +44,15 @@ def ribbon(P: float, amps, phases, x0: float, x1: float, step: float = 4.5) -> s
 
 # (colour, opacity, width, count), drawn back to front: oxblood body, crimson, black strands that
 # cut shadows through the weave, then fine true-red threads on top. No white anywhere.
-KINDS = [("#4d0000", 0.9, 3.2, 3), ("#990000", 0.75, 1.6, 4), ("#cc0000", 0.7, 0.9, 4),
-         ("#ff0000", 0.85, 0.6, 4), ("#000000", 0.95, 1.5, 5)]   # black last: it cuts dark lanes through the red
+KINDS = [("#4d0000", 0.85, 1.3, 4), ("#990000", 0.75, 0.8, 5), ("#cc0000", 0.7, 0.55, 5),
+         ("#ff0000", 0.85, 0.4, 5), ("#000000", 0.75, 0.7, 4)]
+# Interleave every colour through the depth order so the layers weave organically instead of
+# stacking in bands (all dark at the back, all black on top).
+LAYERS = [(c, o, w) for c, o, w, k in KINDS for _ in range(k)]
+rng.shuffle(LAYERS)
 n = 0
-for colour, op, sw, count in KINDS:
-    for _ in range(count):
+for colour, op, sw in LAYERS:
+    if True:
         P = rng.uniform(260, 520)
         # three harmonics, amplitudes shrinking, total scaled to fit the track exactly
         raw = [rng.uniform(.55, 1), rng.uniform(.15, .45), rng.uniform(.05, .22)]
