@@ -490,6 +490,30 @@ def cards_block(widths: dict) -> str:
     return "\n".join(out)
 
 
+MEME_ALT = ("Two figures in black on red, Greek vase style. One asks: wait, it was business intelligence "
+            "this whole time? The other, holding a torch-lit staff: always has been.")
+
+
+def render_meme() -> None:
+    """The closing meme under the grid: the owner's art embedded whole, framed like the cards.
+
+    32px section gap above: 16px from the README paragraph boundary, 16px of viewBox padding here.
+    The image is base64 inside the SVG because GitHub blocks external hrefs in README SVGs."""
+    import base64
+    data = base64.b64encode((root / "assets" / "bizintel.webp").read_bytes()).decode()
+    h = 886 * 1152 / 2048
+    body = (f'<clipPath id="mc"><rect x="0.5" y="0.5" width="885" height="{h - 1:.2f}" rx="6"/></clipPath>\n'
+            f'<image href="data:image/webp;base64,{data}" x="0" y="0" width="886" height="{h:.2f}" '
+            f'preserveAspectRatio="xMidYMid slice" clip-path="url(#mc)"/>\n'
+            f'<rect x="0.5" y="0.5" width="885" height="{h - 1:.2f}" rx="6" fill="none" {BORDER}/>\n')
+    (cards / "bizintel-meme.svg").write_text(svg(f"0 {-GAP16:.2f} 886 {h + GAP16:.2f}", body), encoding="utf-8")
+
+
+def meme_block() -> str:
+    return ('<p align="center">\n  <a href="assets/bizintel.webp">'
+            f'<img src="assets/cards/{REV}/bizintel-meme.svg" width="100%" align="top" alt="{MEME_ALT}" /></a>\n</p>')
+
+
 def splice(readme: str, name: str, block: str) -> str:
     start, end = f"<!-- {name}:START -->", f"<!-- {name}:END -->"
     if start not in readme or end not in readme:
@@ -506,9 +530,11 @@ def main() -> int:
     widths = {n: render_module(n, i % 3) for i, n in enumerate(MODULES)}
     render_flagship()
     render_modules_heading()
+    render_meme()
     readme = readme_path.read_text(encoding="utf-8")
     readme = splice(readme, "HEADER", header_block(overview_alt))
     readme = splice(readme, "CARDS", cards_block(widths))
+    readme = splice(readme, "MEME", meme_block())
     readme_path.write_text(readme, encoding="utf-8")
     print(f"Rendered banner, bar, overview, flagship, heading and {len(MODULES)} module cards (outlined {FONT}).")
     return 0

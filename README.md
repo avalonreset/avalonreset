@@ -87,3 +87,8 @@ Set up https://github.com/avalonreset/cto-legends and check which modules apply 
   --><a href="https://github.com/avalonreset/legends-buzz#readme"><img src="assets/cards/r14/legends-buzz-repo.svg" width="16.060%" align="top" alt="legends-buzz GitHub readme" /></a>
 </p>
 <!-- CARDS:END -->
+<!-- MEME:START -->
+<p align="center">
+  <a href="assets/bizintel.webp"><img src="assets/cards/r14/bizintel-meme.svg" width="100%" align="top" alt="Two figures in black on red, Greek vase style. One asks: wait, it was business intelligence this whole time? The other, holding a torch-lit staff: always has been." /></a>
+</p>
+<!-- MEME:END -->
