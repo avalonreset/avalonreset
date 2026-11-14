@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r9"
+REV = "r10"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -215,19 +215,36 @@ def render_banner() -> None:
 
 # ---------------------------------------------------------------- community bar (tagline locked)
 
+def chip(t: Typesetter, x: float, y: float, body: str, size: float, gid: str) -> str:
+    """The one boxed element per row: hairline red frame, a faint red-to-black depth, white bold copy.
+    Shared by the community bar and the separator so the two rows stay one system."""
+    w = width(body, size) + 28
+    return (
+        f'  <defs><linearGradient id="{gid}" x2="0" y2="1"><stop stop-color="#2a0508"/>'
+        f'<stop offset="1" stop-color="#0a0a0c"/></linearGradient></defs>\n'
+        f'  <rect x="{x + .5:.2f}" y="{y + .5}" width="{w - 1:.2f}" height="23" rx="3" fill="url(#{gid})" '
+        f'stroke="#ff0000" stroke-opacity="0.6" stroke-width="1"/>\n'
+        f'  <path d="M{x + 3.5:.2f} {y + 1.5}h{w - 7:.2f}" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>\n'
+        + t.run(x + w / 2, y + 15.4, size, body, "#ffffff", "700", "middle")
+    )
+
+
+def label(t: Typesetter, x: float, y: float, text: str, size: float, anchor: str = "start") -> str:
+    """Muted key, config style: 'community:' / 'license:'. Never boxed."""
+    return t.run(x, y + 15.4, size, f'{text}<tspan fill="#52525b">:</tspan>', "#8b8b94", "600", anchor)
+
+
 def render_bar() -> None:
     t = Typesetter()
     lb = u("label", K_WIDE)
-    c_w = width("community", lb) + 24
+    k_w = width("community:", lb)
     p_txt = '<tspan fill="#ffffff">ai-marketing-hub-pro</tspan><tspan fill="#ff0000"> ↗</tspan>'
+    p_x = 1 + k_w + 8
     p_w = width(p_txt, lb) + 28
     body = (
-        f'  <rect x="1" y="3" width="{c_w:.2f}" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>\n'
-        + t.run(1 + c_w / 2, 18.4, lb, "community", "#a1a1aa", "600", "middle")
-        + f'  <rect x="{c_w + 3:.2f}" y="3" width="{p_w:.2f}" height="24" rx="3" fill="#1f070b" {RED}/>\n'
-        + f'  <rect x="{c_w + 3:.2f}" y="3" width="2.5" height="24" rx="1" fill="#ff0000"/>\n'
-        + t.run(c_w + 3 + 1.25 + p_w / 2, 18.4, lb, p_txt, "#ffffff", "700", "middle")
-        + t.run(c_w + 3 + p_w + 12, 18.4, lb, BAR_TAGLINE, "#ffffff", "600")
+        label(t, 1, 3, "community", lb)
+        + chip(t, p_x, 3, p_txt, lb, "chip-bar")
+        + t.run(p_x + p_w + 12, 18.4, lb, BAR_TAGLINE, "#ffffff", "600")
     )
     (cards / "bar-community.svg").write_text(svg("0 -14.6 886 42.1", body, t), encoding="utf-8")
 

@@ -7,14 +7,29 @@ import xml.etree.ElementTree as ET
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from typeset import Typesetter  # noqa: E402
+from typeset import Typesetter, width  # noqa: E402
+import importlib.util  # noqa: E402
+
+_spec = importlib.util.spec_from_file_location("render_cards", Path(__file__).resolve().parent / "render-cards.py")
+rc = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(rc)
+
+# Geometry: the stream runs in a track whose edges continue the chip's top and bottom borders,
+# so the light and the [license: open source] badge share one height (y 6..30).
+LB = 9.62
+CHIP_W = width("open source", LB) + 28
+CHIP_X = 885 - CHIP_W
+LABEL_END = CHIP_X - 8
+STREAM_END = LABEL_END - width("license:", LB) - 16
+TOP, BOT = 6, 30
+W, H, END = f"{STREAM_END - 1:.2f}", BOT - TOP, f"{STREAM_END:.2f}"
 
 root = Path(__file__).parent
 rng = random.Random(20260925)
-out = ['''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -8.2 886 41.7" width="100%">
+out = [f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -8.2 886 41.7" width="100%">
 <defs>
 <linearGradient id="light"><stop stop-color="#ff0000" stop-opacity="0"/><stop offset=".2" stop-color="#c00000" stop-opacity=".2"/><stop offset=".48" stop-color="#ff0000" stop-opacity=".75"/><stop offset=".62" stop-color="#fff"/><stop offset=".73" stop-color="#ff1a1a" stop-opacity=".8"/><stop offset="1" stop-color="#ff0000" stop-opacity="0"/></linearGradient>
-<clipPath id="crop"><rect x="1" y="0" width="713" height="36"/></clipPath></defs><style>''']
+<clipPath id="crop"><rect x="1" y="{TOP}" width="{W}" height="{H}"/></clipPath><linearGradient id="fade" gradientUnits="userSpaceOnUse" x1="1" x2="{END}"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".07" stop-color="#fff"/><stop offset=".86" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="trail" maskUnits="userSpaceOnUse" x="0" y="{TOP}" width="{END}" height="{H}"><rect x="0" y="{TOP}" width="{END}" height="{H}" fill="url(#fade)"/></mask></defs><style>''']
 layers = []
 for rail in range(8):
     for layer in range(10):
@@ -33,31 +48,26 @@ for rail in range(8):
         out.append(
             f"@keyframes f{n}{{{frames}}}.f{n}{{animation:f{n} {duration:.3f}s cubic-bezier(.33,.24,.67,.76) {delay:.3f}s infinite}}"
         )
-        y = 4.5 + rail * 3.85
-        bend = math.sin(rail * 0.81 + layer * 1.3) * 0.9
+        y = TOP + 2.5 + rail * (BOT - TOP - 5) / 7
+        bend = math.sin(rail * 0.81 + layer * 1.3) * 0.6
         d = f"M0 {y:.2f} C{width*0.3:.2f} {y+bend:.2f} {width*0.7:.2f} {y-bend:.2f} {width} {y:.2f}"
         alpha = rng.uniform(0.27, 0.66)
         layers.append(
             f'<g class="flow f{n}" opacity="{alpha:.3f}"><path d="{d}" stroke="url(#light)" stroke-width="3.8" opacity=".12"/><path d="{d}" stroke="url(#light)" stroke-width="{rng.uniform(0.6, 1.15):.2f}"/></g>'
         )
 out.append(
-    '@media(prefers-reduced-motion:reduce){.flow{animation:none!important;transform:translateX(220px);opacity:.2}}</style><g clip-path="url(#crop)" fill="none">'
+    '@media(prefers-reduced-motion:reduce){.flow{animation:none!important;transform:translateX(220px);opacity:.2}}</style><g mask="url(#trail)"><g clip-path="url(#crop)" fill="none">'
 )
 out.extend(layers)
 out.append("</g>")
+# The track: two hairlines on the chip's border lines, fading in and out with the light.
+out.append(f'<path d="M1 {TOP + .5}H{STREAM_END:.2f}M1 {BOT - .5}H{STREAM_END:.2f}" stroke="#ffffff" stroke-opacity=".1" stroke-width="1"/></g>')
 T = Typesetter()
-chips = (
-    '  <rect x="728" y="6" width="58" height="24" rx="3" fill="#050507" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>\n'
-    + T.run(757, 21.4, 9.62, "license", "#a1a1aa", "600", "middle")
-    + '  <rect x="788" y="6" width="97" height="24" rx="3" fill="#1f070b" stroke="#ff0000" stroke-opacity="0.68" stroke-width="1"/>\n'
-    '  <rect x="788" y="6" width="2.5" height="24" rx="1" fill="#ff0000"/>\n'
-    + T.run(837.5, 21.4, 9.62, "open source", "#ffffff", "700", "middle")
-)
+chips = rc.label(T, LABEL_END, TOP, "license", LB, "end") + rc.chip(T, CHIP_X, TOP, "open source", LB, "chip-sep")
 out.append(T.defs() + chips + "</svg>")
 svg = "\n".join(out)
 ET.fromstring(svg)
 # Path tracks REV in render-cards.py.
-(root / "assets/cards/r9/ecosystem-separator.svg").write_text(svg, encoding="utf-8")
-assert "mask=" not in svg
+(rc.cards / "ecosystem-separator.svg").write_text(svg, encoding="utf-8")
 assert svg.count('class="flow ') == 80
-print("80 flowing filaments (x=1..714) + right-justified [license][open source] badge (x=728..885); XML valid.")
+print(f"80 filaments in a y {TOP}..{BOT} track (x=1..{STREAM_END:.0f}, faded) + license: [open source] (x={CHIP_X:.0f}..885); XML valid.")
