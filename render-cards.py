@@ -26,7 +26,7 @@ from typeset import EM, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r3"
+REV = "r4"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -65,25 +65,28 @@ def wrap(text: str, size: float, width_u: float, lines: int) -> list:
 
 # ---------------------------------------------------------------- copy
 
-BANNER_L1 = "a package manager for ai coding agents"
-BANNER_L2 = "install one skill. get 21 tools on demand."
-BANNER_PILL = "free &amp; open source"
-BANNER_ALT = "cto-legends: a package manager for AI coding agents. Install one skill, get 21 tools on demand."
+# Owner vision (vault): the human is the controller, the agents do the operating; the only thing
+# that ever mattered was business intelligence; working slogan "fractional cto heaven".
+BANNER_L1 = "the human is the controller. the agents do the operating."
+BANNER_L2 = "stop being your computer's assistant."
+BANNER_PILL = "fractional cto heaven"
+BANNER_ALT = ("cto-legends: the human is the controller, the agents do the operating. "
+              "Stop being your computer's assistant. fractional cto heaven.")
 
 BAR_TAGLINE = "&lt;--- carefully designed to voltron into the world&apos;s greatest agentic digital marketing system"  # locked
 
-OVERVIEW_LEAD = "A coding agent is only as useful as the tools it can reach."
-OVERVIEW_REST = "cto-legends gives it 21 of them and loads each one only when a task needs it."
+OVERVIEW_LEAD = "If your AI hands the steps back to you, nothing was delegated. You just got one more thing to babysit."
+OVERVIEW_REST = "cto-legends is free software that gives your agents real hands, so your only job is to say what you want."
 STEPS = [
-    ("01", "install one skill", "pip install cto-legends, then register its single skill with your coding agent."),
-    ("02", "ask in plain words", 'Say what you need: "audit my Stripe fees" or "move my DNS to Cloudflare."'),
-    ("03", "the right module runs", "Your agent installs the matching module on the spot and uses it. Nothing to install by hand."),
+    ("01", "you talk", 'Say it the way you would to your CTO: "move my DNS to Cloudflare" or "why did my Stripe fees jump?"'),
+    ("02", "the agents operate", "They find the file, install the right module, run the command and check the result. You touch nothing."),
+    ("03", "you decide", "You get back what happened and what it means, not a to-do list. That is business intelligence."),
 ]
 AGENTS = ["claude", "codex", "gemini", "grok", "muse", "deepseek", "qwen", "glm"]
 
 FLAG_TITLE = "start here"
 FLAG_TAG = "// the one package you install"
-FLAG_LEAD = "Install cto-legends and register its skill with your agent. That is the whole setup."
+FLAG_LEAD = "Install cto-legends once and your agent can reach every module below. That is the whole setup."
 FLAG_BODY = ("The 21 modules below stay off your machine until a task needs one. Then your agent installs "
              "it from a pinned, checksum-verified release, in its own environment, and checks it is ready.")
 
@@ -180,7 +183,8 @@ def render_banner() -> None:
         f'  <circle cx="{cx:.2f}" cy="54" r="4.5" fill="#ff0000" class="beacon" />\n'
         + t.run(cx + 18.5, 60.3, pill_size, BANNER_PILL, "#ffffff", "600")
     )
-    title = "  <!-- Title -->\n" + t.run(50, 105, 66, "cto-legends", "#ff0000", "700")
+    # Title keeps the original Legends wordmark glyphs from the template, not outlined Plex Bold.
+    title = src[src.index("  <!-- Title: cto-legends"):src.index("  <!-- Divider Rail Base")].rstrip() + "\n"
     subs = ("  <!-- What it is / what you get -->\n"
             + t.run(50, 195, 28, BANNER_L1, "#ffffff", "500")
             + t.run(50, 245, 28, BANNER_L2, "#a1a1aa", "400"))
