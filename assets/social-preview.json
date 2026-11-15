@@ -1,0 +1,40 @@
+{
+  "template": "legends-social-v1",
+  "title": "avalonreset",
+  "subtitle": "the human is the controller. the agents do the operating. stop being your computer's assistant.",
+  "size": [
+    1280,
+    640
+  ],
+  "title_px": 64,
+  "subtitle_px": 36,
+  "safe_margin_px": 80,
+  "lines": [
+    "the human is the controller. the agents do the",
+    "operating. stop being your computer's assistant."
+  ],
+  "text_bounds": [
+    [
+      80,
+      176,
+      520,
+      225
+    ],
+    [
+      80,
+      324,
+      1092,
+      362
+    ],
+    [
+      80,
+      372,
+      1136,
+      410
+    ]
+  ],
+  "font_sha256": "3769f0f76477a7d9e2e6cb40422dedacb56c9ab1a6f7beee89b2b9ba6b8091ee",
+  "image_sha256": "5b5001c1bfb5bbe582c42bb4b057550c14c5f310153dedbf3d3dc0eaf688f91d",
+  "bytes": 22147,
+  "upload_status": "not_attempted"
+}
