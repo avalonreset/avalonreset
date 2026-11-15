@@ -6,14 +6,6 @@
 </p>
 <!-- HEADER:END -->
 
-# Avalon Reset: Open Source AI Agents and Agent Skills (`cto-legends`)
-
-Avalon Reset builds [`cto-legends`](https://github.com/avalonreset/cto-legends), an open-source agent skills manager and CLI router for coding agents. Instead of loading 21 separate skill files at session start, you register one router skill (`cto_legends/SKILL.md`) with your coding agent (`claude`, `codex`, `gemini`, `grok`, `muse`, `deepseek`, `qwen`, `glm`, or `opencode`) and load module recipes on demand through `cto-legends handoff`.
-
-## Start Here: Preview Before Anything Installs
-
-Every mutating manager command (`install`, `update`, `rollback`, `sync`, `agent-setup`, `install-skill`, `isolate-skills`, `restore-skills`, `startup-setup`, `startup-restore`) previews its planned actions in JSON unless `--apply` is passed.
-
 <!-- CARDS:START -->
 <p align="left">
   <a href="https://github.com/avalonreset/cto-legends"><img src="assets/cards/r16/cto-legends-flagship.svg" width="100%" align="top" alt="start here, the one package you install: Install cto-legends once and your agent can reach every module below. That is the whole setup. The 21 modules below stay off your machine until a task needs one. Then your agent installs it from a pinned, checksum-verified release, in its own environment, and checks it is ready." /></a>
@@ -26,18 +18,6 @@ Every mutating manager command (`install`, `update`, `rollback`, `sync`, `agent-
 ```text
 Set up https://github.com/avalonreset/cto-legends and check which modules apply to this workspace.
 ```
-
-Or install from PyPI and preview host registration directly:
-
-```sh
-python -m pip install cto-legends
-cto-legends agent-setup claude
-cto-legends agent-setup claude --apply
-```
-
-## The 21 Open-Source Modules
-
-When a task calls for a module, `cto-legends route` matches plain-English goals to the catalog, and `cto-legends install <module> --apply` downloads the pinned GitHub release tarball into `~/.cto-legends/releases/<module>/<version>`, verifies its SHA-256 digest and commit SHA against `catalog.json`, creates an isolated per-module Python virtualenv, and runs offline `doctor` readiness checks before switching the active version. Prior releases stay on disk for `cto-legends rollback`.
 
 <p align="left">
   <img src="assets/cards/r16/modules-heading.svg" width="100%" align="top" alt="the modules: 21 open-source modules, each one installs only when a task needs it" /><!--
@@ -107,15 +87,6 @@ When a task calls for a module, `cto-legends route` matches plain-English goals 
   --><a href="https://github.com/avalonreset/legends-buzz#readme"><img src="assets/cards/r16/legends-buzz-repo.svg" width="16.060%" align="top" alt="GITHUB README: avalonreset/legends-buzz repository README" /></a>
 </p>
 <!-- CARDS:END -->
-
-## Module Directory and Links
-
-- **Foundation and Memory:** [`legends-empire`](https://github.com/avalonreset/legends-empire), [`legends-astro`](https://github.com/avalonreset/legends-astro)
-- **Infrastructure and Operations:** [`legends-hetzner`](https://github.com/avalonreset/legends-hetzner), [`legends-coolify`](https://github.com/avalonreset/legends-coolify), [`legends-cloudflare`](https://github.com/avalonreset/legends-cloudflare), [`legends-stripe`](https://github.com/avalonreset/legends-stripe), [`legends-gohighlevel`](https://github.com/avalonreset/legends-gohighlevel), [`legends-jev`](https://github.com/avalonreset/legends-jev), [`legends-buzz`](https://github.com/avalonreset/legends-buzz)
-- **Search and Market Intelligence:** [`legends-geogrid`](https://github.com/avalonreset/legends-geogrid), [`legends-dataforseo`](https://github.com/avalonreset/legends-dataforseo), [`legends-firecrawl`](https://github.com/avalonreset/legends-firecrawl), [`legends-github`](https://github.com/avalonreset/legends-github), [`legends-grant`](https://github.com/avalonreset/legends-grant)
-- **Studio, Audio, and Video:** [`legends-youtube`](https://github.com/avalonreset/legends-youtube), [`legends-obs`](https://github.com/avalonreset/legends-obs), [`legends-captions`](https://github.com/avalonreset/legends-captions), [`legends-yt-dlp`](https://github.com/avalonreset/legends-yt-dlp), [`legends-stable-audio-3`](https://github.com/avalonreset/legends-stable-audio-3), [`legends-hyperyap`](https://github.com/avalonreset/legends-hyperyap), [`legends-ambient-intelligence`](https://github.com/avalonreset/legends-ambient-intelligence)
-
-Browse the [module directory on cto-legends.com](https://cto-legends.com/modules), read [third-party license notices](https://github.com/avalonreset/cto-legends/blob/main/THIRD_PARTY_NOTICES.md), or reach Avalon Reset at the [site message desk](https://cto-legends.com/dm).
 
 <!-- MEME:START -->
 <p align="center">
