@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r17"
+REV = "r18"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -451,35 +451,52 @@ def render_collection_shrine() -> None:
     t = Typesetter()
     hd, bd, lb = u("head", K_WIDE), u("body", K_WIDE), u("label", K_WIDE)
     h = 96
-    pts_outer, pts_inner = [], []
     cx, cy = 58.0, 48.0
+    r_out, r_in = 23.5, 9.8
+    verts = []
     for i in range(10):
         ang = math.radians(-90 + i * 36)
-        ro = 21.0 if i % 2 == 0 else 8.6
-        ri = 11.0 if i % 2 == 0 else 4.5
-        pts_outer.append(f"{cx + ro * math.cos(ang):.2f},{cy + ro * math.sin(ang):.2f}")
-        pts_inner.append(f"{cx + ri * math.cos(ang):.2f},{cy + ri * math.sin(ang):.2f}")
-    star_poly = " ".join(pts_outer)
-    star_core = " ".join(pts_inner)
+        r = r_out if i % 2 == 0 else r_in
+        verts.append((cx + r * math.cos(ang), cy + r * math.sin(ang)))
+
+    facets = ""
+    for i in range(10):
+        x1, y1 = verts[i]
+        x2, y2 = verts[(i + 1) % 10]
+        tri = f"{cx:.2f},{cy:.2f} {x1:.2f},{y1:.2f} {x2:.2f},{y2:.2f}"
+        facets += f'  <polygon points="{tri}" fill="#ff0000"/>\n'
+        if i % 2 == 1:
+            facets += f'  <polygon points="{tri}" fill="#000000" opacity="0.34"/>\n'
+    star_outline = " ".join(f"{x:.2f},{y:.2f}" for x, y in verts)
+
+    def mini_star(mx: float, my: float, ro: float = 4.2, ri: float = 1.6) -> str:
+        pts = []
+        for k in range(8):
+            a = math.radians(-90 + k * 45)
+            rk = ro if k % 2 == 0 else ri
+            pts.append(f"{mx + rk * math.cos(a):.2f},{my + rk * math.sin(a):.2f}")
+        return " ".join(pts)
 
     body = (
         '  <defs>\n'
         f'    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="{h}" gradientUnits="userSpaceOnUse">'
         '<stop offset="0" stop-color="#ffffff" stop-opacity="0.05"/>'
         '<stop offset="0.65" stop-color="#ffffff" stop-opacity="0"/></linearGradient>\n'
+        f'    <radialGradient id="star-aura" cx="{cx:.1f}" cy="{cy:.1f}" r="34" gradientUnits="userSpaceOnUse">'
+        '<stop offset="0" stop-color="#ff0000" stop-opacity="0.32"/>'
+        '<stop offset="0.65" stop-color="#ff0000" stop-opacity="0.08"/>'
+        '<stop offset="1" stop-color="#ff0000" stop-opacity="0"/></radialGradient>\n'
         '  </defs>\n'
         f'  <rect x="1" y="1" width="884" height="{h - 2}" rx="4" fill="#0c0507" {RED}/>\n'
         f'  <rect x="1" y="1" width="884" height="{h - 2}" rx="4" fill="url(#sheen)"/>\n'
         f'  <rect x="1" y="1" width="4" height="{h - 2}" rx="2" fill="#ff0000"/>\n'
         '  <rect x="18" y="12" width="80" height="72" rx="4" fill="#000000" stroke="#ff0000" stroke-opacity="0.55" stroke-width="1"/>\n'
-        f'  <circle cx="{cx:.1f}" cy="{cy:.1f}" r="28" fill="none" stroke="#ff0000" stroke-opacity="0.28" stroke-width="1"/>\n'
-        f'  <circle cx="{cx:.1f}" cy="{cy:.1f}" r="23" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>\n'
-        f'  <line x1="{cx:.1f}" y1="15" x2="{cx:.1f}" y2="21" stroke="#ff0000" stroke-opacity="0.65" stroke-width="1"/>\n'
-        f'  <line x1="{cx:.1f}" y1="75" x2="{cx:.1f}" y2="81" stroke="#ff0000" stroke-opacity="0.65" stroke-width="1"/>\n'
-        f'  <line x1="25" y1="{cy:.1f}" x2="31" y2="{cy:.1f}" stroke="#ff0000" stroke-opacity="0.65" stroke-width="1"/>\n'
-        f'  <line x1="85" y1="{cy:.1f}" x2="91" y2="{cy:.1f}" stroke="#ff0000" stroke-opacity="0.65" stroke-width="1"/>\n'
-        f'  <polygon points="{star_poly}" fill="#ff0000"/>\n'
-        f'  <polygon points="{star_core}" fill="#000000" opacity="0.28"/>\n'
+        '  <rect x="22" y="16" width="72" height="64" rx="2" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>\n'
+        f'  <circle cx="{cx:.1f}" cy="{cy:.1f}" r="34" fill="url(#star-aura)"/>\n'
+        + facets
+        + f'  <polygon points="{star_outline}" fill="none" stroke="#ff0000" stroke-opacity="0.9" stroke-width="0.6"/>\n'
+        + f'  <polygon points="{mini_star(29.5, 48.0)}" fill="#ff0000" opacity="0.75"/>\n'
+        + f'  <polygon points="{mini_star(86.5, 48.0)}" fill="#ff0000" opacity="0.75"/>\n'
     )
     tx = 116
     sub = "Bookmark or star the router and all 21 modules from one GitHub list."
@@ -495,7 +512,7 @@ def render_collection_shrine() -> None:
     body += f'  <rect x="{btn_x}" y="29" width="{btn_w}" height="38" rx="3" fill="#000000" {RED}/>\n'
     body += button(t, btn_x + btn_w / 2, 52.5, "#ffffff", 'OPEN 22-REPO LIST <tspan fill="#ff0000">↗</tspan>', lb, "700")
 
-    top = 10.0
+    top = 16.0
     (cards / "collection-shrine.svg").write_text(svg(f"0 {-top:.2f} 886 {h + top:.2f}", body, t), encoding="utf-8")
 
 
@@ -540,8 +557,7 @@ def cards_block(widths: dict) -> str:
     out += ["</p>", "", "```text", HANDOFF, "```", "", '<p align="left">']
     shrine_alt = "GitHub Star List: The complete 22-repository collection on one page. Bookmark or star the router and all 21 modules from one GitHub list."
     out.append("  " + img("", "modules-heading.svg", "100%", "the modules: 21 open-source modules, each one installs only when a task needs it") + "<!--\n  -->"
-               + img(f"{GH}/cto-legends#development-contributing-and-license", "ecosystem-separator.svg", "100%", "license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)") + "<!--\n  -->"
-               + img(STAR_LIST, "collection-shrine.svg", "100%", shrine_alt))
+               + img(f"{GH}/cto-legends#development-contributing-and-license", "ecosystem-separator.svg", "100%", "license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)"))
     lic_fmt = {"mit": "MIT", "apache-2.0": "Apache-2.0", "agpl-3.0": "AGPL-3.0"}
     for r in range(0, len(MODULES), 3):
         trio = MODULES[r:r + 3]
@@ -553,6 +569,7 @@ def cards_block(widths: dict) -> str:
             btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg", lw, f"ENGINEERING SPEC: {n} specification on cto-legends.com"))
             btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg", rw, f"GITHUB README: avalonreset/{n} repository README"))
         out.append("  " + "<!--\n  -->".join(btns))
+    out.append("  " + img(STAR_LIST, "collection-shrine.svg", "100%", shrine_alt))
     out.append("</p>")
     return "\n".join(out)
 
