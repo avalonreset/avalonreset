@@ -26,12 +26,13 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r16"
+REV = "r17"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
 
 GH = "https://github.com/avalonreset"
+STAR_LIST = "https://github.com/stars/avalonreset/lists/cto-legends"
 SITE = "https://cto-legends.com"
 SKOOL = "https://www.skool.com/ai-marketing-hub-pro"
 
@@ -444,6 +445,60 @@ def render_modules_heading() -> None:
     (cards / "modules-heading.svg").write_text(svg(f"0 {-top:.2f} 886 {top + 4:.2f}", body, t), encoding="utf-8")
 
 
+def render_collection_shrine() -> None:
+    """Graphic shrine for the 22-repository CTO Legends GitHub Star List."""
+    import math
+    t = Typesetter()
+    hd, bd, lb = u("head", K_WIDE), u("body", K_WIDE), u("label", K_WIDE)
+    h = 96
+    pts_outer, pts_inner = [], []
+    cx, cy = 58.0, 48.0
+    for i in range(10):
+        ang = math.radians(-90 + i * 36)
+        ro = 21.0 if i % 2 == 0 else 8.6
+        ri = 11.0 if i % 2 == 0 else 4.5
+        pts_outer.append(f"{cx + ro * math.cos(ang):.2f},{cy + ro * math.sin(ang):.2f}")
+        pts_inner.append(f"{cx + ri * math.cos(ang):.2f},{cy + ri * math.sin(ang):.2f}")
+    star_poly = " ".join(pts_outer)
+    star_core = " ".join(pts_inner)
+
+    body = (
+        '  <defs>\n'
+        f'    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="{h}" gradientUnits="userSpaceOnUse">'
+        '<stop offset="0" stop-color="#ffffff" stop-opacity="0.05"/>'
+        '<stop offset="0.65" stop-color="#ffffff" stop-opacity="0"/></linearGradient>\n'
+        '  </defs>\n'
+        f'  <rect x="1" y="1" width="884" height="{h - 2}" rx="4" fill="#0c0507" {RED}/>\n'
+        f'  <rect x="1" y="1" width="884" height="{h - 2}" rx="4" fill="url(#sheen)"/>\n'
+        f'  <rect x="1" y="1" width="4" height="{h - 2}" rx="2" fill="#ff0000"/>\n'
+        '  <rect x="18" y="12" width="80" height="72" rx="4" fill="#000000" stroke="#ff0000" stroke-opacity="0.55" stroke-width="1"/>\n'
+        f'  <circle cx="{cx:.1f}" cy="{cy:.1f}" r="28" fill="none" stroke="#ff0000" stroke-opacity="0.28" stroke-width="1"/>\n'
+        f'  <circle cx="{cx:.1f}" cy="{cy:.1f}" r="23" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1"/>\n'
+        f'  <line x1="{cx:.1f}" y1="15" x2="{cx:.1f}" y2="21" stroke="#ff0000" stroke-opacity="0.65" stroke-width="1"/>\n'
+        f'  <line x1="{cx:.1f}" y1="75" x2="{cx:.1f}" y2="81" stroke="#ff0000" stroke-opacity="0.65" stroke-width="1"/>\n'
+        f'  <line x1="25" y1="{cy:.1f}" x2="31" y2="{cy:.1f}" stroke="#ff0000" stroke-opacity="0.65" stroke-width="1"/>\n'
+        f'  <line x1="85" y1="{cy:.1f}" x2="91" y2="{cy:.1f}" stroke="#ff0000" stroke-opacity="0.65" stroke-width="1"/>\n'
+        f'  <polygon points="{star_poly}" fill="#ff0000"/>\n'
+        f'  <polygon points="{star_core}" fill="#000000" opacity="0.28"/>\n'
+    )
+    tx = 116
+    sub = "Bookmark or star the router and all 21 modules from one GitHub list."
+    body += t.run(tx, 27, lb, "GITHUB STAR LIST", "#ff0000", "700")
+    x_meta = tx + width("GITHUB STAR LIST", lb) + 10
+    body += t.run(x_meta, 27, lb, "// github.com/stars/avalonreset/lists/cto-legends", "#a1a1aa", "400")
+    body += t.run(tx, 52, hd, "The complete 22-repository collection on one page", "#ffffff", "700")
+    body += t.run(tx, 74, bd, sub, "#d4d4d8", "400")
+
+    btn_w = 216
+    btn_x = 868 - btn_w
+    assert tx + width(sub, bd) + 20 <= btn_x, "Shrine subline collides with button"
+    body += f'  <rect x="{btn_x}" y="29" width="{btn_w}" height="38" rx="3" fill="#000000" {RED}/>\n'
+    body += button(t, btn_x + btn_w / 2, 52.5, "#ffffff", 'OPEN 22-REPO LIST <tspan fill="#ff0000">↗</tspan>', lb, "700")
+
+    top = 10.0
+    (cards / "collection-shrine.svg").write_text(svg(f"0 {-top:.2f} 886 {h + top:.2f}", body, t), encoding="utf-8")
+
+
 # ---------------------------------------------------------------- README
 
 def img(href: str, src: str, width_: str, alt: str) -> str:
@@ -452,47 +507,59 @@ def img(href: str, src: str, width_: str, alt: str) -> str:
 
 
 def header_block(overview_alt: str) -> str:
-    bar_alt = "community: ai-marketing-hub-pro - carefully designed to voltron into the world's greatest agentic digital marketing system"
+    banner_alt = ("cto-legends by Avalon Reset: open source AI agents and agent skills. "
+                  "The human is the controller, the agents do the operating. Stop being your computer's assistant. Fractional CTO heaven.")
+    bar_alt = "community: ai-marketing-hub-pro on Skool, designed to combine into an agentic digital marketing system"
+    ov_alt = ("How cto-legends works: If your AI hands the steps back to you, nothing was delegated. "
+              "You just got one more thing to babysit. cto-legends is free software that gives your agents real hands, "
+              "so your only job is to say what you want. 01. you talk: Say it the way you would to your CTO, such as "
+              "move my DNS to Cloudflare or why did my Stripe fees jump? 02. the agents operate: They find the file, "
+              "install the right module, run the command and check the result. You touch nothing. 03. you decide: "
+              "You get back what happened and what it means, not a to-do list. That is business intelligence. "
+              "Vendor agnostic presets: claude, codex, gemini, grok, muse, deepseek, qwen, glm.")
     parts = [
-        img(SITE, "banner.svg", "100%", BANNER_ALT),
+        img(SITE, "banner.svg", "100%", banner_alt),
         img(SKOOL, "bar-community.svg", "100%", bar_alt),
-        img(f"{GH}/cto-legends", "overview-panel.svg", "100%", f"how cto-legends works: {overview_alt}"),
+        img(f"{GH}/cto-legends", "overview-panel.svg", "100%", ov_alt),
     ]
     return '<p align="left">\n  ' + "<!--\n  -->".join(parts) + "\n</p>"
 
 
 def cards_block(widths: dict) -> str:
-    flag_alt = f"start here: {FLAG_LEAD} {FLAG_BODY}"
+    flag_alt = f"start here, the one package you install: {FLAG_LEAD} {FLAG_BODY}"
     out = ['<p align="left">', "  " + img(f"{GH}/cto-legends", "cto-legends-flagship.svg", "100%", flag_alt)]
     links = [
-        (f"{GH}/cto-legends#readme", "cto-legends-foot-readme", "cto-legends GitHub readme"),
-        (f"{GH}/cto-legends/releases", "cto-legends-foot-releases", "cto-legends releases"),
-        (SITE, "cto-legends-foot-handoff", "cto-legends docs and agent handoff"),
+        (f"{GH}/cto-legends#readme", "cto-legends-foot-readme", "GITHUB README: read the avalonreset/cto-legends documentation on GitHub"),
+        (f"{GH}/cto-legends/releases", "cto-legends-foot-releases", "RELEASES: view pinned avalonreset/cto-legends releases on GitHub"),
+        (SITE, "cto-legends-foot-handoff", "DOCS AND AGENT HANDOFF: open cto-legends.com specifications and agent handoff"),
     ]
     out.append("  " + "<!--\n  -->".join(
         img(h, f"{f}.svg", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
         for i, (h, f, a) in enumerate(links)) + "<!--\n  -->"
-        + img("", "cto-legends-handoff-label.svg", "100%", f"agent handoff: {HANDOFF_NOTE[3:]}"))
+        + img("", "cto-legends-handoff-label.svg", "100%", "agent handoff: paste this prompt into Claude Code, Codex, Gemini or another coding agent and it runs the setup"))
     out += ["</p>", "", "```text", HANDOFF, "```", "", '<p align="left">']
-    out.append("  " + img("", "modules-heading.svg", "100%", f"{MODULES_HEAD}: {MODULES_NOTE}") + "<!--\n  -->"
-               + img(f"{GH}/cto-legends#development-contributing-and-license", "ecosystem-separator.svg", "100%", "license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)"))
+    shrine_alt = "GitHub Star List: The complete 22-repository collection on one page. Bookmark or star the router and all 21 modules from one GitHub list."
+    out.append("  " + img("", "modules-heading.svg", "100%", "the modules: 21 open-source modules, each one installs only when a task needs it") + "<!--\n  -->"
+               + img(f"{GH}/cto-legends#development-contributing-and-license", "ecosystem-separator.svg", "100%", "license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)") + "<!--\n  -->"
+               + img(STAR_LIST, "collection-shrine.svg", "100%", shrine_alt))
+    lic_fmt = {"mit": "MIT", "apache-2.0": "Apache-2.0", "agpl-3.0": "AGPL-3.0"}
     for r in range(0, len(MODULES), 3):
         trio = MODULES[r:r + 3]
         out.append("  " + "<!--\n  -->".join(
-            img(f"{GH}/{n}", f"{n}.svg", f"{COL_PCT}%", f"{n}: {COPY[n][2]}") for n in trio))
+            img(f"{GH}/{n}", f"{n}.svg", f"{COL_PCT}%", f"{n} ({COPY[n][0]}, {lic_fmt.get(COPY[n][1], COPY[n][1])}): {COPY[n][2]}") for n in trio))
         btns = []
         for n in trio:
             lw, rw = widths[n]
-            btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg", lw, f"{n} engineering spec"))
-            btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg", rw, f"{n} GitHub readme"))
+            btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg", lw, f"ENGINEERING SPEC: {n} specification on cto-legends.com"))
+            btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg", rw, f"GITHUB README: avalonreset/{n} repository README"))
         out.append("  " + "<!--\n  -->".join(btns))
     out.append("</p>")
     return "\n".join(out)
 
 
-YOU_ALT = "A smiling red demon girl in a black dress points straight at you: YOU. YES, YOU."
-MEME_ALT = ("Two figures in black on red, Greek vase style. One asks: wait, it was business intelligence "
-            "this whole time? The other, holding a torch-lit staff: always has been.")
+YOU_ALT = "Start here with cto-legends: red demon character in a black dress pointing forward with the caption YOU. YES, YOU."
+MEME_ALT = ("CTO Legends business intelligence panel: two figures in Greek vase style, asking wait, it was business intelligence "
+            "this whole time? Always has been.")
 YOU_HREF = "https://github.com/avalonreset/cto-legends#readme"   # the call to action: go install it
 MEME_HREF = "https://cto-legends.com"                            # the punchline: what it is all for
 
@@ -555,6 +622,7 @@ def main() -> int:
     widths = {n: render_module(n, i % 3) for i, n in enumerate(MODULES)}
     render_flagship()
     render_modules_heading()
+    render_collection_shrine()
     render_closing()
     readme = readme_path.read_text(encoding="utf-8")
     readme = splice(readme, "HEADER", header_block(overview_alt))
