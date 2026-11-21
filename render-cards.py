@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r18"
+REV = "r19"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -94,14 +94,14 @@ AGENTS = ["claude", "codex", "gemini", "grok", "muse", "deepseek", "qwen", "glm"
 FLAG_TITLE = "start here"
 FLAG_TAG = "// the one package you install"
 FLAG_LEAD = "Install cto-legends once and your agent can reach every module below. That is the whole setup."
-FLAG_BODY = ("The 21 modules below stay off your machine until a task needs one. Then your agent installs "
+FLAG_BODY = ("Every module below stays off your machine until a task needs one. Then your agent installs "
              "it from a pinned, checksum-verified release, in its own environment, and checks it is ready.")
 
 HANDOFF_NOTE = "// paste this into claude code, codex or any coding agent and it does the setup"
 HANDOFF = f"Set up {GH}/cto-legends and check which modules apply to this workspace."
 
 MODULES_HEAD = "the modules"
-MODULES_NOTE = "21 modules · each one installs only when a task needs it"
+MODULES_NOTE = "each module installs only when a task needs it"
 
 # Module card copy: (category, license, one outcome-first sentence, 3 lines max).
 COPY = {
@@ -499,18 +499,18 @@ def render_collection_shrine() -> None:
         + f'  <polygon points="{mini_star(86.5, 48.0)}" fill="#ff0000" opacity="0.75"/>\n'
     )
     tx = 116
-    sub = "Bookmark or star the router and all 21 modules from one GitHub list."
+    sub = "Bookmark or star the router and every module from a single GitHub list."
     body += t.run(tx, 27, lb, "GITHUB STAR LIST", "#ff0000", "700")
     x_meta = tx + width("GITHUB STAR LIST", lb) + 10
     body += t.run(x_meta, 27, lb, "// github.com/stars/avalonreset/lists/cto-legends", "#a1a1aa", "400")
-    body += t.run(tx, 52, hd, "The complete 22-repository collection on one page", "#ffffff", "700")
+    body += t.run(tx, 52, hd, "The complete CTO Legends collection on one page", "#ffffff", "700")
     body += t.run(tx, 74, bd, sub, "#d4d4d8", "400")
 
     btn_w = 216
     btn_x = 868 - btn_w
     assert tx + width(sub, bd) + 20 <= btn_x, "Shrine subline collides with button"
     body += f'  <rect x="{btn_x}" y="29" width="{btn_w}" height="38" rx="3" fill="#000000" {RED}/>\n'
-    body += button(t, btn_x + btn_w / 2, 52.5, "#ffffff", 'OPEN 22-REPO LIST <tspan fill="#ff0000">↗</tspan>', lb, "700")
+    body += button(t, btn_x + btn_w / 2, 52.5, "#ffffff", 'OPEN GITHUB LIST <tspan fill="#ff0000">↗</tspan>', lb, "700")
 
     top = 16.0
     (cards / "collection-shrine.svg").write_text(svg(f"0 {-top:.2f} 886 {h + top:.2f}", body, t), encoding="utf-8")
@@ -555,8 +555,8 @@ def cards_block(widths: dict) -> str:
         for i, (h, f, a) in enumerate(links)) + "<!--\n  -->"
         + img("", "cto-legends-handoff-label.svg", "100%", "agent handoff: paste this prompt into Claude Code, Codex, Gemini or another coding agent and it runs the setup"))
     out += ["</p>", "", "```text", HANDOFF, "```", "", '<p align="left">']
-    shrine_alt = "GitHub Star List: The complete 22-repository collection on one page. Bookmark or star the router and all 21 modules from one GitHub list."
-    out.append("  " + img("", "modules-heading.svg", "100%", "the modules: 21 open-source modules, each one installs only when a task needs it") + "<!--\n  -->"
+    shrine_alt = "GitHub Star List: The complete CTO Legends collection on one page. Bookmark or star the router and every module from a single GitHub list."
+    out.append("  " + img("", "modules-heading.svg", "100%", "the modules: open-source modules, each one installs only when a task needs it") + "<!--\n  -->"
                + img(f"{GH}/cto-legends#development-contributing-and-license", "ecosystem-separator.svg", "100%", "license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)"))
     lic_fmt = {"mit": "MIT", "apache-2.0": "Apache-2.0", "agpl-3.0": "AGPL-3.0"}
     for r in range(0, len(MODULES), 3):
