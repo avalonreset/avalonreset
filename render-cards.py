@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r26"
+REV = "r27"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -74,11 +74,11 @@ def wrap(text: str, size: float, width_u: float, lines: int) -> list:
 
 # Aligned with cto-legends.com hero: fractional cto heaven (top-right beacon),
 # core positioning on line 1, mission statement on line 2.
-BANNER_L1 = "business ontology infrastructure & sovereign AI systems"
+BANNER_L1 = "sovereign business infrastructure & operational ontology"
 BANNER_L2 = "a crusade against dehumanization by tech entropy"
 BANNER_PILL = "fractional cto heaven"
 BANNER_ALT = ("cto-legends by Avalon Reset: fractional cto heaven. "
-              "Business ontology infrastructure & sovereign AI systems. "
+              "Sovereign business infrastructure & operational ontology. "
               "A crusade against dehumanization by tech entropy.")
 
 BAR_TAGLINE = "&lt;--- carefully designed to voltron into the world&apos;s greatest agentic digital marketing system"  # locked
@@ -741,7 +741,7 @@ def header_block(overview_alt: str) -> str:
               "You get back what happened and what it means, not a to-do list. That is business intelligence. "
               "Vendor agnostic presets: claude, codex, gemini, grok, muse, deepseek, qwen, glm.")
     parts = [
-        img(SITE, "banner.svg", "100%", banner_alt),
+        img(f"{SITE}/home", "banner.svg", "100%", banner_alt),
         img(SKOOL, "bar-community.svg", "100%", bar_alt),
         img(f"{GH}/cto-legends", "overview-panel.svg", "100%", ov_alt),
     ]
@@ -754,7 +754,7 @@ def cards_block(widths: dict) -> str:
     links = [
         (f"{GH}/cto-legends#readme", "cto-legends-foot-readme", "GITHUB README: read the avalonreset/cto-legends documentation on GitHub"),
         (f"{GH}/cto-legends/releases", "cto-legends-foot-releases", "RELEASES: view pinned avalonreset/cto-legends releases on GitHub"),
-        (SITE, "cto-legends-foot-handoff", "DOCS AND AGENT HANDOFF: open cto-legends.com specifications and agent handoff"),
+        (f"{SITE}/modules/cto-legends", "cto-legends-foot-handoff", "DOCS AND AGENT HANDOFF: open cto-legends.com/modules/cto-legends specification and agent handoff"),
     ]
     out.append("  " + "<!--\n  -->".join(
         img(h, f"{f}.svg", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
@@ -762,7 +762,7 @@ def cards_block(widths: dict) -> str:
         + img("", "cto-legends-handoff-label.svg", "100%", "agent handoff: vendor-agnostic, paste this prompt into any AI coding agent and it runs the setup"))
     out += ["</p>", "", "```text", HANDOFF, "```", "", '<p align="left">']
     shrine_alt = "GitHub Star List: The complete cto-legends collection on one page. Bookmark or star the router and every module from a single GitHub list."
-    out.append("  " + img("", "modules-heading.svg", "100%", "the modules: open-source modules, each one installs only when a task needs it") + "<!--\n  -->"
+    out.append("  " + img("", "modules-heading.svg", "100%", "the modules: 21 on-demand open-source modules, each one installs only when a task needs it") + "<!--\n  -->"
                + img(f"{GH}/cto-legends#development-contributing-and-license", "ecosystem-separator.svg", "100%", "license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)"))
     lic_fmt = {"mit": "MIT", "apache-2.0": "Apache-2.0", "agpl-3.0": "AGPL-3.0"}
     for r in range(0, len(MODULES), 3):
@@ -784,7 +784,7 @@ YOU_ALT = "Start here with cto-legends: red demon character in a black dress poi
 MEME_ALT = ("CTO Legends business intelligence panel: two figures in Greek vase style, asking wait, it was business intelligence "
             "this whole time? Always has been.")
 YOU_HREF = "https://github.com/avalonreset/cto-legends#readme"   # the call to action: go install it
-MEME_HREF = "https://cto-legends.com"                            # the punchline: what it is all for
+MEME_HREF = "https://cto-legends.com/home"                       # the punchline: what it is all for
 
 # Closing row under the grid: the square portrait and the 16:9 meme at one shared height, filling
 # the 886u row exactly full bleed with no gutter (the README joins them
