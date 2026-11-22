@@ -7,7 +7,7 @@ Page story, one job per element:
   overview    why it matters and how it works, in three steps
   flagship    start here: the one package you install
   handoff     the copyable agent prompt (the only >_ on the page: it is a paste-into-terminal action)
-  modules     heading, separator, then the 21 module cards
+  modules     heading, separator, then the on-demand module cards
 
 All text is outlined from the Legends Font by typeset.py, so metrics are identical on every OS
 and wrap() is exact. Module cards are a body image plus a footer cut into separate link
@@ -653,7 +653,7 @@ def render_modules_heading() -> None:
 
 
 def render_collection_shrine() -> None:
-    """Graphic shrine for the 22-repository CTO Legends GitHub Star List."""
+    """Graphic shrine for the complete CTO Legends GitHub Star List."""
     import math
     t = Typesetter()
     hd, bd, lb = u("head", K_WIDE), u("body", K_WIDE), u("label", K_WIDE)
@@ -762,7 +762,7 @@ def cards_block(widths: dict) -> str:
         + img("", "cto-legends-handoff-label.svg", "100%", "agent handoff: vendor-agnostic, paste this prompt into any AI coding agent and it runs the setup"))
     out += ["</p>", "", "```text", HANDOFF, "```", "", '<p align="left">']
     shrine_alt = "GitHub Star List: The complete cto-legends collection on one page. Bookmark or star the router and every module from a single GitHub list."
-    out.append("  " + img("", "modules-heading.svg", "100%", "the modules: 21 on-demand open-source modules, each one installs only when a task needs it") + "<!--\n  -->"
+    out.append("  " + img("", "modules-heading.svg", "100%", "the modules: on-demand open-source CLI modules for sovereign business infrastructure and operational ontology, each one installs only when a task needs it") + "<!--\n  -->"
                + img(f"{GH}/cto-legends#development-contributing-and-license", "ecosystem-separator.svg", "100%", "license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)"))
     lic_fmt = {"mit": "MIT", "apache-2.0": "Apache-2.0", "agpl-3.0": "AGPL-3.0"}
     for r in range(0, len(MODULES), 3):

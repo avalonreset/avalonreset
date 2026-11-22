@@ -20,7 +20,7 @@ Set up https://github.com/avalonreset/cto-legends and check which modules apply 
 ```
 
 <p align="left">
-  <img src="assets/cards/r27/modules-heading.svg" width="100%" align="top" alt="the modules: 21 on-demand open-source modules, each one installs only when a task needs it" /><!--
+  <img src="assets/cards/r27/modules-heading.svg" width="100%" align="top" alt="the modules: on-demand open-source CLI modules for sovereign business infrastructure and operational ontology, each one installs only when a task needs it" /><!--
   --><a href="https://github.com/avalonreset/cto-legends#development-contributing-and-license"><img src="assets/cards/r27/ecosystem-separator.svg" width="100%" align="top" alt="license: open source (MIT core; legends-stable-audio-3 is Apache-2.0, legends-hyperyap is AGPL-3.0)" /></a>
   <a href="https://github.com/avalonreset/legends-empire"><img src="assets/cards/r27/legends-empire.svg" width="33.33%" align="top" alt="legends-empire (foundation, MIT): Turn your Markdown vault into agent memory with SHA-256 integrity locks and crash-safe writes." /></a><!--
   --><a href="https://github.com/avalonreset/legends-hetzner"><img src="assets/cards/r27/legends-hetzner.svg" width="33.33%" align="top" alt="legends-hetzner (infrastructure, MIT): Check live Hetzner stock in Germany and Finland, size servers for cost, and preflight every build." /></a><!--
