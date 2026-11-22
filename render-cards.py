@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r25"
+REV = "r26"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -72,13 +72,14 @@ def wrap(text: str, size: float, width_u: float, lines: int) -> list:
 
 # ---------------------------------------------------------------- copy
 
-# Owner vision (vault): the human is the controller, the agents do the operating; the only thing
-# that ever mattered was business intelligence; working slogan "fractional cto heaven".
-BANNER_L1 = "the human is the controller. the agents do the operating."
-BANNER_L2 = "stop being your computer's assistant."
+# Aligned with cto-legends.com hero: fractional cto heaven (top-right beacon),
+# core positioning on line 1, mission statement on line 2.
+BANNER_L1 = "business ontology infrastructure & sovereign AI systems"
+BANNER_L2 = "a crusade against dehumanization by tech entropy"
 BANNER_PILL = "fractional cto heaven"
-BANNER_ALT = ("cto-legends: the human is the controller, the agents do the operating. "
-              "Stop being your computer's assistant. fractional cto heaven.")
+BANNER_ALT = ("cto-legends by Avalon Reset: fractional cto heaven. "
+              "Business ontology infrastructure & sovereign AI systems. "
+              "A crusade against dehumanization by tech entropy.")
 
 BAR_TAGLINE = "&lt;--- carefully designed to voltron into the world&apos;s greatest agentic digital marketing system"  # locked
 
@@ -180,47 +181,252 @@ def button(t: Typesetter, cx: float, y: float, fill: str, label: str, size: floa
 # ---------------------------------------------------------------- banner
 
 def render_banner() -> None:
+    import math
+    import random
+
     src = BANNER_TEMPLATE.read_text(encoding="utf-8")
-    head = src[:src.index("  <!-- Live Status Badge")]
-    rail = src[src.index("  <!-- Divider Rail Base"):src.index("  <!-- Subtitle Lines")]
-    # Owner (2026-11-14): no white highlight sliding along the rail. Keep only the red wave.
-    rail = re.sub(r'\s*<rect [^>]*shimmerGrad1[^>]*/>', "", rail)
+    # Preserve the original Legends wordmark glyphs from the template, not re-outlined.
+    title = src[src.index("  <!-- Title: cto-legends"):src.index("  <!-- Divider Rail Base")].rstrip() + "\n"
     t = Typesetter()
 
     # One 50u frame: title and rail start at x=50, rail ends at x=1150. The slogan tucks into the
-    # top-right corner (cap top y=50) and the site link into the bottom-right (baseline y=270).
-    # No pill borders: a glowing dot, then text, like cto-legends.com.
-    FRAME_R, FRAME_T, FRAME_B = 1150, 50, 270
+    # top-right corner (cap top y=50) and the site link into the bottom-right (baseline y=272).
+    # Pure #ff0000 on #000000 / #ffffff only (no white shimmer highlights, no pink/lightened reds).
+    FRAME_R, FRAME_T, FRAME_B = 1150, 50, 272
+    RAIL_Y = 146
     sz = 18
     base = FRAME_T + sz * CAP
     tx = FRAME_R - width(BANNER_PILL, sz)
-    cx, cy = tx - 15, base - sz * CAP / 2
-    head = re.sub(r"transform-origin: [\d.]+px [\d.]+px", f"transform-origin: {cx:.2f}px {cy:.2f}px", head)
+    cx, cy = tx - 16, base - sz * CAP / 2
+
+    # Harmonic pure-red silk ribbons along the divider rail (ties banner to ecosystem-separator.svg).
+    rng = random.Random(20261122)
+    rail_x0, rail_x1 = 54.0, 1146.0
+    ribbon_specs = [
+        ("#4d0000", 0.75, 1.25),
+        ("#990000", 0.65, 0.90),
+        ("#cc0000", 0.65, 0.65),
+        ("#ff0000", 0.80, 0.55),
+        ("#ff0000", 0.55, 0.45),
+    ]
+    ribbon_css, ribbon_glow, ribbon_core = [], [], []
+    for idx, (col, op, sw) in enumerate(ribbon_specs):
+        P = rng.uniform(300, 480)
+        raw = [rng.uniform(0.55, 1.0), rng.uniform(0.18, 0.42), rng.uniform(0.06, 0.20)]
+        scale = 6.2 * rng.uniform(0.55, 0.95) / sum(raw)
+        amps = [a * scale for a in raw]
+        phases = [rng.uniform(0, 2 * math.pi) for _ in raw]
+        pts = []
+        x = rail_x0
+        while x <= rail_x1 + P + 8:
+            y = RAIL_Y + sum(a * math.sin(2 * math.pi * (k + 1) * (x - rail_x0) / P + ph)
+                             for k, (a, ph) in enumerate(zip(amps, phases)))
+            pts.append(f"{x:.1f} {y:.1f}")
+            x += 6.0
+        d = "M" + "L".join(pts)
+        dur = rng.uniform(6.5, 11.5) * (P / 380.0)
+        delay = -rng.uniform(0, dur)
+        ribbon_css.append(
+            f"    @keyframes drift-{idx} {{ to {{ transform: translateX(-{P:.2f}px); }} }}\n"
+            f"    .rw-{idx} {{ animation: drift-{idx} {dur:.2f}s linear {delay:.2f}s infinite; }}\n"
+        )
+        ribbon_core.append(
+            f'      <path class="rw-{idx}" d="{d}" stroke="{col}" stroke-opacity="{op:.2f}" stroke-width="{sw:.2f}" />\n'
+        )
+        if col in ("#cc0000", "#ff0000"):
+            ribbon_glow.append(
+                f'      <path class="rw-{idx}" d="{d}" stroke="#ff0000" stroke-opacity="{op * 0.38:.2f}" stroke-width="{sw * 3.6:.2f}" />\n'
+            )
+
+    # Subtle architectural grid lines in the deep upper-right field (masked cleanly around text).
+    grid_lines = []
+    for gx in range(560, 1181, 40):
+        grid_lines.append(f'      <line x1="{gx}" y1="16" x2="{gx}" y2="132" />\n')
+    for gy in (44, 84, 124):
+        grid_lines.append(f'      <line x1="560" y1="{gy}" x2="1180" y2="{gy}" />\n')
+
     pill = (
-        "  <!-- Slogan, tucked top right -->\n"
+        "  <!-- Slogan beacon, tucked top right -->\n"
+        f'  <circle cx="{cx:.2f}" cy="{cy:.2f}" r="4.5" fill="none" stroke="#ff0000" stroke-width="1.3" class="beacon-ring" />\n'
         f'  <circle cx="{cx:.2f}" cy="{cy:.2f}" r="4.5" fill="#ff0000" class="beacon" />\n'
         + t.run(tx, base, sz, BANNER_PILL, "#ffffff", "600")
     )
-    # Title keeps the original Legends wordmark glyphs from the template, not re-outlined.
-    title = src[src.index("  <!-- Title: cto-legends"):src.index("  <!-- Divider Rail Base")].rstrip() + "\n"
-    subs = ("  <!-- What it is / what you get -->\n"
-            + t.run(50, 195, 28, BANNER_L1, "#ffffff", "500")
-            + t.run(50, 245, 28, BANNER_L2, "#a1a1aa", "400"))
+    subs = (
+        "  <!-- Positioning / Mission -->\n"
+        + t.run(50, 200, 28, BANNER_L1, "#ffffff", "600")
+        + t.run(50, 248, 28, BANNER_L2, "#a1a1aa", "400")
+    )
+    l1_end = 50 + width(BANNER_L1, 28)
+    if l1_end > FRAME_R:
+        raise SystemExit(f"FAIL: banner line 1 overflows right frame ({l1_end:.1f} > {FRAME_R})")
     l2_end = 50 + width(BANNER_L2, 28)
     cs = 18.5
     ax = FRAME_R - 9.5  # arrow is 9.5u wide, ends on the frame
     cta_x = ax - 10 - width("cto-legends.com", cs)
     if l2_end + 22 > cta_x - 24:
         raise SystemExit("FAIL: banner line 2 runs into the site link")
-    cursor = f'  <rect x="{l2_end + 8:.2f}" y="224" width="14" height="24" fill="#ff0000" class="cursor" />\n'
+    cursor = f'  <rect x="{l2_end + 9:.2f}" y="227" width="13" height="24" fill="#ff0000" class="cursor" />\n'
     ay = FRAME_B - 1
     cta = (
         "  <!-- Site link, tucked bottom right -->\n"
-        + t.run(cta_x, FRAME_B, cs, "cto-legends.com", "#ffffff", "500")
-        + f'  <path d="M{ax:.2f} {ay:.2f} L{ax + 9.5:.2f} {ay - 9.5:.2f} M{ax + 2.5:.2f} {ay - 9.5:.2f} H{ax + 9.5:.2f} V{ay - 2.5:.2f}" '
-        'stroke="#ff0000" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none" />\n'
+        + t.run(cta_x, FRAME_B, cs, "cto-legends.com", "#ffffff", "600")
+        + f'  <g class="cta-arrow"><path d="M{ax:.2f} {ay:.2f} L{ax + 9.5:.2f} {ay - 9.5:.2f} '
+        f'M{ax + 2.5:.2f} {ay - 9.5:.2f} H{ax + 9.5:.2f} V{ay - 2.5:.2f}" '
+        'stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" /></g>\n'
     )
-    out = head + t.defs() + pill + "\n" + title + "\n" + rail + subs + cursor + cta + "</svg>\n"
+
+    out = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="auto">
+  <defs>
+    <clipPath id="cardClip"><rect width="1200" height="320" rx="6" /></clipPath>
+    <clipPath id="railClip"><rect x="54" y="{RAIL_Y - 10}" width="1092" height="20" /></clipPath>
+    <clipPath id="coreClip"><rect x="50" y="{RAIL_Y - 3}" width="1100" height="6" rx="2" /></clipPath>
+    <radialGradient id="titleAura" cx="265" cy="84" r="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ff0000" stop-opacity="0.14" />
+      <stop offset="48%" stop-color="#ff0000" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="gridFade" cx="980" cy="70" r="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="65%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <mask id="gridMask" maskUnits="userSpaceOnUse" x="560" y="16" width="620" height="116">
+      <rect x="560" y="16" width="620" height="116" fill="url(#gridFade)" />
+    </mask>
+    <linearGradient id="railFade" gradientUnits="userSpaceOnUse" x1="54" y1="0" x2="1146" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="8%" stop-color="#ffffff" stop-opacity="0.85" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="92%" stop-color="#ffffff" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <mask id="railMask" maskUnits="userSpaceOnUse" x="54" y="{RAIL_Y - 10}" width="1092" height="20">
+      <rect x="54" y="{RAIL_Y - 10}" width="1092" height="20" fill="url(#railFade)" />
+    </mask>
+    <linearGradient id="barScanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff0000" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ff0000" stop-opacity="1" />
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="pulseGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff0000" stop-opacity="0" />
+      <stop offset="30%" stop-color="#ff0000" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#ff0000" stop-opacity="0.95" />
+      <stop offset="70%" stop-color="#ff0000" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="pulseGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff0000" stop-opacity="0" />
+      <stop offset="35%" stop-color="#ff0000" stop-opacity="0.28" />
+      <stop offset="50%" stop-color="#ff0000" stop-opacity="0.72" />
+      <stop offset="65%" stop-color="#ff0000" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
+    </linearGradient>
+    <filter id="redGlow" x="-8%" y="-160%" width="116%" height="420%">
+      <feGaussianBlur stdDeviation="2.4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="silkSoft" x="-4%" y="-90%" width="108%" height="280%">
+      <feGaussianBlur stdDeviation="1.8" />
+    </filter>
+  </defs>
+  <style>
+    @keyframes aura-breathe {{
+      0%, 100% {{ opacity: 0.65; }}
+      50% {{ opacity: 1; }}
+    }}
+    @keyframes bar-breathe {{
+      0%, 100% {{ opacity: 0.72; }}
+      50% {{ opacity: 1; }}
+    }}
+    @keyframes bar-scan {{
+      0% {{ transform: translateY(-140px); }}
+      100% {{ transform: translateY(340px); }}
+    }}
+    @keyframes beacon-pulse {{
+      0%, 100% {{ transform: scale(1); opacity: 0.75; }}
+      50% {{ transform: scale(1.22); opacity: 1; filter: drop-shadow(0 0 6px #ff0000); }}
+    }}
+    @keyframes beacon-ring {{
+      0% {{ transform: scale(1); opacity: 0.75; }}
+      80%, 100% {{ transform: scale(2.8); opacity: 0; }}
+    }}
+    @keyframes rail-breathe {{
+      0%, 100% {{ opacity: 0.28; }}
+      50% {{ opacity: 0.62; }}
+    }}
+    @keyframes pulse-sweep-1 {{
+      0% {{ transform: translateX(-460px); }}
+      100% {{ transform: translateX(1160px); }}
+    }}
+    @keyframes pulse-sweep-2 {{
+      0% {{ transform: translateX(1160px); }}
+      100% {{ transform: translateX(-640px); }}
+    }}
+    @keyframes cursor-blink {{
+      0%, 49% {{ opacity: 1; }}
+      50%, 100% {{ opacity: 0; }}
+    }}
+    @keyframes title-glow {{
+      0%, 100% {{ filter: drop-shadow(0 0 0px #ff0000); }}
+      50% {{ filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.32)); }}
+    }}
+    @keyframes arrow-nudge {{
+      0%, 100% {{ transform: translate(0, 0); opacity: 0.9; }}
+      50% {{ transform: translate(1.8px, -1.8px); opacity: 1; }}
+    }}
+{"".join(ribbon_css)}    .aura {{ animation: aura-breathe 6s ease-in-out infinite; }}
+    .red-bar {{ animation: bar-breathe 3.4s ease-in-out infinite; }}
+    .red-bar-scan {{ animation: bar-scan 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; }}
+    .beacon {{ animation: beacon-pulse 2.4s ease-in-out infinite; transform-origin: {cx:.2f}px {cy:.2f}px; }}
+    .beacon-ring {{ animation: beacon-ring 2.4s cubic-bezier(0.15, 0.6, 0.3, 1) infinite; transform-origin: {cx:.2f}px {cy:.2f}px; }}
+    .rail-glow {{ animation: rail-breathe 4.4s ease-in-out infinite; }}
+    .pulse-1 {{ animation: pulse-sweep-1 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }}
+    .pulse-2 {{ animation: pulse-sweep-2 5.4s cubic-bezier(0.35, 0, 0.25, 1) infinite 0.9s; }}
+    .cursor {{ animation: cursor-blink 1s steps(1) infinite; }}
+    .wordmark {{ animation: title-glow 5.5s ease-in-out infinite; }}
+    .cta-arrow {{ animation: arrow-nudge 3.2s ease-in-out infinite; }}
+    @media (prefers-reduced-motion: reduce) {{ * {{ animation: none !important; }} }}
+  </style>
+{t.defs()}  <g clip-path="url(#cardClip)">
+    <!-- Background -->
+    <rect width="1200" height="320" fill="#000000" />
+    <rect width="1200" height="320" fill="url(#titleAura)" class="aura" />
+    <!-- Subtle ontology grid (upper right) -->
+    <g mask="url(#gridMask)" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1">
+{"".join(grid_lines)}    </g>
+    <!-- Left Accent Stripe -->
+    <rect x="0" y="0" width="6" height="320" fill="#590000" />
+    <rect x="0" y="0" width="6" height="320" fill="#ff0000" class="red-bar" />
+    <rect x="0" y="0" width="6" height="140" fill="url(#barScanGrad)" class="red-bar-scan" />
+  </g>
+  <rect x="0.5" y="0.5" width="1199" height="319" rx="5.5" fill="none" stroke="#ffffff" stroke-opacity="0.09" stroke-width="1" />
+
+{pill}
+  <g class="wordmark">
+{title}  </g>
+
+  <!-- Kinetic Pure-Red Divider Rail -->
+  <line x1="50" y1="{RAIL_Y}" x2="1150" y2="{RAIL_Y}" stroke="#260000" stroke-width="1.2" />
+  <line x1="50" y1="{RAIL_Y}" x2="1150" y2="{RAIL_Y}" stroke="#ff0000" stroke-width="1.2" class="rail-glow" />
+  <g mask="url(#railMask)">
+    <g clip-path="url(#railClip)" fill="none">
+      <g filter="url(#silkSoft)">
+{"".join(ribbon_glow)}      </g>
+{"".join(ribbon_core)}    </g>
+  </g>
+  <g clip-path="url(#coreClip)">
+    <rect x="0" y="{RAIL_Y - 1.5}" width="640" height="3" fill="url(#pulseGrad2)" class="pulse-2" filter="url(#redGlow)" />
+    <rect x="0" y="{RAIL_Y - 1.5}" width="460" height="3" fill="url(#pulseGrad1)" class="pulse-1" filter="url(#redGlow)" />
+  </g>
+  <rect x="50" y="{RAIL_Y - 2}" width="4" height="4" fill="#ff0000" />
+  <rect x="1146" y="{RAIL_Y - 2}" width="4" height="4" fill="#ff0000" />
+
+{subs}{cursor}{cta}</svg>
+'''
     (cards / "banner.svg").write_text(out, encoding="utf-8")
 
 
@@ -525,8 +731,7 @@ def img(href: str, src: str, width_: str, alt: str) -> str:
 
 
 def header_block(overview_alt: str) -> str:
-    banner_alt = ("cto-legends by Avalon Reset: open source AI agents and agent skills. "
-                  "The human is the controller, the agents do the operating. Stop being your computer's assistant. Fractional CTO heaven.")
+    banner_alt = BANNER_ALT
     bar_alt = "community: ai-marketing-hub-pro on Skool, designed to combine into an agentic digital marketing system"
     ov_alt = ("How cto-legends works: If your AI hands the steps back to you, nothing was delegated. "
               "You just got one more thing to babysit. cto-legends is free software that gives your agents real hands, "
