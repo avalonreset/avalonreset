@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r20"
+REV = "r21"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -115,14 +115,14 @@ COPY = {
     "legends-gohighlevel": ("infrastructure", "mit", "Run GoHighLevel agencies at scale: batch-clone snapshots, X-ray workflows, lock down permissions."),
     "legends-github": ("intelligence", "mit", "Keep repos launch-ready: health audits, verified releases, and topics matched to search demand."),
     "legends-jev": ("infrastructure", "mit", "Give your agent eyes: hosted OCR, exact pixel coordinates, and storefront sign checks."),
-    "legends-geogrid": ("intelligence", "mit", "Map local Google Maps rankings across a circular grid at wholesale rates, with 18-page PDF reports."),
+    "legends-geogrid": ("intelligence", "mit", "Map local Google Maps rankings across a circular grid at wholesale rates, with vector PDF reports."),
     "legends-dataforseo": ("intelligence", "mit", "Pull Google SERPs, Maps listings, and keyword volume from DataForSEO, cost previewed first."),
     "legends-firecrawl": ("intelligence", "mit", "Turn JavaScript-heavy sites into clean Markdown with preview-first, bounded Firecrawl crawls."),
     "legends-grant": ("intelligence", "mit", "Find grants across 56 US jurisdictions and check every eligibility rule word for word."),
     "legends-obs": ("studio", "mit", "Drive OBS Studio from your agent: scene switching, encoder checks, profile backups, and test clips."),
     "legends-captions": ("studio", "mit", "Word-by-word subtitles timed by forced alignment, with tech terms and acronyms spelled right."),
-    "legends-youtube": ("studio", "mit", "Run YouTube channels through the official APIs: safe metadata edits, CTR audits, private uploads."),
-    "legends-yt-dlp": ("studio", "mit", "Pull video, audio, and transcripts in paced, resumable batches, then plan reviewable clips."),
+    "legends-youtube": ("studio", "mit", "Run YouTube channels, pull paced yt-dlp video archives, cut clips, and freeze private drafts."),
+    "legends-temporal": ("infrastructure", "mit", "Schedule durable Temporal crons, delayed timers, and module jobs across split worker queues."),
     "legends-stable-audio-3": ("studio", "apache-2.0", "Make custom instrumental music on your own GPU and blend it into seamless multi-hour mixes."),
     "legends-hyperyap": ("studio", "agpl-3.0", "Push-to-talk dictation that runs offline on your GPU and types into any app on Windows, macOS, or Linux."),
     "legends-ambient-intelligence": ("studio", "mit", "Turn voice recorder and meeting audio into structured Obsidian notes, entirely offline."),
@@ -138,9 +138,9 @@ MODULES = [
     "legends-stripe", "legends-gohighlevel", "legends-dataforseo",
     # 4. know your market: local rankings, the wider web, money to grow
     "legends-geogrid", "legends-firecrawl", "legends-grant",
-    # 5-6. make content: channel, recording, subtitles, source clips, music
+    # 5-6. make content & schedule work: channel/yt-dlp, recording, subtitles, durable clock, music
     "legends-youtube", "legends-obs", "legends-captions",
-    "legends-yt-dlp", "legends-stable-audio-3",
+    "legends-temporal", "legends-stable-audio-3",
     # 6-7. power tools for the operator: voice, meeting notes, eyes, relays
     "legends-hyperyap", "legends-ambient-intelligence", "legends-jev", "legends-buzz",
 ]
