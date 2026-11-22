@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r21"
+REV = "r22"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -138,11 +138,12 @@ MODULES = [
     "legends-stripe", "legends-gohighlevel", "legends-dataforseo",
     # 4. know your market: local rankings, the wider web, money to grow
     "legends-geogrid", "legends-firecrawl", "legends-grant",
-    # 5-6. make content & schedule work: channel/yt-dlp, recording, subtitles, durable clock, music
+    # 5. video studio: channel & yt-dlp archives, recording, word-timed subtitles
     "legends-youtube", "legends-obs", "legends-captions",
-    "legends-temporal", "legends-stable-audio-3",
-    # 6-7. power tools for the operator: voice, meeting notes, eyes, relays
-    "legends-hyperyap", "legends-ambient-intelligence", "legends-jev", "legends-buzz",
+    # 6. audio & voice studio: instrumental music, offline dictation, meeting notes
+    "legends-stable-audio-3", "legends-hyperyap", "legends-ambient-intelligence",
+    # 7. autonomous operator infrastructure: durable clock, optical eyes, sovereign relays
+    "legends-temporal", "legends-jev", "legends-buzz",
 ]
 
 # ---------------------------------------------------------------- geometry
