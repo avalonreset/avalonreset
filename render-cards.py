@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r24"
+REV = "r25"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -97,7 +97,7 @@ FLAG_LEAD = "Install cto-legends once and your agent can reach every module belo
 FLAG_BODY = ("Every module below stays off your machine until a task needs one. Then your agent installs "
              "it from a pinned, checksum-verified release, in its own environment, and checks it is ready.")
 
-HANDOFF_NOTE = "// paste this into claude code, codex or any coding agent and it does the setup"
+HANDOFF_NOTE = "// vendor-agnostic: paste this into any AI coding agent and it does the setup"
 HANDOFF = f"Set up {GH}/cto-legends and check which modules apply to this workspace."
 
 MODULES_HEAD = "the modules"
@@ -554,7 +554,7 @@ def cards_block(widths: dict) -> str:
     out.append("  " + "<!--\n  -->".join(
         img(h, f"{f}.svg", f"{(FLAG_B[i + 1] - FLAG_B[i]) / FLAG_W * 100:.2f}%", a)
         for i, (h, f, a) in enumerate(links)) + "<!--\n  -->"
-        + img("", "cto-legends-handoff-label.svg", "100%", "agent handoff: paste this prompt into Claude Code, Codex, Gemini or another coding agent and it runs the setup"))
+        + img("", "cto-legends-handoff-label.svg", "100%", "agent handoff: vendor-agnostic, paste this prompt into any AI coding agent and it runs the setup"))
     out += ["</p>", "", "```text", HANDOFF, "```", "", '<p align="left">']
     shrine_alt = "GitHub Star List: The complete cto-legends collection on one page. Bookmark or star the router and every module from a single GitHub list."
     out.append("  " + img("", "modules-heading.svg", "100%", "the modules: open-source modules, each one installs only when a task needs it") + "<!--\n  -->"
