@@ -20,7 +20,8 @@ from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.ttLib import TTFont
 
 WKEYS = ("400", "500", "600", "700")
-WIN, LEGENDS = "C:/Windows/Fonts", "E:/empire/Workspaces/Brands & Sites/cto-legends/fonts"
+WIN = os.environ.get("SYSTEM_FONTS_DIR", "C:/Windows/Fonts")
+LEGENDS = os.environ.get("LEGENDS_FONTS_DIR", WIN)
 
 
 def _static(prefix, d=WIN, names=("Regular", "Medium", "SemiBold", "Bold")):
@@ -43,7 +44,7 @@ FONTS = {
     "roboto": _static("RobotoMono"),
     "source": _static("SourceCodePro"),
     "cascadia": _variable(f"{WIN}/CascadiaCode.ttf"),
-    "jetbrains": _static("JetBrainsMono", os.environ.get("JETBRAINS_DIR", "E:/_to-sort-later/root-folders-2026-07-16/_tmp_bt_rewrite2/assets/fonts")),
+    "jetbrains": _static("JetBrainsMono", os.environ.get("JETBRAINS_DIR", WIN)),
 }
 FONTS.update({k: (_variable(v) if isinstance(v, str) else v)
               for k, v in __import__("json").loads(os.environ.get("PROFILE_FONTS_EXTRA", "{}")).items()})
