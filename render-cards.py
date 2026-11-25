@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r27"
+REV = "r28"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -107,7 +107,7 @@ MODULES_NOTE = "each module installs only when a task needs it"
 # Module card copy: (category, license, one outcome-first sentence, 3 lines max).
 COPY = {
     "legends-empire": ("foundation", "mit", "Turn your Markdown vault into agent memory with SHA-256 integrity locks and crash-safe writes."),
-    "legends-astro": ("foundation", "mit", "Move WordPress, Next.js, or HTML sites to Astro with every route and SEO tag accounted for."),
+    "legends-astro": ("foundation", "mit", "Migrate WordPress, Next.js, or HTML to Astro with localized assets and Visual Digital Twin checks."),
     "legends-hetzner": ("infrastructure", "mit", "Check live Hetzner stock in Germany and Finland, size servers for cost, and preflight every build."),
     "legends-coolify": ("infrastructure", "mit", "Audit your Coolify servers read-only: containers, deploy queues, env keys, and backups."),
     "legends-cloudflare": ("infrastructure", "mit", "Change Cloudflare DNS without surprises: preview each edit, keep proxy settings, confirm it is live."),
