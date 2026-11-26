@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r29"
+REV = "r30"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -108,6 +108,7 @@ MODULES_NOTE = "each module installs only when a task needs it"
 COPY = {
     "legends-empire": ("foundation", "mit", "Turn your Markdown vault into agent memory with SHA-256 integrity locks and crash-safe writes."),
     "legends-astro": ("foundation", "mit", "Start greenfield Astro sites, migrate frameworks, publish posts with 301s, and verify dist/."),
+    "legends-a2ui": ("foundation", "mit", "Validate A2UI v1.0 JSON, upgrade legacy payloads, project CLI data to cards, and preview offline."),
     "legends-hetzner": ("infrastructure", "mit", "Check live Hetzner stock in Germany and Finland, size servers for cost, and preflight every build."),
     "legends-coolify": ("infrastructure", "mit", "Audit your Coolify servers read-only: containers, deploy queues, env keys, and backups."),
     "legends-cloudflare": ("infrastructure", "mit", "Change Cloudflare DNS without surprises: preview each edit, keep proxy settings, confirm it is live."),
@@ -145,6 +146,8 @@ MODULES = [
     "legends-stable-audio-3", "legends-hyperyap", "legends-ambient-intelligence",
     # 7. autonomous operator infrastructure: durable clock, optical eyes, sovereign relays
     "legends-temporal", "legends-jev", "legends-buzz",
+    # 8. interactive agent interfaces
+    "legends-a2ui",
 ]
 
 # ---------------------------------------------------------------- geometry
@@ -767,13 +770,26 @@ def cards_block(widths: dict) -> str:
     lic_fmt = {"mit": "MIT", "apache-2.0": "Apache-2.0", "agpl-3.0": "AGPL-3.0"}
     for r in range(0, len(MODULES), 3):
         trio = MODULES[r:r + 3]
-        out.append("  " + "<!--\n  -->".join(
-            img(f"{GH}/{n}", f"{n}.svg", f"{COL_PCT}%", f"{n} ({COPY[n][0]}, {lic_fmt.get(COPY[n][1], COPY[n][1])}): {COPY[n][2]}") for n in trio))
+        row_imgs = [
+            img(f"{GH}/{n}", f"{n}.svg", f"{COL_PCT}%", f"{n} ({COPY[n][0]}, {lic_fmt.get(COPY[n][1], COPY[n][1])}): {COPY[n][2]}") for n in trio
+        ]
+        if len(trio) < 3:
+            pad_cols = 3 - len(trio)
+            pad_name = f"spacer-{pad_cols}col.svg"
+            (cards / pad_name).write_text(
+                f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {COL_W * pad_cols} 1" width="100%"/>\n',
+                encoding="utf-8",
+            )
+            row_imgs.append(img("", pad_name, f"{COL_PCT * pad_cols:.2f}%", ""))
+        out.append("  " + "<!--\n  -->".join(row_imgs))
         btns = []
         for n in trio:
             lw, rw = widths[n]
             btns.append(img(f"{SITE}/modules/{n}", f"{n}-spec.svg", lw, f"ENGINEERING SPEC: {n} specification on cto-legends.com"))
             btns.append(img(f"{GH}/{n}#readme", f"{n}-repo.svg", rw, f"GITHUB README: avalonreset/{n} repository README"))
+        if len(trio) < 3:
+            pad_cols = 3 - len(trio)
+            btns.append(img("", f"spacer-{pad_cols}col.svg", f"{COL_PCT * pad_cols:.2f}%", ""))
         out.append("  " + "<!--\n  -->".join(btns))
     out.append("  " + img(STAR_LIST, "collection-shrine.svg", "100%", shrine_alt))
     out.append("</p>")
