@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r31"
+REV = "r32"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -132,23 +132,23 @@ COPY = {
 }
 
 MODULES = [
-    # The journey a newcomer walks, in rows of three:
-    # 1. foundation: memory, a server, a deploy platform on it
+    # Canonical business-owner storyline order (synced with cto-legends catalog.json & cto-legends.com):
+    # 1. foundation: agent memory, your own cloud server, and a self-hosted deploy platform
     "legends-empire", "legends-hetzner", "legends-coolify",
-    # 2. go live: a domain, a website, the code behind it
-    "legends-cloudflare", "legends-astro", "legends-github",
-    # 3. do business: get paid, run the CRM, then start getting found
-    "legends-stripe", "legends-gohighlevel", "legends-dataforseo",
-    # 4. know your market: local rankings, the wider web, money to grow
-    "legends-geogrid", "legends-firecrawl", "legends-grant",
-    # 5. video studio: channel & yt-dlp archives, recording, word-timed subtitles
-    "legends-youtube", "legends-obs", "legends-captions",
-    # 6. audio & voice studio: instrumental music, offline dictation, meeting notes
+    # 2. go live & capture leads: point DNS, launch or convert to Astro, wire up CRM pipelines
+    "legends-cloudflare", "legends-astro", "legends-gohighlevel",
+    # 3. collect revenue & get found: Stripe billing, Google/AI search demand, local Maps grids
+    "legends-stripe", "legends-dataforseo", "legends-geogrid",
+    # 4. market intel, capital & reach: scrape competitors/docs, find grants, grow on YouTube
+    "legends-firecrawl", "legends-grant", "legends-youtube",
+    # 5. video production engine: record in OBS, edit timelines in CapCut, burn word-timed captions
+    "legends-obs", "legends-capcut", "legends-captions",
+    # 6. audio & voice speed: custom GPU music beds, offline dictation, meeting notes
     "legends-stable-audio-3", "legends-hyperyap", "legends-ambient-intelligence",
-    # 7. autonomous operator infrastructure: durable clock, optical eyes, sovereign relays
+    # 7. autonomous operations: 24/7 durable schedules, optical eyes, private ChatOps relays
     "legends-temporal", "legends-jev", "legends-buzz",
-    # 8. interactive agent interfaces & desktop editing
-    "legends-a2ui", "legends-capcut",
+    # 8. builder & open-source tier: interactive A2UI surfaces, public GitHub shipping
+    "legends-a2ui", "legends-github",
 ]
 
 # ---------------------------------------------------------------- geometry
