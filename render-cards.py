@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r32"
+REV = "r33"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -122,6 +122,7 @@ COPY = {
     "legends-firecrawl": ("intelligence", "mit", "Turn JavaScript-heavy sites into clean Markdown with preview-first, bounded Firecrawl crawls."),
     "legends-grant": ("intelligence", "mit", "Find grants across 56 US jurisdictions and check every eligibility rule word for word."),
     "legends-obs": ("studio", "mit", "Drive OBS Studio from your agent: scene switching, encoder checks, profile backups, and test clips."),
+    "legends-seedance": ("studio", "mit", "Prep Seedance 2.0 and 2.5 edits: lint prompts, build inpaint masks, composite plates, retime frames."),
     "legends-captions": ("studio", "mit", "Word-by-word subtitles timed by forced alignment, with tech terms and acronyms spelled right."),
     "legends-capcut": ("studio", "mit", "Compile CapCut Desktop timelines, surgically patch scenes, render storyboards, and audit pacing."),
     "legends-youtube": ("studio", "mit", "Run YouTube channels, pull paced yt-dlp video archives, cut clips, and freeze private drafts."),
@@ -141,8 +142,10 @@ MODULES = [
     "legends-stripe", "legends-dataforseo", "legends-geogrid",
     # 4. market intel, capital & reach: scrape competitors/docs, find grants, grow on YouTube
     "legends-firecrawl", "legends-grant", "legends-youtube",
-    # 5. video production engine: record in OBS, edit timelines in CapCut, burn word-timed captions
-    "legends-obs", "legends-capcut", "legends-captions",
+    # 5. video production engine: record in OBS, prep Seedance AI edits, cut timelines in CapCut,
+    #    burn word-timed captions
+    "legends-obs", "legends-seedance", "legends-capcut",
+    "legends-captions",
     # 6. audio & voice speed: custom GPU music beds, offline dictation, meeting notes
     "legends-stable-audio-3", "legends-hyperyap", "legends-ambient-intelligence",
     # 7. autonomous operations: 24/7 durable schedules, optical eyes, private ChatOps relays

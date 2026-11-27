@@ -47,8 +47,8 @@ def main() -> int:
         r for r in re.findall(r'src="(assets/cards/(?:r\d+/)?legends-[^"?]+\.svg)', readme)
         if not r.endswith(("-spec.svg", "-repo.svg"))
     ]
-    if len(module_refs) != 23:
-        raise SystemExit(f"FAIL: expected 23 module card refs, found {len(module_refs)}")
+    if len(module_refs) != 24:
+        raise SystemExit(f"FAIL: expected 24 module card refs, found {len(module_refs)}")
     for idx, rel in enumerate(module_refs):
         vb_match = re.search(r'viewBox="([^"]+)"', (root / rel).read_text(encoding="utf-8"))
         want = f"{expected_min_x[idx % 3]} -16 303 126"
