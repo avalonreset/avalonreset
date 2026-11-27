@@ -26,7 +26,7 @@ from typeset import CAP, EM, FONT, Typesetter, width  # noqa: E402
 root = Path(__file__).resolve().parent
 # Design revision folder. GitHub caches raw images by path and ignores ?v= bumps, so every
 # visual change ships under a new folder: bump REV, git mv the files, rerun.
-REV = "r30"
+REV = "r31"
 cards = root / "assets" / "cards" / REV
 readme_path = root / "README.md"
 BANNER_TEMPLATE = root / "assets" / "banner.svg"  # original art: defs, animation, rail
@@ -117,12 +117,13 @@ COPY = {
     "legends-gohighlevel": ("infrastructure", "mit", "Run GoHighLevel agencies at scale: batch-clone snapshots, X-ray workflows, lock down permissions."),
     "legends-github": ("intelligence", "mit", "Keep repos launch-ready: health audits, verified releases, and topics tuned to search demand."),
     "legends-jev": ("infrastructure", "mit", "Give your agent eyes: hosted OCR, exact pixel coordinates, and storefront sign checks."),
-    "legends-geogrid": ("intelligence", "mit", "Map local Google Maps rankings across a circular grid at wholesale rates, with vector PDF reports."),
+    "legends-geogrid": ("intelligence", "mit", "Map local Google Maps rankings on a 30-deep circular honeycomb grid with vector PDF reports."),
     "legends-dataforseo": ("intelligence", "mit", "Pull Google SERPs, Maps listings, and keyword volume from DataForSEO, cost previewed first."),
     "legends-firecrawl": ("intelligence", "mit", "Turn JavaScript-heavy sites into clean Markdown with preview-first, bounded Firecrawl crawls."),
     "legends-grant": ("intelligence", "mit", "Find grants across 56 US jurisdictions and check every eligibility rule word for word."),
     "legends-obs": ("studio", "mit", "Drive OBS Studio from your agent: scene switching, encoder checks, profile backups, and test clips."),
     "legends-captions": ("studio", "mit", "Word-by-word subtitles timed by forced alignment, with tech terms and acronyms spelled right."),
+    "legends-capcut": ("studio", "mit", "Compile CapCut Desktop timelines, surgically patch scenes, render storyboards, and audit pacing."),
     "legends-youtube": ("studio", "mit", "Run YouTube channels, pull paced yt-dlp video archives, cut clips, and freeze private drafts."),
     "legends-temporal": ("infrastructure", "mit", "Schedule durable Temporal crons, delayed timers, and module jobs across split worker queues."),
     "legends-stable-audio-3": ("studio", "apache-2.0", "Make custom instrumental music on your own GPU and blend it into seamless multi-hour mixes."),
@@ -146,8 +147,8 @@ MODULES = [
     "legends-stable-audio-3", "legends-hyperyap", "legends-ambient-intelligence",
     # 7. autonomous operator infrastructure: durable clock, optical eyes, sovereign relays
     "legends-temporal", "legends-jev", "legends-buzz",
-    # 8. interactive agent interfaces
-    "legends-a2ui",
+    # 8. interactive agent interfaces & desktop editing
+    "legends-a2ui", "legends-capcut",
 ]
 
 # ---------------------------------------------------------------- geometry
